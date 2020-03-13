@@ -15,6 +15,8 @@
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!-- 自动生成equals方法和hashcode方法 -->
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <!-- 删除原来已经生成的 xml -->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
 
         <!-- 非官方插件 https://github.com/itfsw/mybatis-generator-plugin -->
         <!-- 查询单条数据插件 -->
@@ -37,8 +39,8 @@
         </plugin>
 
         <commentGenerator>
-            <property name="suppressDate" value="true"/>
-            <!--<property name="suppressAllComments" value="true"/>-->
+<!--            <property name="suppressDate" value="true"/>-->
+            <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
         <!--数据库连接信息-->
@@ -55,6 +57,7 @@
         <sqlMapGenerator targetPackage="org.linlinjava.litemall.db.dao.generate" targetProject="src/main/resources"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="org.linlinjava.litemall.db.dao.generate"
                              targetProject="src/main/java"/>
+
         <!--表名-->
         <table tableName="litemall_ad">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
