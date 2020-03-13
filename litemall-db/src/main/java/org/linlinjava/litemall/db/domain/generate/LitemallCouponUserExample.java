@@ -11,6 +11,10 @@ public class LitemallCouponUserExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer offset;
+
+    protected Integer rows;
+
     public LitemallCouponUserExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -79,6 +83,8 @@ public class LitemallCouponUserExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+        rows = null;
+        offset = null;
     }
 
     public static Criteria newAndCreateCriteria() {
@@ -99,6 +105,39 @@ public class LitemallCouponUserExample {
         } else {
             otherwise.example(this);
         }
+        return this;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public Integer getOffset() {
+        return this.offset;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
+    }
+
+    public Integer getRows() {
+        return this.rows;
+    }
+
+    public LitemallCouponUserExample limit(Integer rows) {
+        this.rows = rows;
+        return this;
+    }
+
+    public LitemallCouponUserExample limit(Integer offset, Integer rows) {
+        this.offset = offset;
+        this.rows = rows;
+        return this;
+    }
+
+    public LitemallCouponUserExample page(Integer page, Integer pageSize) {
+        this.offset = page * pageSize;
+        this.rows = pageSize;
         return this;
     }
 

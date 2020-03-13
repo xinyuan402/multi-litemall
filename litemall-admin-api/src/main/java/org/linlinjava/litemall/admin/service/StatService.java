@@ -1,4 +1,4 @@
-package org.linlinjava.litemall.db.service;
+package org.linlinjava.litemall.admin.service;
 
 import org.linlinjava.litemall.db.dao.StatMapper;
 import org.springframework.stereotype.Service;

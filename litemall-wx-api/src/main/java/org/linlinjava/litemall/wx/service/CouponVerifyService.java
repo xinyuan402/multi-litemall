@@ -1,7 +1,9 @@
-package org.linlinjava.litemall.db.service;
+package org.linlinjava.litemall.wx.service;
 
 import org.linlinjava.litemall.db.domain.generate.LitemallCoupon;
 import org.linlinjava.litemall.db.domain.generate.LitemallCouponUser;
+import org.linlinjava.litemall.db.service.LitemallCouponService;
+import org.linlinjava.litemall.db.service.LitemallCouponUserService;
 import org.linlinjava.litemall.db.util.CouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

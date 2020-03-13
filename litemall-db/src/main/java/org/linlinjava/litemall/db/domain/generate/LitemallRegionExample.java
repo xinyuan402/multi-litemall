@@ -10,6 +10,10 @@ public class LitemallRegionExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Integer offset;
+
+    protected Integer rows;
+
     public LitemallRegionExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -78,6 +82,8 @@ public class LitemallRegionExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+        rows = null;
+        offset = null;
     }
 
     public static Criteria newAndCreateCriteria() {
@@ -98,6 +104,39 @@ public class LitemallRegionExample {
         } else {
             otherwise.example(this);
         }
+        return this;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public Integer getOffset() {
+        return this.offset;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
+    }
+
+    public Integer getRows() {
+        return this.rows;
+    }
+
+    public LitemallRegionExample limit(Integer rows) {
+        this.rows = rows;
+        return this;
+    }
+
+    public LitemallRegionExample limit(Integer offset, Integer rows) {
+        this.offset = offset;
+        this.rows = rows;
+        return this;
+    }
+
+    public LitemallRegionExample page(Integer page, Integer pageSize) {
+        this.offset = page * pageSize;
+        this.rows = pageSize;
         return this;
     }
 
