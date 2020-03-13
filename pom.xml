@@ -156,6 +156,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- 热部署模块 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
