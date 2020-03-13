@@ -2,11 +2,11 @@ package org.linlinjava.litemall.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallGoodsMapper;
-import org.linlinjava.litemall.db.dao.LitemallGrouponRulesMapper;
-import org.linlinjava.litemall.db.domain.LitemallGoods;
-import org.linlinjava.litemall.db.domain.LitemallGrouponRules;
-import org.linlinjava.litemall.db.domain.LitemallGrouponRulesExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallGoodsMapper;
+import org.linlinjava.litemall.db.dao.generate.LitemallGrouponRulesMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoods;
+import org.linlinjava.litemall.db.domain.generate.LitemallGrouponRules;
+import org.linlinjava.litemall.db.domain.generate.LitemallGrouponRulesExample;
 import org.linlinjava.litemall.db.util.GrouponConstant;
 import org.springframework.stereotype.Service;
 

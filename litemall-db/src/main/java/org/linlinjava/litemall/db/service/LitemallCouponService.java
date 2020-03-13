@@ -2,13 +2,13 @@ package org.linlinjava.litemall.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallCouponMapper;
-import org.linlinjava.litemall.db.dao.LitemallCouponUserMapper;
-import org.linlinjava.litemall.db.domain.LitemallCoupon;
-import org.linlinjava.litemall.db.domain.LitemallCoupon.Column;
-import org.linlinjava.litemall.db.domain.LitemallCouponExample;
-import org.linlinjava.litemall.db.domain.LitemallCouponUser;
-import org.linlinjava.litemall.db.domain.LitemallCouponUserExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallCouponMapper;
+import org.linlinjava.litemall.db.dao.generate.LitemallCouponUserMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallCoupon;
+import org.linlinjava.litemall.db.domain.generate.LitemallCoupon.Column;
+import org.linlinjava.litemall.db.domain.generate.LitemallCouponExample;
+import org.linlinjava.litemall.db.domain.generate.LitemallCouponUser;
+import org.linlinjava.litemall.db.domain.generate.LitemallCouponUserExample;
 import org.linlinjava.litemall.db.util.CouponConstant;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallKeywordMapper;
-import org.linlinjava.litemall.db.domain.LitemallKeyword;
-import org.linlinjava.litemall.db.domain.LitemallKeywordExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallKeywordMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallKeyword;
+import org.linlinjava.litemall.db.domain.generate.LitemallKeywordExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

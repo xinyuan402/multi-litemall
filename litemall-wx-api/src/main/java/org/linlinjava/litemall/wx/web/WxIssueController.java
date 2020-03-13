@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.LitemallIssue;
+import org.linlinjava.litemall.db.domain.generate.LitemallIssue;
 import org.linlinjava.litemall.db.service.LitemallIssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

@@ -1,7 +1,7 @@
 package org.linlinjava.litemall.admin.task;
 
 import org.linlinjava.litemall.core.task.TaskService;
-import org.linlinjava.litemall.db.domain.LitemallGrouponRules;
+import org.linlinjava.litemall.db.domain.generate.LitemallGrouponRules;
 import org.linlinjava.litemall.db.service.LitemallGrouponRulesService;
 import org.linlinjava.litemall.db.util.GrouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;

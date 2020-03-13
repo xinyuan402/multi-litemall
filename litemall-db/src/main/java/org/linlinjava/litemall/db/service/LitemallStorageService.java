@@ -1,9 +1,9 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallStorageMapper;
-import org.linlinjava.litemall.db.domain.LitemallStorage;
-import org.linlinjava.litemall.db.domain.LitemallStorageExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallStorageMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallStorage;
+import org.linlinjava.litemall.db.domain.generate.LitemallStorageExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

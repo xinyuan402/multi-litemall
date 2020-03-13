@@ -1,8 +1,8 @@
 package org.linlinjava.litemall.db.service;
 
-import org.linlinjava.litemall.db.dao.LitemallGoodsSpecificationMapper;
-import org.linlinjava.litemall.db.domain.LitemallGoodsSpecification;
-import org.linlinjava.litemall.db.domain.LitemallGoodsSpecificationExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallGoodsSpecificationMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoodsSpecification;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoodsSpecificationExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

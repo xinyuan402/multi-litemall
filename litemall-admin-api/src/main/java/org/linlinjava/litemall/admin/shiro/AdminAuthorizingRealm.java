@@ -8,7 +8,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.linlinjava.litemall.core.util.bcrypt.BCryptPasswordEncoder;
-import org.linlinjava.litemall.db.domain.LitemallAdmin;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
 import org.linlinjava.litemall.db.service.LitemallPermissionService;
 import org.linlinjava.litemall.db.service.LitemallRoleService;

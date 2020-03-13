@@ -1,16 +1,17 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallBrandMapper;
-import org.linlinjava.litemall.db.domain.LitemallBrand;
-import org.linlinjava.litemall.db.domain.LitemallBrand.Column;
-import org.linlinjava.litemall.db.domain.LitemallBrandExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallBrandMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallBrand;
+import org.linlinjava.litemall.db.domain.generate.LitemallBrandExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import static org.linlinjava.litemall.db.domain.generate.LitemallBrand.*;
 
 @Service
 public class LitemallBrandService {

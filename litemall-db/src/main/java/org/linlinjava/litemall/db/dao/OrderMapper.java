@@ -1,7 +1,7 @@
 package org.linlinjava.litemall.db.dao;
 
 import org.apache.ibatis.annotations.Param;
-import org.linlinjava.litemall.db.domain.LitemallOrder;
+import org.linlinjava.litemall.db.domain.generate.LitemallOrder;
 
 import java.time.LocalDateTime;
 

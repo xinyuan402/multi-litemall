@@ -1,9 +1,9 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallAftersaleMapper;
-import org.linlinjava.litemall.db.domain.LitemallAftersale;
-import org.linlinjava.litemall.db.domain.LitemallAftersaleExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallAftersaleMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallAftersale;
+import org.linlinjava.litemall.db.domain.generate.LitemallAftersaleExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

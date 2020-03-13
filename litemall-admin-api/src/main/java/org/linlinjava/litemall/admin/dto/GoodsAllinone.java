@@ -1,9 +1,9 @@
 package org.linlinjava.litemall.admin.dto;
 
-import org.linlinjava.litemall.db.domain.LitemallGoods;
-import org.linlinjava.litemall.db.domain.LitemallGoodsAttribute;
-import org.linlinjava.litemall.db.domain.LitemallGoodsProduct;
-import org.linlinjava.litemall.db.domain.LitemallGoodsSpecification;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoods;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoodsAttribute;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoodsProduct;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoodsSpecification;
 
 public class GoodsAllinone {
     LitemallGoods goods;

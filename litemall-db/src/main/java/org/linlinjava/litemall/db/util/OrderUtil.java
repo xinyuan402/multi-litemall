@@ -1,6 +1,6 @@
 package org.linlinjava.litemall.db.util;
 
-import org.linlinjava.litemall.db.domain.LitemallOrder;
+import org.linlinjava.litemall.db.domain.generate.LitemallOrder;
 
 import java.util.ArrayList;
 import java.util.List;

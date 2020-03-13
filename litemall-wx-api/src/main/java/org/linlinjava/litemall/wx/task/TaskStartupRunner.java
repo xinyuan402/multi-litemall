@@ -2,7 +2,7 @@ package org.linlinjava.litemall.wx.task;
 
 import org.linlinjava.litemall.core.system.SystemConfig;
 import org.linlinjava.litemall.core.task.TaskService;
-import org.linlinjava.litemall.db.domain.LitemallOrder;
+import org.linlinjava.litemall.db.domain.generate.LitemallOrder;
 import org.linlinjava.litemall.db.service.LitemallOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

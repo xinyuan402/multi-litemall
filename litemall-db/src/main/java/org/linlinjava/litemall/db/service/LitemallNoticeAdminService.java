@@ -1,9 +1,9 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallNoticeAdminMapper;
-import org.linlinjava.litemall.db.domain.LitemallNoticeAdmin;
-import org.linlinjava.litemall.db.domain.LitemallNoticeAdminExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallNoticeAdminMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin;
+import org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdminExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

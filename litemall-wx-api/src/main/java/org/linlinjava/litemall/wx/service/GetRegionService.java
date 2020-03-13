@@ -1,6 +1,6 @@
 package org.linlinjava.litemall.wx.service;
 
-import org.linlinjava.litemall.db.domain.LitemallRegion;
+import org.linlinjava.litemall.db.domain.generate.LitemallRegion;
 import org.linlinjava.litemall.db.service.LitemallRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

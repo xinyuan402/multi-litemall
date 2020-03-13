@@ -2,9 +2,9 @@ package org.linlinjava.litemall.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallGrouponMapper;
-import org.linlinjava.litemall.db.domain.LitemallGroupon;
-import org.linlinjava.litemall.db.domain.LitemallGrouponExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallGrouponMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallGroupon;
+import org.linlinjava.litemall.db.domain.generate.LitemallGrouponExample;
 import org.linlinjava.litemall.db.util.GrouponConstant;
 import org.springframework.stereotype.Service;
 

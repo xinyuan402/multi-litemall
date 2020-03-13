@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.linlinjava.litemall.core.storage.StorageService;
 import org.linlinjava.litemall.core.util.CharUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
-import org.linlinjava.litemall.db.domain.LitemallStorage;
+import org.linlinjava.litemall.db.domain.generate.LitemallStorage;
 import org.linlinjava.litemall.db.service.LitemallStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

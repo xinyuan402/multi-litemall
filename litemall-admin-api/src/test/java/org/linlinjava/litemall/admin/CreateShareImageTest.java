@@ -3,7 +3,7 @@ package org.linlinjava.litemall.admin;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.linlinjava.litemall.core.qcode.QCodeService;
-import org.linlinjava.litemall.db.domain.LitemallGoods;
+import org.linlinjava.litemall.db.domain.generate.LitemallGoods;
 import org.linlinjava.litemall.db.service.LitemallGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

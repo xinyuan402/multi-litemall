@@ -1,10 +1,10 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallUserMapper;
-import org.linlinjava.litemall.db.domain.LitemallUser;
-import org.linlinjava.litemall.db.domain.LitemallUserExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallUserMapper;
 import org.linlinjava.litemall.db.domain.UserVo;
+import org.linlinjava.litemall.db.domain.generate.LitemallUser;
+import org.linlinjava.litemall.db.domain.generate.LitemallUserExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

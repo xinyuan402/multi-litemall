@@ -2,8 +2,8 @@ package org.linlinjava.litemall.admin.job;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.linlinjava.litemall.db.domain.LitemallCoupon;
-import org.linlinjava.litemall.db.domain.LitemallCouponUser;
+import org.linlinjava.litemall.db.domain.generate.LitemallCoupon;
+import org.linlinjava.litemall.db.domain.generate.LitemallCouponUser;
 import org.linlinjava.litemall.db.service.LitemallCouponService;
 import org.linlinjava.litemall.db.service.LitemallCouponUserService;
 import org.linlinjava.litemall.db.util.CouponConstant;

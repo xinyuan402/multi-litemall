@@ -1,9 +1,9 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallCouponUserMapper;
-import org.linlinjava.litemall.db.domain.LitemallCouponUser;
-import org.linlinjava.litemall.db.domain.LitemallCouponUserExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallCouponUserMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallCouponUser;
+import org.linlinjava.litemall.db.domain.generate.LitemallCouponUserExample;
 import org.linlinjava.litemall.db.util.CouponUserConstant;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

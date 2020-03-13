@@ -1,8 +1,8 @@
 package org.linlinjava.litemall.db.service;
 
-import org.linlinjava.litemall.db.dao.LitemallSystemMapper;
-import org.linlinjava.litemall.db.domain.LitemallSystem;
-import org.linlinjava.litemall.db.domain.LitemallSystemExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallSystemMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallSystem;
+import org.linlinjava.litemall.db.domain.generate.LitemallSystemExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

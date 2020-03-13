@@ -2,9 +2,9 @@ package org.linlinjava.litemall.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.LitemallRoleMapper;
-import org.linlinjava.litemall.db.domain.LitemallRole;
-import org.linlinjava.litemall.db.domain.LitemallRoleExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallRoleMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallRole;
+import org.linlinjava.litemall.db.domain.generate.LitemallRoleExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
