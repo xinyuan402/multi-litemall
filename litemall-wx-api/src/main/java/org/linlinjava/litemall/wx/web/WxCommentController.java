@@ -125,7 +125,7 @@ public class WxCommentController {
      * @param valueId  商品或专题ID。如果type是0，则是商品ID；如果type是1，则是专题ID。
      * @param showType 显示类型。如果是0，则查询全部；如果是1，则查询有图片的评论。
      * @param page     分页页数
-     * @param limit     分页大小
+     * @param limit    分页大小
      * @return 评论列表
      */
     @GetMapping("list")

@@ -34,7 +34,7 @@ public class LitemallSystemConfigService {
         example.or().andKeyNameLike("litemall_mall_%").andDeletedEqualTo(false);
         List<LitemallSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for (LitemallSystem system : systemList) {
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;
@@ -45,7 +45,7 @@ public class LitemallSystemConfigService {
         example.or().andKeyNameLike("litemall_wx_%").andDeletedEqualTo(false);
         List<LitemallSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for (LitemallSystem system : systemList) {
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;
@@ -56,7 +56,7 @@ public class LitemallSystemConfigService {
         example.or().andKeyNameLike("litemall_order_%").andDeletedEqualTo(false);
         List<LitemallSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for (LitemallSystem system : systemList) {
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;
@@ -67,7 +67,7 @@ public class LitemallSystemConfigService {
         example.or().andKeyNameLike("litemall_express_%").andDeletedEqualTo(false);
         List<LitemallSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for (LitemallSystem system : systemList) {
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;

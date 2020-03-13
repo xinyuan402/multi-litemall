@@ -10,7 +10,9 @@ import org.linlinjava.litemall.core.util.JacksonUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.*;
+import org.linlinjava.litemall.db.domain.LitemallAdmin;
+import org.linlinjava.litemall.db.domain.LitemallNotice;
+import org.linlinjava.litemall.db.domain.LitemallNoticeAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
 import org.linlinjava.litemall.db.service.LitemallNoticeAdminService;
 import org.linlinjava.litemall.db.service.LitemallNoticeService;
@@ -59,7 +61,7 @@ public class AdminNoticeController {
         return null;
     }
 
-    private Integer getAdminId(){
+    private Integer getAdminId() {
         Subject currentUser = SecurityUtils.getSubject();
         LitemallAdmin admin = (LitemallAdmin) currentUser.getPrincipal();
         return admin.getId();
@@ -81,7 +83,7 @@ public class AdminNoticeController {
         LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
         noticeAdmin.setNoticeId(notice.getId());
         noticeAdmin.setNoticeTitle(notice.getTitle());
-        for(LitemallAdmin admin : adminList){
+        for (LitemallAdmin admin : adminList) {
             noticeAdmin.setAdminId(admin.getId());
             noticeAdminService.add(noticeAdmin);
         }
@@ -113,14 +115,14 @@ public class AdminNoticeController {
             return ResponseUtil.badArgument();
         }
         // 如果通知已经有人阅读过，则不支持编辑
-        if(noticeAdminService.countReadByNoticeId(notice.getId()) > 0){
+        if (noticeAdminService.countReadByNoticeId(notice.getId()) > 0) {
             return ResponseUtil.fail(NOTICE_UPDATE_NOT_ALLOWED, "通知已被阅读，不能重新编辑");
         }
         // 1. 更新通知记录
         notice.setAdminId(getAdminId());
         noticeService.updateById(notice);
         // 2. 更新管理员通知记录
-        if(!originalNotice.getTitle().equals(notice.getTitle())){
+        if (!originalNotice.getTitle().equals(notice.getTitle())) {
             LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
             noticeAdmin.setNoticeTitle(notice.getTitle());
             noticeAdminService.updateByNoticeId(noticeAdmin, notice.getId());

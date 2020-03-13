@@ -7,7 +7,9 @@ import org.linlinjava.litemall.core.util.BeanUtil;
 import org.linlinjava.litemall.db.domain.LitemallGroupon;
 import org.linlinjava.litemall.db.domain.LitemallGrouponRules;
 import org.linlinjava.litemall.db.domain.LitemallOrder;
-import org.linlinjava.litemall.db.service.*;
+import org.linlinjava.litemall.db.service.LitemallGrouponRulesService;
+import org.linlinjava.litemall.db.service.LitemallGrouponService;
+import org.linlinjava.litemall.db.service.LitemallOrderService;
 import org.linlinjava.litemall.db.util.GrouponConstant;
 import org.linlinjava.litemall.db.util.OrderUtil;
 
@@ -17,7 +19,7 @@ public class GrouponRuleExpiredTask extends Task {
     private final Log logger = LogFactory.getLog(GrouponRuleExpiredTask.class);
     private int grouponRuleId = -1;
 
-    public GrouponRuleExpiredTask(Integer grouponRuleId, long delayInMilliseconds){
+    public GrouponRuleExpiredTask(Integer grouponRuleId, long delayInMilliseconds) {
         super("GrouponRuleExpiredTask-" + grouponRuleId, delayInMilliseconds);
         this.grouponRuleId = grouponRuleId;
     }
@@ -31,10 +33,10 @@ public class GrouponRuleExpiredTask extends Task {
         LitemallGrouponRulesService grouponRulesService = BeanUtil.getBean(LitemallGrouponRulesService.class);
 
         LitemallGrouponRules grouponRules = grouponRulesService.findById(grouponRuleId);
-        if(grouponRules == null){
+        if (grouponRules == null) {
             return;
         }
-        if(!grouponRules.getStatus().equals(GrouponConstant.RULE_STATUS_ON)){
+        if (!grouponRules.getStatus().equals(GrouponConstant.RULE_STATUS_ON)) {
             return;
         }
 
@@ -44,20 +46,19 @@ public class GrouponRuleExpiredTask extends Task {
 
         List<LitemallGroupon> grouponList = grouponService.queryByRuleId(grouponRuleId);
         // 用户团购处理
-        for(LitemallGroupon groupon : grouponList){
+        for (LitemallGroupon groupon : grouponList) {
             Short status = groupon.getStatus();
             LitemallOrder order = orderService.findById(groupon.getOrderId());
-            if(status.equals(GrouponConstant.STATUS_NONE)){
+            if (status.equals(GrouponConstant.STATUS_NONE)) {
                 groupon.setStatus(GrouponConstant.STATUS_FAIL);
                 grouponService.updateById(groupon);
-            }
-            else if(status.equals(GrouponConstant.STATUS_ON)){
+            } else if (status.equals(GrouponConstant.STATUS_ON)) {
                 // 如果团购进行中
                 // (1) 团购设置团购失败等待退款状态
                 groupon.setStatus(GrouponConstant.STATUS_FAIL);
                 grouponService.updateById(groupon);
                 // (2) 团购订单申请退款
-                if(OrderUtil.isPayStatus(order)) {
+                if (OrderUtil.isPayStatus(order)) {
                     order.setOrderStatus(OrderUtil.STATUS_REFUND);
                     orderService.updateWithOptimisticLocker(order);
                 }

@@ -120,7 +120,7 @@ public class AdminGoodsService {
 
     /**
      * 编辑商品
-     *
+     * <p>
      * NOTE：
      * 由于商品涉及到四个表，特别是litemall_goods_product表依赖litemall_goods_specification表，
      * 这导致允许所有字段都是可编辑会带来一些问题，因此这里商品编辑功能是受限制：
@@ -128,12 +128,12 @@ public class AdminGoodsService {
      * （2）litemall_goods_specification表只能编辑pic_url字段，其他操作不支持；
      * （3）litemall_goods_product表只能编辑price, number和url字段，其他操作不支持；
      * （4）litemall_goods_attribute表支持编辑、添加和删除操作。
-     *
+     * <p>
      * NOTE2:
      * 前后端这里使用了一个小技巧：
      * 如果前端传来的update_time字段是空，则说明前端已经更新了某个记录，则这个记录会更新；
      * 否则说明这个记录没有编辑过，无需更新该记录。
-     *
+     * <p>
      * NOTE3:
      * （1）购物车缓存了一些商品信息，因此需要及时更新。
      * 目前这些字段是goods_sn, goods_name, price, pic_url。
@@ -160,12 +160,12 @@ public class AdminGoodsService {
         BigDecimal retailPrice = new BigDecimal(Integer.MAX_VALUE);
         for (LitemallGoodsProduct product : products) {
             BigDecimal productPrice = product.getPrice();
-            if(retailPrice.compareTo(productPrice) == 1){
+            if (retailPrice.compareTo(productPrice) == 1) {
                 retailPrice = productPrice;
             }
         }
         goods.setRetailPrice(retailPrice);
-        
+
         // 商品基本信息表litemall_goods
         if (goodsService.updateById(goods) == 0) {
             throw new RuntimeException("更新数据失败");
@@ -176,7 +176,7 @@ public class AdminGoodsService {
         // 商品规格表litemall_goods_specification
         for (LitemallGoodsSpecification specification : specifications) {
             // 目前只支持更新规格表的图片字段
-            if(specification.getUpdateTime() == null){
+            if (specification.getUpdateTime() == null) {
                 specification.setSpecification(null);
                 specification.setValue(null);
                 specificationService.updateById(specification);
@@ -185,21 +185,19 @@ public class AdminGoodsService {
 
         // 商品货品表litemall_product
         for (LitemallGoodsProduct product : products) {
-            if(product.getUpdateTime() == null) {
+            if (product.getUpdateTime() == null) {
                 productService.updateById(product);
             }
         }
 
         // 商品参数表litemall_goods_attribute
         for (LitemallGoodsAttribute attribute : attributes) {
-            if (attribute.getId() == null || attribute.getId().equals(0)){
+            if (attribute.getId() == null || attribute.getId().equals(0)) {
                 attribute.setGoodsId(goods.getId());
                 attributeService.add(attribute);
-            }
-            else if(attribute.getDeleted()){
+            } else if (attribute.getDeleted()) {
                 attributeService.deleteById(attribute.getId());
-            }
-            else if(attribute.getUpdateTime() == null){
+            } else if (attribute.getUpdateTime() == null) {
                 attributeService.updateById(attribute);
             }
         }
@@ -249,7 +247,7 @@ public class AdminGoodsService {
         BigDecimal retailPrice = new BigDecimal(Integer.MAX_VALUE);
         for (LitemallGoodsProduct product : products) {
             BigDecimal productPrice = product.getPrice();
-            if(retailPrice.compareTo(productPrice) == 1){
+            if (retailPrice.compareTo(productPrice) == 1) {
                 retailPrice = productPrice;
             }
         }

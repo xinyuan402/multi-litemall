@@ -20,6 +20,14 @@ import java.util.Map;
 public class ShiroConfig {
 
     @Bean
+    @DependsOn("lifecycleBeanPostProcessor")
+    public static DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
+        DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
+        creator.setProxyTargetClass(true);
+        return creator;
+    }
+
+    @Bean
     public Realm realm() {
         return new AdminAuthorizingRealm();
     }
@@ -63,13 +71,5 @@ public class ShiroConfig {
                 new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
-    }
-
-    @Bean
-    @DependsOn("lifecycleBeanPostProcessor")
-    public static DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();
-        creator.setProxyTargetClass(true);
-        return creator;
     }
 }

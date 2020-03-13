@@ -35,6 +35,7 @@ public class NotifyProperties {
         private String sendfrom;
         private String sendto;
         private Integer port;
+
         public boolean isEnable() {
             return enable;
         }

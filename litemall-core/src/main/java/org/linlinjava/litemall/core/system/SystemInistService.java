@@ -16,20 +16,6 @@ import java.util.Map;
  */
 @Component
 class SystemInistService {
-    private SystemInistService systemInistService;
-
-
-    @Autowired
-    private Environment environment;
-
-    @PostConstruct
-    private void inist() {
-        systemInistService = this;
-        initConfigs();
-        SystemInfoPrinter.printInfo("Litemall 初始化信息", getSystemInfo());
-    }
-
-
     private final static Map<String, String> DEFAULT_CONFIGS = new HashMap<>();
 
     static {
@@ -57,8 +43,18 @@ class SystemInistService {
         DEFAULT_CONFIGS.put(SystemConfig.LITEMALL_MALL_QQ, "705144434");
     }
 
+    private SystemInistService systemInistService;
+    @Autowired
+    private Environment environment;
     @Autowired
     private LitemallSystemConfigService litemallSystemConfigService;
+
+    @PostConstruct
+    private void inist() {
+        systemInistService = this;
+        initConfigs();
+        SystemInfoPrinter.printInfo("Litemall 初始化信息", getSystemInfo());
+    }
 
     private void initConfigs() {
         // 1. 读取数据库全部配置信息

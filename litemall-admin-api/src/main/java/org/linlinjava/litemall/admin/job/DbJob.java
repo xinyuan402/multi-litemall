@@ -35,7 +35,7 @@ public class DbJob {
         String url = environment.getProperty("spring.datasource.druid.url");
         int index1 = url.indexOf("3306/");
         int index2 = url.indexOf("?");
-        String db = url.substring(index1+5, index2);
+        String db = url.substring(index1 + 5, index2);
 
         LocalDate localDate = LocalDate.now();
         String fileName = localDate.toString();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
     <contextName>logback</contextName>
-    <property name="log.path" value="logs" />
+    <property name="log.path" value="logs"/>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -44,15 +44,16 @@
     </appender>
 
     <root level="ERROR">
-        <appender-ref ref="console" />
-        <appender-ref ref="file" />
-        <appender-ref ref="error" />
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+        <appender-ref ref="error"/>
     </root>
-    <logger name="org.mybatis" level="ERROR" />
-    <logger name="org.springframework" level="ERROR" />
-    <logger name="org.linlinjava.litemall.core" level="ERROR" />
-    <logger name="org.linlinjava.litemall.db" level="ERROR" />
-    <logger name="org.linlinjava.litemall.admin" level="DEBUG" />
-    <logger name="org.linlinjava.litemall.wx" level="DEBUG" />
-    <logger name="org.linlinjava.litemall" level="DEBUG" />
+    <logger name="org.mybatis" level="ERROR"/>
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.linlinjava.litemall.core" level="ERROR"/>
+     
+    <logger name="org.linlinjava.litemall.db" level="ERROR"/>
+    <logger name="org.linlinjava.litemall.admin" level="DEBUG"/>
+    <logger name="org.linlinjava.litemall.wx" level="DEBUG"/>
+    <logger name="org.linlinjava.litemall" level="DEBUG"/>
 </configuration>

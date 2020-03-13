@@ -29,9 +29,9 @@ public class WxOrderController {
      * @param userId   用户ID
      * @param showType 显示类型，如果是0则是全部订单
      * @param page     分页页数
-     * @param limit     分页大小
+     * @param limit    分页大小
      * @param sort     排序字段
-     * @param order     排序方式
+     * @param order    排序方式
      * @return 订单列表
      */
     @GetMapping("list")
@@ -94,6 +94,7 @@ public class WxOrderController {
 
     /**
      * 微信H5支付
+     *
      * @param userId
      * @param body
      * @param request
@@ -107,10 +108,10 @@ public class WxOrderController {
     /**
      * 微信付款成功或失败回调接口
      * <p>
-     *  TODO
-     *  注意，这里pay-notify是示例地址，建议开发者应该设立一个隐蔽的回调地址
+     * TODO
+     * 注意，这里pay-notify是示例地址，建议开发者应该设立一个隐蔽的回调地址
      *
-     * @param request 请求内容
+     * @param request  请求内容
      * @param response 响应内容
      * @return 操作结果
      */

@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
@@ -48,7 +49,7 @@ public class HttpUtil {
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conn.connect();
             // 获取URLConnection对象对应的输出流
-            out = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+            out = new OutputStreamWriter(conn.getOutputStream(), StandardCharsets.UTF_8);
             // 发送请求参数
             if (params != null) {
                 StringBuilder param = new StringBuilder();
@@ -68,7 +69,7 @@ public class HttpUtil {
             out.flush();
             // 定义BufferedReader输入流来读取URL的响应
             in = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream(), "UTF-8"));
+                    new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
             String line;
             while ((line = in.readLine()) != null) {
                 result.append(line);

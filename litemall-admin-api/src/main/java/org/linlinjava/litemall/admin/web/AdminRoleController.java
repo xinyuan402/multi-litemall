@@ -42,6 +42,10 @@ public class AdminRoleController {
     private LitemallPermissionService permissionService;
     @Autowired
     private LitemallAdminService adminService;
+    @Autowired
+    private ApplicationContext context;
+    private List<PermVo> systemPermissions = null;
+    private Set<String> systemPermissionsString = null;
 
     @RequiresPermissions("admin:role:list")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色查询")
@@ -77,7 +81,6 @@ public class AdminRoleController {
         LitemallRole role = roleService.findById(id);
         return ResponseUtil.ok(role);
     }
-
 
     private Object validate(LitemallRole role) {
         String name = role.getName();
@@ -142,12 +145,6 @@ public class AdminRoleController {
         roleService.deleteById(id);
         return ResponseUtil.ok();
     }
-
-
-    @Autowired
-    private ApplicationContext context;
-    private List<PermVo> systemPermissions = null;
-    private Set<String> systemPermissionsString = null;
 
     private List<PermVo> getSystemPermissions() {
         final String basicPackage = "org.linlinjava.litemall.admin";

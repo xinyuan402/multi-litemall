@@ -55,11 +55,7 @@ public class HomeCacheManager {
             return false;
         } else {
             LocalDateTime expire = (LocalDateTime) cacheData.get("expireTime");
-            if (expire.isBefore(LocalDateTime.now())) {
-                return false;
-            } else {
-                return true;
-            }
+            return !expire.isBefore(LocalDateTime.now());
         }
     }
 

@@ -12,12 +12,12 @@ public class Permission {
         return requiresPermissions;
     }
 
-    public RequiresPermissionsDesc getRequiresPermissionsDesc() {
-        return requiresPermissionsDesc;
-    }
-
     public void setRequiresPermissions(RequiresPermissions requiresPermissions) {
         this.requiresPermissions = requiresPermissions;
+    }
+
+    public RequiresPermissionsDesc getRequiresPermissionsDesc() {
+        return requiresPermissionsDesc;
     }
 
     public void setRequiresPermissionsDesc(RequiresPermissionsDesc requiresPermissionsDesc) {

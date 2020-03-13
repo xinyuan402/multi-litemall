@@ -45,6 +45,9 @@ public class AdminAuthController {
     private LitemallPermissionService permissionService;
     @Autowired
     private LogHelper logHelper;
+    @Autowired
+    private ApplicationContext context;
+    private HashMap<String, String> systemPermissionsMap = null;
 
     /*
      *  { username : value, password : value }
@@ -105,7 +108,6 @@ public class AdminAuthController {
         return ResponseUtil.ok();
     }
 
-
     @RequiresAuthentication
     @GetMapping("/info")
     public Object info() {
@@ -125,10 +127,6 @@ public class AdminAuthController {
         data.put("perms", toApi(permissions));
         return ResponseUtil.ok(data);
     }
-
-    @Autowired
-    private ApplicationContext context;
-    private HashMap<String, String> systemPermissionsMap = null;
 
     private Collection<String> toApi(Set<String> permissions) {
         if (systemPermissionsMap == null) {

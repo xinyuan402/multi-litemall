@@ -47,7 +47,7 @@ public class JsonIntegerArrayTypeHandler extends BaseTypeHandler<Integer[]> {
     private Integer[] toObject(String content) {
         if (content != null && !content.isEmpty()) {
             try {
-                return (Integer[]) mapper.readValue(content, Integer[].class);
+                return mapper.readValue(content, Integer[].class);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

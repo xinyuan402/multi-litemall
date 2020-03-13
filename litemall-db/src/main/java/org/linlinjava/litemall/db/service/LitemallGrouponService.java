@@ -108,7 +108,7 @@ public class LitemallGrouponService {
     public boolean hasJoin(Integer userId, Integer grouponId) {
         LitemallGrouponExample example = new LitemallGrouponExample();
         example.or().andUserIdEqualTo(userId).andGrouponIdEqualTo(grouponId).andStatusNotEqualTo(GrouponConstant.STATUS_NONE).andDeletedEqualTo(false);
-        return  mapper.countByExample(example) != 0;
+        return mapper.countByExample(example) != 0;
     }
 
     public int updateById(LitemallGroupon groupon) {

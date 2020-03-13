@@ -102,10 +102,10 @@ public class LitemallOrderService {
         if (!StringUtils.isEmpty(orderSn)) {
             criteria.andOrderSnEqualTo(orderSn);
         }
-        if(start != null){
+        if (start != null) {
             criteria.andAddTimeGreaterThanOrEqualTo(start);
         }
-        if(end != null){
+        if (end != null) {
             criteria.andAddTimeLessThanOrEqualTo(end);
         }
         if (orderStatusArray != null && orderStatusArray.size() != 0) {

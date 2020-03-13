@@ -20,13 +20,13 @@ public class LitemallCouponUserService {
     public Integer countCoupon(Integer couponId) {
         LitemallCouponUserExample example = new LitemallCouponUserExample();
         example.or().andCouponIdEqualTo(couponId).andDeletedEqualTo(false);
-        return (int)couponUserMapper.countByExample(example);
+        return (int) couponUserMapper.countByExample(example);
     }
 
     public Integer countUserAndCoupon(Integer userId, Integer couponId) {
         LitemallCouponUserExample example = new LitemallCouponUserExample();
         example.or().andUserIdEqualTo(userId).andCouponIdEqualTo(couponId).andDeletedEqualTo(false);
-        return (int)couponUserMapper.countByExample(example);
+        return (int) couponUserMapper.countByExample(example);
     }
 
     public void add(LitemallCouponUser couponUser) {
@@ -41,7 +41,7 @@ public class LitemallCouponUserService {
         if (userId != null) {
             criteria.andUserIdEqualTo(userId);
         }
-        if(couponId != null){
+        if (couponId != null) {
             criteria.andCouponIdEqualTo(couponId);
         }
         if (status != null) {
@@ -70,7 +70,7 @@ public class LitemallCouponUserService {
 
     public LitemallCouponUser queryOne(Integer userId, Integer couponId) {
         List<LitemallCouponUser> couponUserList = queryList(userId, couponId, CouponUserConstant.STATUS_USABLE, 1, 1, "add_time", "desc");
-        if(couponUserList.size() == 0){
+        if (couponUserList.size() == 0) {
             return null;
         }
         return couponUserList.get(0);

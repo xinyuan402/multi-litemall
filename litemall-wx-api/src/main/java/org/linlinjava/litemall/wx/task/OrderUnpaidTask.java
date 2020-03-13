@@ -19,12 +19,12 @@ public class OrderUnpaidTask extends Task {
     private final Log logger = LogFactory.getLog(OrderUnpaidTask.class);
     private int orderId = -1;
 
-    public OrderUnpaidTask(Integer orderId, long delayInMilliseconds){
+    public OrderUnpaidTask(Integer orderId, long delayInMilliseconds) {
         super("OrderUnpaidTask-" + orderId, delayInMilliseconds);
         this.orderId = orderId;
     }
 
-    public OrderUnpaidTask(Integer orderId){
+    public OrderUnpaidTask(Integer orderId) {
         super("OrderUnpaidTask-" + orderId, SystemConfig.getOrderUnpaid() * 60 * 1000);
         this.orderId = orderId;
     }
@@ -38,10 +38,10 @@ public class OrderUnpaidTask extends Task {
         LitemallGoodsProductService productService = BeanUtil.getBean(LitemallGoodsProductService.class);
 
         LitemallOrder order = orderService.findById(this.orderId);
-        if(order == null){
+        if (order == null) {
             return;
         }
-        if(!OrderUtil.isCreateStatus(order)){
+        if (!OrderUtil.isCreateStatus(order)) {
             return;
         }
 

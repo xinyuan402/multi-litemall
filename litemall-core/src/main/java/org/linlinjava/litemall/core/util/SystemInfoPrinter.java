@@ -7,9 +7,8 @@ import java.util.Map;
 
 public class SystemInfoPrinter {
 
-    private static final Log logger = LogFactory.getLog(SystemInfoPrinter.class);
     public static final String CREATE_PART_COPPER = "XOXOXOXOX";
-
+    private static final Log logger = LogFactory.getLog(SystemInfoPrinter.class);
     private static int maxSize = 0;
 
     public static void printInfo(String title, Map<String, String> infos) {

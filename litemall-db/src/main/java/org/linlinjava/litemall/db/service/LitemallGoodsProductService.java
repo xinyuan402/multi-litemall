@@ -1,6 +1,5 @@
 package org.linlinjava.litemall.db.service;
 
-import org.apache.ibatis.annotations.Param;
 import org.linlinjava.litemall.db.dao.GoodsProductMapper;
 import org.linlinjava.litemall.db.dao.LitemallGoodsProductMapper;
 import org.linlinjava.litemall.db.domain.LitemallGoodsProduct;
@@ -50,11 +49,11 @@ public class LitemallGoodsProductService {
         litemallGoodsProductMapper.logicalDeleteByExample(example);
     }
 
-    public int addStock(Integer id, Short num){
+    public int addStock(Integer id, Short num) {
         return goodsProductMapper.addStock(id, num);
     }
 
-    public int reduceStock(Integer id, Short num){
+    public int reduceStock(Integer id, Short num) {
         return goodsProductMapper.reduceStock(id, num);
     }
 

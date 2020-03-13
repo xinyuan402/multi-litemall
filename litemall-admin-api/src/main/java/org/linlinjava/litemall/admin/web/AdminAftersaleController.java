@@ -17,12 +17,13 @@ import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
 import org.linlinjava.litemall.db.domain.LitemallAftersale;
-import org.linlinjava.litemall.db.domain.LitemallGoodsProduct;
 import org.linlinjava.litemall.db.domain.LitemallOrder;
 import org.linlinjava.litemall.db.domain.LitemallOrderGoods;
-import org.linlinjava.litemall.db.service.*;
+import org.linlinjava.litemall.db.service.LitemallAftersaleService;
+import org.linlinjava.litemall.db.service.LitemallGoodsProductService;
+import org.linlinjava.litemall.db.service.LitemallOrderGoodsService;
+import org.linlinjava.litemall.db.service.LitemallOrderService;
 import org.linlinjava.litemall.db.util.AftersaleConstant;
-import org.linlinjava.litemall.db.util.OrderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -72,11 +73,11 @@ public class AdminAftersaleController {
     public Object recept(@RequestBody LitemallAftersale aftersale) {
         Integer id = aftersale.getId();
         LitemallAftersale aftersaleOne = aftersaleService.findById(id);
-        if(aftersaleOne == null){
+        if (aftersaleOne == null) {
             return ResponseUtil.fail(AdminResponseCode.AFTERSALE_NOT_ALLOWED, "售后不存在");
         }
         Short status = aftersaleOne.getStatus();
-        if(!status.equals(AftersaleConstant.STATUS_REQUEST)){
+        if (!status.equals(AftersaleConstant.STATUS_REQUEST)) {
             return ResponseUtil.fail(AdminResponseCode.AFTERSALE_NOT_ALLOWED, "售后不能进行审核通过操作");
         }
         aftersaleOne.setStatus(AftersaleConstant.STATUS_RECEPT);
@@ -97,13 +98,13 @@ public class AdminAftersaleController {
         // 批量操作中，如果一部分数据项失败，应该如何处理
         // 这里采用忽略失败，继续处理其他项。
         // 当然开发者可以采取其他处理方式，具体情况具体分析，例如利用事务回滚所有操作然后返回用户失败信息
-        for(Integer id : ids) {
+        for (Integer id : ids) {
             LitemallAftersale aftersale = aftersaleService.findById(id);
-            if(aftersale == null){
+            if (aftersale == null) {
                 continue;
             }
             Short status = aftersale.getStatus();
-            if(!status.equals(AftersaleConstant.STATUS_REQUEST)){
+            if (!status.equals(AftersaleConstant.STATUS_REQUEST)) {
                 continue;
             }
             aftersale.setStatus(AftersaleConstant.STATUS_RECEPT);
@@ -122,11 +123,11 @@ public class AdminAftersaleController {
     public Object reject(@RequestBody LitemallAftersale aftersale) {
         Integer id = aftersale.getId();
         LitemallAftersale aftersaleOne = aftersaleService.findById(id);
-        if(aftersaleOne == null){
+        if (aftersaleOne == null) {
             return ResponseUtil.badArgumentValue();
         }
         Short status = aftersaleOne.getStatus();
-        if(!status.equals(AftersaleConstant.STATUS_REQUEST)){
+        if (!status.equals(AftersaleConstant.STATUS_REQUEST)) {
             return ResponseUtil.fail(AdminResponseCode.AFTERSALE_NOT_ALLOWED, "售后不能进行审核拒绝操作");
         }
         aftersaleOne.setStatus(AftersaleConstant.STATUS_REJECT);
@@ -143,13 +144,13 @@ public class AdminAftersaleController {
     @PostMapping("/batch-reject")
     public Object batchReject(@RequestBody String body) {
         List<Integer> ids = JacksonUtil.parseIntegerList(body, "ids");
-        for(Integer id : ids) {
+        for (Integer id : ids) {
             LitemallAftersale aftersale = aftersaleService.findById(id);
-            if(aftersale == null){
+            if (aftersale == null) {
                 continue;
             }
             Short status = aftersale.getStatus();
-            if(!status.equals(AftersaleConstant.STATUS_REQUEST)){
+            if (!status.equals(AftersaleConstant.STATUS_REQUEST)) {
                 continue;
             }
             aftersale.setStatus(AftersaleConstant.STATUS_REJECT);
@@ -168,10 +169,10 @@ public class AdminAftersaleController {
     public Object refund(@RequestBody LitemallAftersale aftersale) {
         Integer id = aftersale.getId();
         LitemallAftersale aftersaleOne = aftersaleService.findById(id);
-        if(aftersaleOne == null){
+        if (aftersaleOne == null) {
             return ResponseUtil.badArgumentValue();
         }
-        if(!aftersaleOne.getStatus().equals(AftersaleConstant.STATUS_RECEPT)){
+        if (!aftersaleOne.getStatus().equals(AftersaleConstant.STATUS_RECEPT)) {
             return ResponseUtil.fail(AdminResponseCode.AFTERSALE_NOT_ALLOWED, "售后不能进行退款操作");
         }
         Integer orderId = aftersaleOne.getOrderId();
@@ -211,7 +212,7 @@ public class AdminAftersaleController {
         // NOTE
         // 如果是“退货退款”类型的售后，这里退款说明用户的货已经退回，则需要商品货品数量增加
         // 开发者也可以删除一下代码，在其他地方增加商品货品入库操作
-        if(aftersale.getType().equals(AftersaleConstant.TYPE_GOODS_REQUIRED)) {
+        if (aftersale.getType().equals(AftersaleConstant.TYPE_GOODS_REQUIRED)) {
             List<LitemallOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
             for (LitemallOrderGoods orderGoods : orderGoodsList) {
                 Integer productId = orderGoods.getProductId();

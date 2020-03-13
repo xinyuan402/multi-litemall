@@ -230,7 +230,7 @@ public class AdminOrderService {
         }
         // 目前只支持回复一次
         LitemallComment comment = commentService.findById(commentId);
-        if(comment == null){
+        if (comment == null) {
             return ResponseUtil.badArgument();
         }
         if (!StringUtils.isEmpty(comment.getAdminContent())) {

@@ -19,9 +19,6 @@ public class OrderValidator implements ConstraintValidator<Order, String> {
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        if (!valueList.contains(s.toUpperCase())) {
-            return false;
-        }
-        return true;
+        return valueList.contains(s.toUpperCase());
     }
 }

@@ -16,7 +16,7 @@ public class LitemallRegionService {
     @Resource
     private LitemallRegionMapper regionMapper;
 
-    public List<LitemallRegion> getAll(){
+    public List<LitemallRegion> getAll() {
         LitemallRegionExample example = new LitemallRegionExample();
         byte b = 4;
         example.or().andTypeNotEqualTo(b);

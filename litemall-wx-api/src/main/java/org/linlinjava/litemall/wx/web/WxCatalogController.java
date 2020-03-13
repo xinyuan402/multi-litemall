@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
@@ -47,9 +46,9 @@ public class WxCatalogController {
     /**
      * 分类详情
      *
-     * @param id   分类类目ID。
-     *             如果分类类目ID是空，则选择第一个分类类目。
-     *             需要注意，这里分类类目是一级类目
+     * @param id 分类类目ID。
+     *           如果分类类目ID是空，则选择第一个分类类目。
+     *           需要注意，这里分类类目是一级类目
      * @return 分类详情
      */
     @GetMapping("index")
@@ -133,7 +132,7 @@ public class WxCatalogController {
     public Object current(@NotNull Integer id) {
         // 当前分类
         LitemallCategory currentCategory = categoryService.findById(id);
-        if(currentCategory == null){
+        if (currentCategory == null) {
             return ResponseUtil.badArgumentValue();
         }
         List<LitemallCategory> currentSubCategory = categoryService.queryByPid(currentCategory.getId());

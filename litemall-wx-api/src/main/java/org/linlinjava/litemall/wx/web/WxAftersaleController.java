@@ -6,8 +6,12 @@ import org.apache.commons.logging.LogFactory;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.*;
-import org.linlinjava.litemall.db.service.*;
+import org.linlinjava.litemall.db.domain.LitemallAftersale;
+import org.linlinjava.litemall.db.domain.LitemallOrder;
+import org.linlinjava.litemall.db.domain.LitemallOrderGoods;
+import org.linlinjava.litemall.db.service.LitemallAftersaleService;
+import org.linlinjava.litemall.db.service.LitemallOrderGoodsService;
+import org.linlinjava.litemall.db.service.LitemallOrderService;
 import org.linlinjava.litemall.db.util.AftersaleConstant;
 import org.linlinjava.litemall.db.util.OrderUtil;
 import org.linlinjava.litemall.wx.annotation.LoginUser;
@@ -25,9 +29,9 @@ import java.util.Map;
 
 /**
  * 售后服务
- *
+ * <p>
  * 目前只支持订单整体售后，不支持订单商品单个售后
- *
+ * <p>
  * 一个订单只能有一个售后记录
  */
 @RestController
@@ -46,12 +50,12 @@ public class WxAftersaleController {
     /**
      * 售后列表
      *
-     * @param userId   用户ID
-     * @param status   状态类型，如果是空则是全部
-     * @param page     分页页数
-     * @param limit    分页大小
-     * @param sort     排序字段
-     * @param order    排序方式
+     * @param userId 用户ID
+     * @param status 状态类型，如果是空则是全部
+     * @param page   分页页数
+     * @param limit  分页大小
+     * @param sort   排序字段
+     * @param order  排序方式
      * @return 售后列表
      */
     @GetMapping("list")
@@ -94,7 +98,7 @@ public class WxAftersaleController {
         }
 
         LitemallOrder order = orderService.findById(userId, orderId);
-        if (order == null){
+        if (order == null) {
             return ResponseUtil.badArgumentValue();
         }
         List<LitemallOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
@@ -110,7 +114,7 @@ public class WxAftersaleController {
     /**
      * 申请售后
      *
-     * @param userId   用户ID
+     * @param userId    用户ID
      * @param aftersale 用户售后信息
      * @return 操作结果
      */
@@ -125,24 +129,24 @@ public class WxAftersaleController {
         }
         // 进一步验证
         Integer orderId = aftersale.getOrderId();
-        if(orderId == null){
+        if (orderId == null) {
             return ResponseUtil.badArgument();
         }
         LitemallOrder order = orderService.findById(userId, orderId);
-        if(order == null){
+        if (order == null) {
             return ResponseUtil.badArgumentValue();
         }
 
         // 订单必须完成才能进入售后流程。
-        if(!OrderUtil.isConfirmStatus(order) && !OrderUtil.isAutoConfirmStatus(order)){
+        if (!OrderUtil.isConfirmStatus(order) && !OrderUtil.isAutoConfirmStatus(order)) {
             return ResponseUtil.fail(WxResponseCode.AFTERSALE_UNALLOWED, "不能申请售后");
         }
         BigDecimal amount = order.getActualPrice().subtract(order.getFreightPrice());
-        if(aftersale.getAmount().compareTo(amount) > 0){
+        if (aftersale.getAmount().compareTo(amount) > 0) {
             return ResponseUtil.fail(WxResponseCode.AFTERSALE_INVALID_AMOUNT, "退款金额不正确");
         }
         Short afterStatus = order.getAftersaleStatus();
-        if(afterStatus.equals(AftersaleConstant.STATUS_RECEPT) || afterStatus.equals(AftersaleConstant.STATUS_REFUND)){
+        if (afterStatus.equals(AftersaleConstant.STATUS_RECEPT) || afterStatus.equals(AftersaleConstant.STATUS_REFUND)) {
             return ResponseUtil.fail(WxResponseCode.AFTERSALE_INVALID_AMOUNT, "已申请售后");
         }
 
@@ -161,10 +165,10 @@ public class WxAftersaleController {
 
     /**
      * 取消售后
-     *
+     * <p>
      * 如果管理员还没有审核，用户可以取消自己的售后申请
      *
-     * @param userId   用户ID
+     * @param userId    用户ID
      * @param aftersale 用户售后信息
      * @return 操作结果
      */
@@ -174,26 +178,26 @@ public class WxAftersaleController {
             return ResponseUtil.unlogin();
         }
         Integer id = aftersale.getId();
-        if(id == null){
+        if (id == null) {
             return ResponseUtil.badArgument();
         }
         LitemallAftersale aftersaleOne = aftersaleService.findById(userId, id);
-        if(aftersaleOne == null){
+        if (aftersaleOne == null) {
             return ResponseUtil.badArgument();
         }
 
         Integer orderId = aftersaleOne.getOrderId();
         LitemallOrder order = orderService.findById(userId, orderId);
-        if(!order.getUserId().equals(userId)){
+        if (!order.getUserId().equals(userId)) {
             return ResponseUtil.badArgumentValue();
         }
 
         // 订单必须完成才能进入售后流程。
-        if(!OrderUtil.isConfirmStatus(order) && !OrderUtil.isAutoConfirmStatus(order)){
+        if (!OrderUtil.isConfirmStatus(order) && !OrderUtil.isAutoConfirmStatus(order)) {
             return ResponseUtil.fail(WxResponseCode.AFTERSALE_UNALLOWED, "不支持售后");
         }
         Short afterStatus = order.getAftersaleStatus();
-        if(!afterStatus.equals(AftersaleConstant.STATUS_REQUEST)){
+        if (!afterStatus.equals(AftersaleConstant.STATUS_REQUEST)) {
             return ResponseUtil.fail(WxResponseCode.AFTERSALE_INVALID_STATUS, "不能取消售后");
         }
 

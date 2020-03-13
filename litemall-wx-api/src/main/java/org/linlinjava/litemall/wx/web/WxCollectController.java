@@ -42,7 +42,7 @@ public class WxCollectController {
      * @param userId 用户ID
      * @param type   类型，如果是0则是商品收藏，如果是1则是专题收藏
      * @param page   分页页数
-     * @param limit   分页大小
+     * @param limit  分页大小
      * @return 用户收藏列表
      */
     @GetMapping("list")

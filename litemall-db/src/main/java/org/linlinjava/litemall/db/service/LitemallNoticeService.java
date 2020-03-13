@@ -3,8 +3,6 @@ package org.linlinjava.litemall.db.service;
 import com.github.pagehelper.PageHelper;
 import org.linlinjava.litemall.db.dao.LitemallNoticeMapper;
 import org.linlinjava.litemall.db.domain.LitemallNotice;
-import org.linlinjava.litemall.db.domain.LitemallNoticeAdmin;
-import org.linlinjava.litemall.db.domain.LitemallNoticeAdminExample;
 import org.linlinjava.litemall.db.domain.LitemallNoticeExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

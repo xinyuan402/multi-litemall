@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class LitemallGrouponRulesService {
@@ -56,7 +53,7 @@ public class LitemallGrouponRulesService {
     public int countByGoodsId(Integer goodsId) {
         LitemallGrouponRulesExample example = new LitemallGrouponRulesExample();
         example.or().andGoodsIdEqualTo(goodsId).andStatusEqualTo(GrouponConstant.RULE_STATUS_ON).andDeletedEqualTo(false);
-        return (int)mapper.countByExample(example);
+        return (int) mapper.countByExample(example);
     }
 
     public List<LitemallGrouponRules> queryByStatus(Short status) {

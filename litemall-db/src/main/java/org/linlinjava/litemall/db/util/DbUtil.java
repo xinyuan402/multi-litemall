@@ -2,8 +2,6 @@ package org.linlinjava.litemall.db.util;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class DbUtil {
 
@@ -14,7 +12,7 @@ public class DbUtil {
             Process child = rt.exec(command);
             InputStream inputStream = child.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter( new FileOutputStream(file), StandardCharsets.UTF_8);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
             String str;
             while ((str = bufferedReader.readLine()) != null) {
                 outputStreamWriter.write(str + "\r\n");

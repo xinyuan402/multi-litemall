@@ -2,8 +2,8 @@ package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
 import org.linlinjava.litemall.db.dao.LitemallAftersaleMapper;
-import org.linlinjava.litemall.db.domain.*;
-import org.linlinjava.litemall.db.util.AftersaleConstant;
+import org.linlinjava.litemall.db.domain.LitemallAftersale;
+import org.linlinjava.litemall.db.domain.LitemallAftersaleExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -39,8 +39,7 @@ public class LitemallAftersaleService {
         criteria.andDeletedEqualTo(false);
         if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
             example.setOrderByClause(sort + " " + order);
-        }
-        else{
+        } else {
             example.setOrderByClause(LitemallAftersale.Column.addTime.desc());
         }
 
@@ -63,8 +62,7 @@ public class LitemallAftersaleService {
         criteria.andDeletedEqualTo(false);
         if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
             example.setOrderByClause(sort + " " + order);
-        }
-        else{
+        } else {
             example.setOrderByClause(LitemallAftersale.Column.addTime.desc());
         }
 

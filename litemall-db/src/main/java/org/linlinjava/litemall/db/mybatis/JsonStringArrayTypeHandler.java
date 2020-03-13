@@ -47,7 +47,7 @@ public class JsonStringArrayTypeHandler extends BaseTypeHandler<String[]> {
     private String[] toObject(String content) {
         if (content != null && !content.isEmpty()) {
             try {
-                return (String[]) mapper.readValue(content, String[].class);
+                return mapper.readValue(content, String[].class);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

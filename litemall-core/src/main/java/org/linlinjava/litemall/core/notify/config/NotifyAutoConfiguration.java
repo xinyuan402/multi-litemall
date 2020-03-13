@@ -35,10 +35,9 @@ public class NotifyAutoConfiguration {
 
         NotifyProperties.Sms smsConfig = properties.getSms();
         if (smsConfig.isEnable()) {
-            if(smsConfig.getActive().equals("tencent")) {
+            if (smsConfig.getActive().equals("tencent")) {
                 notifyService.setSmsSender(tencentSmsSender());
-            }
-            else if(smsConfig.getActive().equals("aliyun")) {
+            } else if (smsConfig.getActive().equals("aliyun")) {
                 notifyService.setSmsSender(aliyunSmsSender());
             }
 
@@ -56,9 +55,9 @@ public class NotifyAutoConfiguration {
         mailSender.setPassword(mailConfig.getPassword());
         mailSender.setPort(mailConfig.getPort());
         Properties properties = new Properties();
-        properties.put("mail.smtp.auth",true);
-        properties.put("mail.smtp.timeout",5000);
-        properties.put("mail.smtp.starttls.enable",true);
+        properties.put("mail.smtp.auth", true);
+        properties.put("mail.smtp.timeout", 5000);
+        properties.put("mail.smtp.starttls.enable", true);
         properties.put("mail.smtp.socketFactory.fallback", "false");
         //阿里云 必须加入配置 outlook配置又不需要 视情况而定.发送不成功多数是这里的配置问题
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");

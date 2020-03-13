@@ -30,34 +30,24 @@ import java.util.concurrent.*;
 @RequestMapping("/wx/home")
 @Validated
 public class WxHomeController {
+    private final static ArrayBlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(9);
+    private final static RejectedExecutionHandler HANDLER = new ThreadPoolExecutor.CallerRunsPolicy();
+    private static ThreadPoolExecutor executorService = new ThreadPoolExecutor(9, 9, 1000, TimeUnit.MILLISECONDS, WORK_QUEUE, HANDLER);
     private final Log logger = LogFactory.getLog(WxHomeController.class);
-
     @Autowired
     private LitemallAdService adService;
-
     @Autowired
     private LitemallGoodsService goodsService;
-
     @Autowired
     private LitemallBrandService brandService;
-
     @Autowired
     private LitemallTopicService topicService;
-
     @Autowired
     private LitemallCategoryService categoryService;
-
     @Autowired
     private WxGrouponRuleService grouponService;
-
     @Autowired
     private LitemallCouponService couponService;
-
-    private final static ArrayBlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(9);
-
-    private final static RejectedExecutionHandler HANDLER = new ThreadPoolExecutor.CallerRunsPolicy();
-
-    private static ThreadPoolExecutor executorService = new ThreadPoolExecutor(9, 9, 1000, TimeUnit.MILLISECONDS, WORK_QUEUE, HANDLER);
 
     @GetMapping("/cache")
     public Object cache(@NotNull String key) {
@@ -72,6 +62,7 @@ public class WxHomeController {
 
     /**
      * 首页数据
+     *
      * @param userId 当用户已经登录时，非空。为登录状态为null
      * @return 首页数据
      */
@@ -88,10 +79,10 @@ public class WxHomeController {
         Callable<List> channelListCallable = () -> categoryService.queryChannel();
 
         Callable<List> couponListCallable;
-        if(userId == null){
+        if (userId == null) {
             couponListCallable = () -> couponService.queryList(0, 3);
         } else {
-            couponListCallable = () -> couponService.queryAvailableList(userId,0, 3);
+            couponListCallable = () -> couponService.queryAvailableList(userId, 0, 3);
         }
 
 
@@ -141,10 +132,9 @@ public class WxHomeController {
             entity.put("floorGoodsList", floorGoodsListTask.get());
             //缓存数据
             HomeCacheManager.loadData(HomeCacheManager.INDEX, entity);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             executorService.shutdown();
         }
         return ResponseUtil.ok(entity);
@@ -178,6 +168,7 @@ public class WxHomeController {
 
     /**
      * 商城介绍信息
+     *
      * @return 商城介绍信息
      */
     @GetMapping("/about")

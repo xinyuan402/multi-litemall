@@ -33,8 +33,8 @@ public class WxResponseCode {
     public static final Integer GROUPON_JOIN = 733;
 
     public static final int COUPON_EXCEED_LIMIT = 740;
-    public static final int COUPON_RECEIVE_FAIL= 741;
-    public static final int COUPON_CODE_INVALID= 742;
+    public static final int COUPON_RECEIVE_FAIL = 741;
+    public static final int COUPON_CODE_INVALID = 742;
 
     public static final int AFTERSALE_UNALLOWED = 750;
     public static final int AFTERSALE_INVALID_AMOUNT = 751;

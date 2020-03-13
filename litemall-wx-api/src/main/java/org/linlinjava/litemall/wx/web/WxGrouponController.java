@@ -26,7 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.linlinjava.litemall.wx.util.WxResponseCode.*;
+import static org.linlinjava.litemall.wx.util.WxResponseCode.ORDER_INVALID;
+import static org.linlinjava.litemall.wx.util.WxResponseCode.ORDER_UNKNOWN;
 
 /**
  * 团购服务
@@ -61,7 +62,7 @@ public class WxGrouponController {
     /**
      * 团购规则列表
      *
-     * @param page 分页页数
+     * @param page  分页页数
      * @param limit 分页大小
      * @return 团购规则列表
      */
@@ -206,7 +207,7 @@ public class WxGrouponController {
     /**
      * 用户开团或入团情况
      *
-     * @param userId 用户ID
+     * @param userId   用户ID
      * @param showType 显示类型，如果是0，则是当前用户开的团购；否则，则是当前用户参加的团购
      * @return 用户开团或入团情况
      */

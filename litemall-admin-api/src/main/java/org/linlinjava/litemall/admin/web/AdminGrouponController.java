@@ -22,7 +22,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -120,10 +119,10 @@ public class AdminGrouponController {
         }
 
         LitemallGrouponRules rules = rulesService.findById(grouponRules.getId());
-        if(rules == null){
+        if (rules == null) {
             return ResponseUtil.badArgumentValue();
         }
-        if(!rules.getStatus().equals(GrouponConstant.RULE_STATUS_ON)){
+        if (!rules.getStatus().equals(GrouponConstant.RULE_STATUS_ON)) {
             return ResponseUtil.fail(AdminResponseCode.GROUPON_GOODS_OFFLINE, "团购已经下线");
         }
 
@@ -157,7 +156,7 @@ public class AdminGrouponController {
         if (goods == null) {
             return ResponseUtil.fail(AdminResponseCode.GROUPON_GOODS_UNKNOWN, "团购商品不存在");
         }
-        if(rulesService.countByGoodsId(goodsId) > 0){
+        if (rulesService.countByGoodsId(goodsId) > 0) {
             return ResponseUtil.fail(AdminResponseCode.GROUPON_GOODS_EXISTED, "团购商品已经存在");
         }
 

@@ -2,7 +2,8 @@ package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
 import org.linlinjava.litemall.db.dao.LitemallNoticeAdminMapper;
-import org.linlinjava.litemall.db.domain.*;
+import org.linlinjava.litemall.db.domain.LitemallNoticeAdmin;
+import org.linlinjava.litemall.db.domain.LitemallNoticeAdminExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -19,14 +20,13 @@ public class LitemallNoticeAdminService {
         LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
         LitemallNoticeAdminExample.Criteria criteria = example.createCriteria();
 
-        if(!StringUtils.isEmpty(title)){
+        if (!StringUtils.isEmpty(title)) {
             criteria.andNoticeTitleLike("%" + title + "%");
         }
 
-        if(type.equals("read")){
-         criteria.andReadTimeIsNotNull();
-        }
-        else if(type.equals("unread")){
+        if (type.equals("read")) {
+            criteria.andReadTimeIsNotNull();
+        } else if (type.equals("unread")) {
             criteria.andReadTimeIsNull();
         }
         criteria.andAdminIdEqualTo(adminId);
@@ -88,7 +88,7 @@ public class LitemallNoticeAdminService {
     public int countUnread(Integer adminId) {
         LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
         example.or().andAdminIdEqualTo(adminId).andReadTimeIsNull().andDeletedEqualTo(false);
-        return (int)noticeAdminMapper.countByExample(example);
+        return (int) noticeAdminMapper.countByExample(example);
     }
 
     public List<LitemallNoticeAdmin> queryByNoticeId(Integer noticeId) {
@@ -118,7 +118,7 @@ public class LitemallNoticeAdminService {
     public int countReadByNoticeId(Integer noticeId) {
         LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
         example.or().andNoticeIdEqualTo(noticeId).andReadTimeIsNotNull().andDeletedEqualTo(false);
-        return (int)noticeAdminMapper.countByExample(example);
+        return (int) noticeAdminMapper.countByExample(example);
     }
 
     public void updateByNoticeId(LitemallNoticeAdmin noticeAdmin, Integer noticeId) {

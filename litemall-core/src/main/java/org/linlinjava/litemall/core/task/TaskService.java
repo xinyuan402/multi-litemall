@@ -1,6 +1,7 @@
 package org.linlinjava.litemall.core.task;
 
 import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Executors;
@@ -8,7 +9,7 @@ import java.util.concurrent.Executors;
 @Component
 public class TaskService {
     private TaskService taskService;
-    private DelayQueue<Task> delayQueue =  new DelayQueue<Task>();
+    private DelayQueue<Task> delayQueue = new DelayQueue<Task>();
 
     @PostConstruct
     private void init() {
@@ -29,14 +30,14 @@ public class TaskService {
         });
     }
 
-    public void addTask(Task task){
-        if(delayQueue.contains(task)){
+    public void addTask(Task task) {
+        if (delayQueue.contains(task)) {
             return;
         }
         delayQueue.add(task);
     }
 
-    public void removeTask(Task task){
+    public void removeTask(Task task) {
         delayQueue.remove(task);
     }
 

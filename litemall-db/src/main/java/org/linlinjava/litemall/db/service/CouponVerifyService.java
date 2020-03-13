@@ -50,14 +50,12 @@ public class CouponVerifyService {
             if (now.isBefore(coupon.getStartTime()) || now.isAfter(coupon.getEndTime())) {
                 return null;
             }
-        }
-        else if(timeType.equals(CouponConstant.TIME_TYPE_DAYS)) {
+        } else if (timeType.equals(CouponConstant.TIME_TYPE_DAYS)) {
             LocalDateTime expired = couponUser.getAddTime().plusDays(days);
             if (now.isAfter(expired)) {
                 return null;
             }
-        }
-        else {
+        } else {
             return null;
         }
 

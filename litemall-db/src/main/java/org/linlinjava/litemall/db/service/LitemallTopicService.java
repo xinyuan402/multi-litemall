@@ -2,7 +2,6 @@ package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
 import org.linlinjava.litemall.db.dao.LitemallTopicMapper;
-import org.linlinjava.litemall.db.domain.LitemallGroupon;
 import org.linlinjava.litemall.db.domain.LitemallTopic;
 import org.linlinjava.litemall.db.domain.LitemallTopic.Column;
 import org.linlinjava.litemall.db.domain.LitemallTopicExample;

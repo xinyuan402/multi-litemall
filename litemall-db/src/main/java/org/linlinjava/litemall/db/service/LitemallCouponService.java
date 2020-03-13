@@ -4,8 +4,11 @@ import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
 import org.linlinjava.litemall.db.dao.LitemallCouponMapper;
 import org.linlinjava.litemall.db.dao.LitemallCouponUserMapper;
-import org.linlinjava.litemall.db.domain.*;
+import org.linlinjava.litemall.db.domain.LitemallCoupon;
 import org.linlinjava.litemall.db.domain.LitemallCoupon.Column;
+import org.linlinjava.litemall.db.domain.LitemallCouponExample;
+import org.linlinjava.litemall.db.domain.LitemallCouponUser;
+import org.linlinjava.litemall.db.domain.LitemallCouponUserExample;
 import org.linlinjava.litemall.db.util.CouponConstant;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +26,8 @@ public class LitemallCouponService {
     private LitemallCouponUserMapper couponUserMapper;
 
     private Column[] result = new Column[]{Column.id, Column.name, Column.desc, Column.tag,
-                                            Column.days, Column.startTime, Column.endTime,
-                                            Column.discount, Column.min};
+            Column.days, Column.startTime, Column.endTime,
+            Column.discount, Column.min};
 
     /**
      * 查询，空参数
@@ -63,7 +66,7 @@ public class LitemallCouponService {
         List<LitemallCouponUser> used = couponUserMapper.selectByExample(
                 LitemallCouponUserExample.newAndCreateCriteria().andUserIdEqualTo(userId).example()
         );
-        if(used!=null && !used.isEmpty()){
+        if (used != null && !used.isEmpty()) {
             c.andIdNotIn(used.stream().map(LitemallCouponUser::getCouponId).collect(Collectors.toList()));
         }
         return queryList(c, offset, limit, "add_time", "desc");
@@ -81,14 +84,12 @@ public class LitemallCouponService {
     public LitemallCoupon findByCode(String code) {
         LitemallCouponExample example = new LitemallCouponExample();
         example.or().andCodeEqualTo(code).andTypeEqualTo(CouponConstant.TYPE_CODE).andStatusEqualTo(CouponConstant.STATUS_NORMAL).andDeletedEqualTo(false);
-        List<LitemallCoupon> couponList =  couponMapper.selectByExample(example);
-        if(couponList.size() > 1){
+        List<LitemallCoupon> couponList = couponMapper.selectByExample(example);
+        if (couponList.size() > 1) {
             throw new RuntimeException("");
-        }
-        else if(couponList.size() == 0){
+        } else if (couponList.size() == 0) {
             return null;
-        }
-        else {
+        } else {
             return couponList.get(0);
         }
     }
@@ -162,7 +163,7 @@ public class LitemallCouponService {
      */
     public String generateCode() {
         String code = getRandomNum(8);
-        while(findByCode(code) != null){
+        while (findByCode(code) != null) {
             code = getRandomNum(8);
         }
         return code;

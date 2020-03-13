@@ -14,21 +14,20 @@ import java.util.List;
 @Component
 public class GetRegionService {
 
-	@Autowired
-	private LitemallRegionService regionService;
+    private static List<LitemallRegion> litemallRegions;
+    @Autowired
+    private LitemallRegionService regionService;
 
-	private static List<LitemallRegion> litemallRegions;
+    protected List<LitemallRegion> getLitemallRegions() {
+        if (litemallRegions == null) {
+            createRegion();
+        }
+        return litemallRegions;
+    }
 
-	protected List<LitemallRegion> getLitemallRegions() {
-		if(litemallRegions==null){
-			createRegion();
-		}
-		return litemallRegions;
-	}
-
-	private synchronized void createRegion(){
-		if (litemallRegions == null) {
-			litemallRegions = regionService.getAll();
-		}
-	}
+    private synchronized void createRegion() {
+        if (litemallRegions == null) {
+            litemallRegions = regionService.getAll();
+        }
+    }
 }
