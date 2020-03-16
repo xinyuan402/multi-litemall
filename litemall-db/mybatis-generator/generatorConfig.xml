@@ -16,7 +16,7 @@
         <!-- 自动生成equals方法和hashcode方法 -->
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <!-- 删除原来已经生成的 xml -->
-        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
 
         <!-- 非官方插件 https://github.com/itfsw/mybatis-generator-plugin -->
         <!-- 查询单条数据插件 -->
@@ -37,14 +37,14 @@
             <!-- 逻辑删除-未删除值 -->
             <property name="logicalUnDeleteValue" value="0"/>
         </plugin>
-        <!-- MySQL分页插件 -->
-        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin">
-            <!-- 通过配置startPage影响Example中的page方法开始分页的页码，默认分页从0开始 -->
-            <property name="startPage" value="0"/>
-        </plugin>
+        <!--        &lt;!&ndash; MySQL分页插件 &ndash;&gt;-->
+        <!--        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin">-->
+        <!--            &lt;!&ndash; 通过配置startPage影响Example中的page方法开始分页的页码，默认分页从0开始 &ndash;&gt;-->
+        <!--            <property name="startPage" value="0"/>-->
+        <!--        </plugin>-->
 
         <commentGenerator>
-<!--            <property name="suppressDate" value="true"/>-->
+            <!--            <property name="suppressDate" value="true"/>-->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
@@ -192,8 +192,10 @@
             <columnOverride column="pictures" javaType="java.lang.String[]"
                             typeHandler="org.linlinjava.litemall.db.mybatis.JsonStringArrayTypeHandler"/>
         </table>
-        <table tableName="litemall_store">
+        <table tableName="litemall_shop">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="status" javaType="org.linlinjava.litemall.db.enums.ShopStatus"
+                            typeHandler="org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler"/>
         </table>
     </context>
 </generatorConfiguration>

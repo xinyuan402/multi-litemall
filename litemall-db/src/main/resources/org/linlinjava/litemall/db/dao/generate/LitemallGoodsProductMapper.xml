@@ -124,14 +124,6 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
-    <if test="rows != null">
-      <if test="offset != null">
-        limit ${offset}, ${rows}
-      </if>
-      <if test="offset == null">
-        limit ${rows}
-      </if>
-    </if>
   </select>
   <select id="selectByExampleSelective" parameterType="map" resultMap="BaseResultMap">
     select
@@ -154,14 +146,6 @@
     </if>
     <if test="example.orderByClause != null">
       order by ${example.orderByClause}
-    </if>
-    <if test="example.rows != null">
-      <if test="example.offset != null">
-        limit ${example.offset}, ${example.rows}
-      </if>
-      <if test="example.offset == null">
-        limit ${example.rows}
-      </if>
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

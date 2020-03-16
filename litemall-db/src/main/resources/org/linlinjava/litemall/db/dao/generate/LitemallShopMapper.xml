@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallStoreMapper">
-  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallStore">
+<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallShopMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallShop">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="country" jdbcType="VARCHAR" property="country" />
@@ -12,8 +12,10 @@
     <result column="images" jdbcType="VARCHAR" property="images" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
     <result column="intro" jdbcType="VARCHAR" property="intro" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" typeHandler="org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -35,6 +37,25 @@
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.statusCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler} and #{criterion.secondValue,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -68,35 +89,46 @@
                 </when>
               </choose>
             </foreach>
+            <foreach collection="criteria.statusCriteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler} and #{criterion.secondValue,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
           </trim>
         </if>
       </foreach>
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, country, province, city, district, address, images, logo, intro, create_time, 
-    update_time
+    id, `name`, country, province, city, district, address, images, logo, intro, add_time, 
+    update_time, `status`, deleted
   </sql>
-  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStoreExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShopExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from litemall_store
+    from litemall_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
-    </if>
-    <if test="rows != null">
-      <if test="offset != null">
-        limit ${offset}, ${rows}
-      </if>
-      <if test="offset == null">
-        limit ${rows}
-      </if>
     </if>
   </select>
   <select id="selectByExampleSelective" parameterType="map" resultMap="BaseResultMap">
@@ -114,27 +146,34 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_store
+    from litemall_shop
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
     <if test="example.orderByClause != null">
       order by ${example.orderByClause}
     </if>
-    <if test="example.rows != null">
-      <if test="example.offset != null">
-        limit ${example.offset}, ${example.rows}
-      </if>
-      <if test="example.offset == null">
-        limit ${example.rows}
-      </if>
-    </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from litemall_store
+    from litemall_shop
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from litemall_shop
+    where id = #{id,jdbcType=INTEGER}
+      and deleted = 
+    <choose>
+      <when test="andLogicalDeleted">
+        1
+      </when>
+      <otherwise>
+        0
+      </otherwise>
+    </choose>
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
@@ -148,37 +187,39 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_store
+    from litemall_shop
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from litemall_store
+    delete from litemall_shop
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStoreExample">
-    delete from litemall_store
+  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShopExample">
+    delete from litemall_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStore">
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShop">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_store (`name`, country, province, 
+    insert into litemall_shop (`name`, country, province, 
       city, district, address, 
       images, logo, intro, 
-      create_time, update_time)
+      add_time, update_time, `status`, 
+      deleted)
     values (#{name,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
       #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{images,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler}, 
+      #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStore">
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShop">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_store
+    insert into litemall_shop
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         `name`,
@@ -207,11 +248,17 @@
       <if test="intro != null">
         intro,
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="addTime != null">
+        add_time,
       </if>
       <if test="updateTime != null">
         update_time,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="deleted != null">
+        deleted,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -242,22 +289,28 @@
       <if test="intro != null">
         #{intro,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStoreExample" resultType="java.lang.Long">
-    select count(*) from litemall_store
+  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShopExample" resultType="java.lang.Long">
+    select count(*) from litemall_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update litemall_store
+    update litemall_shop
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -289,11 +342,17 @@
       <if test="record.intro != null">
         intro = #{record.intro,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="record.addTime != null">
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        `status` = #{record.status,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -301,7 +360,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update litemall_store
+    update litemall_shop
     set id = #{record.id,jdbcType=INTEGER},
       `name` = #{record.name,jdbcType=VARCHAR},
       country = #{record.country,jdbcType=VARCHAR},
@@ -312,14 +371,16 @@
       images = #{record.images,jdbcType=VARCHAR},
       logo = #{record.logo,jdbcType=VARCHAR},
       intro = #{record.intro,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      `status` = #{record.status,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler},
+      deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStore">
-    update litemall_store
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShop">
+    update litemall_shop
     <set>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
@@ -348,17 +409,23 @@
       <if test="intro != null">
         intro = #{intro,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStore">
-    update litemall_store
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShop">
+    update litemall_shop
     set `name` = #{name,jdbcType=VARCHAR},
       country = #{country,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
@@ -368,14 +435,16 @@
       images = #{images,jdbcType=VARCHAR},
       logo = #{logo,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=VARCHAR,typeHandler=org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler},
+      deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallStoreExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallShopExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_store
+    from litemall_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -396,7 +465,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_store
+    from litemall_shop
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -405,4 +474,14 @@
     </if>
     limit 1
   </select>
+  <update id="logicalDeleteByExample" parameterType="map">
+    update litemall_shop set deleted = 1
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer">
+    update litemall_shop set deleted = 1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

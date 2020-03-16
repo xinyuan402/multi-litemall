@@ -548,6 +548,29 @@ export const asyncRouterMap = [
     ]
   },
   {
+    path: '/shop',
+    component: Layout,
+    redirect: 'noredirect',
+    alwaysShow: true,
+    name: 'shop',
+    meta: {
+      title: '商户',
+      icon: 'chart'
+    },
+    children: [
+      {
+        path: 'shop',
+        component: () => import('@/views/shop/shop'),
+        name: 'shop',
+        meta: {
+          perms: ['GET /admin/shop/shop', 'POST /admin/shop/shop'],
+          title: '商铺管理',
+          noCache: true
+        }
+      }
+    ]
+  },
+  {
     path: 'external-link',
     component: Layout,
     redirect: 'noredirect',

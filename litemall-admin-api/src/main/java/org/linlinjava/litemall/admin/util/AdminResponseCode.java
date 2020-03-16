@@ -25,5 +25,6 @@ public class AdminResponseCode {
     public static final Integer GROUPON_GOODS_OFFLINE = 652;
     public static final Integer NOTICE_UPDATE_NOT_ALLOWED = 660;
     public static final Integer AFTERSALE_NOT_ALLOWED = 670;
+    public static final Integer SHOP_NAME_EXIT = 680;
 
 }

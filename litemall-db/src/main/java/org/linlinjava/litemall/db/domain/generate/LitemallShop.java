@@ -1,10 +1,16 @@
 package org.linlinjava.litemall.db.domain.generate;
 
+import org.linlinjava.litemall.db.enums.ShopStatus;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LitemallStore {
+public class LitemallShop {
+    public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
+
+    public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
+
     private Integer id;
 
     private String name;
@@ -25,9 +31,13 @@ public class LitemallStore {
 
     private String intro;
 
-    private LocalDateTime createTime;
+    private LocalDateTime addTime;
 
     private LocalDateTime updateTime;
+
+    private ShopStatus status;
+
+    private Boolean deleted;
 
     public Integer getId() {
         return id;
@@ -109,12 +119,12 @@ public class LitemallStore {
         this.intro = intro;
     }
 
-    public LocalDateTime getCreateTime() {
-        return createTime;
+    public LocalDateTime getAddTime() {
+        return addTime;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
+    public void setAddTime(LocalDateTime addTime) {
+        this.addTime = addTime;
     }
 
     public LocalDateTime getUpdateTime() {
@@ -125,12 +135,34 @@ public class LitemallStore {
         this.updateTime = updateTime;
     }
 
+    public ShopStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ShopStatus status) {
+        this.status = status;
+    }
+
+    public void andLogicalDeleted(boolean deleted) {
+        setDeleted(deleted ? Deleted.IS_DELETED.value() : Deleted.NOT_DELETED.value());
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
+        sb.append(", IS_DELETED=").append(IS_DELETED);
+        sb.append(", NOT_DELETED=").append(NOT_DELETED);
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
         sb.append(", country=").append(country);
@@ -141,8 +173,10 @@ public class LitemallStore {
         sb.append(", images=").append(images);
         sb.append(", logo=").append(logo);
         sb.append(", intro=").append(intro);
-        sb.append(", createTime=").append(createTime);
+        sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", status=").append(status);
+        sb.append(", deleted=").append(deleted);
         sb.append("]");
         return sb.toString();
     }
@@ -158,7 +192,7 @@ public class LitemallStore {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallStore other = (LitemallStore) that;
+        LitemallShop other = (LitemallShop) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getCountry() == null ? other.getCountry() == null : this.getCountry().equals(other.getCountry()))
@@ -169,8 +203,10 @@ public class LitemallStore {
             && (this.getImages() == null ? other.getImages() == null : this.getImages().equals(other.getImages()))
             && (this.getLogo() == null ? other.getLogo() == null : this.getLogo().equals(other.getLogo()))
             && (this.getIntro() == null ? other.getIntro() == null : this.getIntro().equals(other.getIntro()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
+            && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
     @Override
@@ -187,9 +223,37 @@ public class LitemallStore {
         result = prime * result + ((getImages() == null) ? 0 : getImages().hashCode());
         result = prime * result + ((getLogo() == null) ? 0 : getLogo().hashCode());
         result = prime * result + ((getIntro() == null) ? 0 : getIntro().hashCode());
-        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         return result;
+    }
+
+    public enum Deleted {
+        NOT_DELETED(new Boolean("0"), "未删除"),
+        IS_DELETED(new Boolean("1"), "已删除");
+
+        private final Boolean value;
+
+        private final String name;
+
+        Deleted(Boolean value, String name) {
+            this.value = value;
+            this.name = name;
+        }
+
+        public Boolean getValue() {
+            return this.value;
+        }
+
+        public Boolean value() {
+            return this.value;
+        }
+
+        public String getName() {
+            return this.name;
+        }
     }
 
     public enum Column {
@@ -203,8 +267,10 @@ public class LitemallStore {
         images("images", "images", "VARCHAR", false),
         logo("logo", "logo", "VARCHAR", false),
         intro("intro", "intro", "VARCHAR", false),
-        createTime("create_time", "createTime", "TIMESTAMP", false),
-        updateTime("update_time", "updateTime", "TIMESTAMP", false);
+        addTime("add_time", "addTime", "TIMESTAMP", false),
+        updateTime("update_time", "updateTime", "TIMESTAMP", false),
+        status("status", "status", "VARCHAR", true),
+        deleted("deleted", "deleted", "BIT", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

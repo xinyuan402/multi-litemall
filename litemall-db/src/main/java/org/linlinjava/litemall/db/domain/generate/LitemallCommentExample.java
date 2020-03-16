@@ -11,10 +11,6 @@ public class LitemallCommentExample {
 
     protected List<Criteria> oredCriteria;
 
-    protected Integer offset;
-
-    protected Integer rows;
-
     public LitemallCommentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -83,8 +79,6 @@ public class LitemallCommentExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
-        rows = null;
-        offset = null;
     }
 
     public static Criteria newAndCreateCriteria() {
@@ -105,39 +99,6 @@ public class LitemallCommentExample {
         } else {
             otherwise.example(this);
         }
-        return this;
-    }
-
-    public void setOffset(Integer offset) {
-        this.offset = offset;
-    }
-
-    public Integer getOffset() {
-        return this.offset;
-    }
-
-    public void setRows(Integer rows) {
-        this.rows = rows;
-    }
-
-    public Integer getRows() {
-        return this.rows;
-    }
-
-    public LitemallCommentExample limit(Integer rows) {
-        this.rows = rows;
-        return this;
-    }
-
-    public LitemallCommentExample limit(Integer offset, Integer rows) {
-        this.offset = offset;
-        this.rows = rows;
-        return this;
-    }
-
-    public LitemallCommentExample page(Integer page, Integer pageSize) {
-        this.offset = page * pageSize;
-        this.rows = pageSize;
         return this;
     }
 
