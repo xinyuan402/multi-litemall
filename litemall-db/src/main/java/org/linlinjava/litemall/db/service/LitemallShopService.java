@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import org.linlinjava.litemall.db.dao.generate.LitemallShopMapper;
 import org.linlinjava.litemall.db.domain.generate.LitemallShop;
 import org.linlinjava.litemall.db.domain.generate.LitemallShopExample;
+import org.linlinjava.litemall.db.enums.ShopStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -45,5 +46,21 @@ public class LitemallShopService {
         LitemallShopExample example = new LitemallShopExample();
         example.createCriteria().andNameEqualTo(name);
         return shopMapper.countByExample(example) != 0;
+    }
+
+    public int updateById(LitemallShop shop) {
+        shop.setUpdateTime(LocalDateTime.now());
+        return shopMapper.updateByPrimaryKeySelective(shop);
+    }
+
+    public int deleteById(int id) {
+        return shopMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    public int updateStatusById(Integer id, ShopStatus status) {
+        LitemallShop shop = new LitemallShop();
+        shop.setId(id);
+        shop.setStatus(status);
+        return shopMapper.updateByPrimaryKeySelective(shop);
     }
 }
