@@ -523,7 +523,7 @@ CREATE TABLE `litemall_keyword` (
 -- Table structure for table `litemall_log`
 --
 
-DROP TABLE IF EXISTS `litemall_log`;
+DROP TABLE IF EXISTS litemall_admin_log;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `litemall_log` (
@@ -546,7 +546,7 @@ CREATE TABLE `litemall_log` (
 -- Table structure for table `litemall_notice`
 --
 
-DROP TABLE IF EXISTS `litemall_notice`;
+DROP TABLE IF EXISTS litemall_admin_notice;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `litemall_notice` (
@@ -565,7 +565,7 @@ CREATE TABLE `litemall_notice` (
 -- Table structure for table `litemall_notice_admin`
 --
 
-DROP TABLE IF EXISTS `litemall_notice_admin`;
+DROP TABLE IF EXISTS litemall_admin_notice_admin;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `litemall_notice_admin` (
@@ -656,7 +656,7 @@ CREATE TABLE `litemall_order_goods` (
 -- Table structure for table `litemall_permission`
 --
 
-DROP TABLE IF EXISTS `litemall_permission`;
+DROP TABLE IF EXISTS litemall_admin_permission;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `litemall_permission` (
@@ -694,7 +694,7 @@ CREATE TABLE `litemall_region` (
 -- Table structure for table `litemall_role`
 --
 
-DROP TABLE IF EXISTS `litemall_role`;
+DROP TABLE IF EXISTS litemall_admin_role;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `litemall_role` (

@@ -11,8 +11,8 @@ import org.linlinjava.litemall.core.util.bcrypt.BCryptPasswordEncoder;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
-import org.linlinjava.litemall.db.domain.generate.LitemallNotice;
-import org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminNotice;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminNoticeAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
 import org.linlinjava.litemall.db.service.LitemallNoticeAdminService;
 import org.linlinjava.litemall.db.service.LitemallNoticeService;
@@ -88,7 +88,7 @@ public class AdminProfileController {
                            @RequestParam(defaultValue = "10") Integer limit,
                            @Sort @RequestParam(defaultValue = "add_time") String sort,
                            @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallNoticeAdmin> noticeList = noticeAdminService.querySelective(title, type, getAdminId(), page, limit, sort, order);
+        List<LitemallAdminNoticeAdmin> noticeList = noticeAdminService.querySelective(title, type, getAdminId(), page, limit, sort, order);
         return ResponseUtil.okList(noticeList);
     }
 
@@ -100,7 +100,7 @@ public class AdminProfileController {
             return ResponseUtil.badArgument();
         }
 
-        LitemallNoticeAdmin noticeAdmin = noticeAdminService.find(noticeId, getAdminId());
+        LitemallAdminNoticeAdmin noticeAdmin = noticeAdminService.find(noticeId, getAdminId());
         if (noticeAdmin == null) {
             return ResponseUtil.badArgumentValue();
         }
@@ -110,7 +110,7 @@ public class AdminProfileController {
 
         // 返回通知的相关信息
         Map<String, Object> data = new HashMap<>();
-        LitemallNotice notice = noticeService.findById(noticeId);
+        LitemallAdminNotice notice = noticeService.findById(noticeId);
         data.put("title", notice.getTitle());
         data.put("content", notice.getContent());
         data.put("time", notice.getUpdateTime());

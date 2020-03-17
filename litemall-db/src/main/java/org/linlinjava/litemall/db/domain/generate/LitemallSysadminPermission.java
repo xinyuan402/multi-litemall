@@ -4,18 +4,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LitemallNotice {
+public class LitemallSysadminPermission {
     public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
 
     public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
 
     private Integer id;
 
-    private String title;
+    private Integer roleId;
 
-    private String content;
-
-    private Integer adminId;
+    private String permission;
 
     private LocalDateTime addTime;
 
@@ -31,28 +29,20 @@ public class LitemallNotice {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public String getContent() {
-        return content;
+    public String getPermission() {
+        return permission;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Integer getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
+    public void setPermission(String permission) {
+        this.permission = permission;
     }
 
     public LocalDateTime getAddTime() {
@@ -92,9 +82,8 @@ public class LitemallNotice {
         sb.append(", IS_DELETED=").append(IS_DELETED);
         sb.append(", NOT_DELETED=").append(NOT_DELETED);
         sb.append(", id=").append(id);
-        sb.append(", title=").append(title);
-        sb.append(", content=").append(content);
-        sb.append(", adminId=").append(adminId);
+        sb.append(", roleId=").append(roleId);
+        sb.append(", permission=").append(permission);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleted=").append(deleted);
@@ -113,11 +102,10 @@ public class LitemallNotice {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallNotice other = (LitemallNotice) that;
+        LitemallSysadminPermission other = (LitemallSysadminPermission) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
-            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
-            && (this.getAdminId() == null ? other.getAdminId() == null : this.getAdminId().equals(other.getAdminId()))
+            && (this.getRoleId() == null ? other.getRoleId() == null : this.getRoleId().equals(other.getRoleId()))
+            && (this.getPermission() == null ? other.getPermission() == null : this.getPermission().equals(other.getPermission()))
             && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
@@ -128,9 +116,8 @@ public class LitemallNotice {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
-        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
-        result = prime * result + ((getAdminId() == null) ? 0 : getAdminId().hashCode());
+        result = prime * result + ((getRoleId() == null) ? 0 : getRoleId().hashCode());
+        result = prime * result + ((getPermission() == null) ? 0 : getPermission().hashCode());
         result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
@@ -165,9 +152,8 @@ public class LitemallNotice {
 
     public enum Column {
         id("id", "id", "INTEGER", false),
-        title("title", "title", "VARCHAR", false),
-        content("content", "content", "VARCHAR", false),
-        adminId("admin_id", "adminId", "INTEGER", false),
+        roleId("role_id", "roleId", "INTEGER", false),
+        permission("permission", "permission", "VARCHAR", false),
         addTime("add_time", "addTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),
         deleted("deleted", "deleted", "BIT", false);

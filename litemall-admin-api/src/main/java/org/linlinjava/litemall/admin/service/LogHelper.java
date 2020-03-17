@@ -4,7 +4,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.linlinjava.litemall.core.util.IpUtil;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
-import org.linlinjava.litemall.db.domain.generate.LitemallLog;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminLog;
 import org.linlinjava.litemall.db.service.LitemallLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -82,7 +82,7 @@ public class LogHelper {
     }
 
     public void logAdmin(Integer type, String action, Boolean succeed, String result, String comment) {
-        LitemallLog log = new LitemallLog();
+        LitemallAdminLog log = new LitemallAdminLog();
 
         Subject currentUser = SecurityUtils.getSubject();
         if (currentUser != null) {

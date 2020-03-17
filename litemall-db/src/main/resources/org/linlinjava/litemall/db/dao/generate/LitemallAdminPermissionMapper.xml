@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallLogMapper">
-  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallLog">
+<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallAdminPermissionMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="admin" jdbcType="VARCHAR" property="admin" />
-    <result column="ip" jdbcType="VARCHAR" property="ip" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="action" jdbcType="VARCHAR" property="action" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="result" jdbcType="VARCHAR" property="result" />
-    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
@@ -73,16 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `admin`, ip, `type`, `action`, `status`, `result`, `comment`, add_time, update_time, 
-    deleted
+    id, role_id, permission, add_time, update_time, deleted
   </sql>
-  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermissionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from litemall_log
+    from litemall_admin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -105,7 +99,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_log
+    from litemall_admin_permission
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -116,13 +110,13 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from litemall_log
+    from litemall_admin_permission
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from litemall_log
+    from litemall_admin_permission
     where id = #{id,jdbcType=INTEGER}
       and deleted = 
     <choose>
@@ -146,58 +140,39 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_log
+    from litemall_admin_permission
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from litemall_log
+    delete from litemall_admin_permission
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLogExample">
-    delete from litemall_log
+  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermissionExample">
+    delete from litemall_admin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLog">
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_log (`admin`, ip, `type`, 
-      `action`, `status`, `result`, 
-      `comment`, add_time, update_time, 
-      deleted)
-    values (#{admin,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
-      #{action,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, #{result,jdbcType=VARCHAR}, 
-      #{comment,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=BIT})
+    insert into litemall_admin_permission (role_id, permission, add_time, 
+      update_time, deleted)
+    values (#{roleId,jdbcType=INTEGER}, #{permission,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLog">
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_log
+    insert into litemall_admin_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="admin != null">
-        `admin`,
+      <if test="roleId != null">
+        role_id,
       </if>
-      <if test="ip != null">
-        ip,
-      </if>
-      <if test="type != null">
-        `type`,
-      </if>
-      <if test="action != null">
-        `action`,
-      </if>
-      <if test="status != null">
-        `status`,
-      </if>
-      <if test="result != null">
-        `result`,
-      </if>
-      <if test="comment != null">
-        `comment`,
+      <if test="permission != null">
+        permission,
       </if>
       <if test="addTime != null">
         add_time,
@@ -210,26 +185,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="admin != null">
-        #{admin,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
       </if>
-      <if test="ip != null">
-        #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="action != null">
-        #{action,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=BIT},
-      </if>
-      <if test="result != null">
-        #{result,jdbcType=VARCHAR},
-      </if>
-      <if test="comment != null">
-        #{comment,jdbcType=VARCHAR},
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
       </if>
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
@@ -242,38 +202,23 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLogExample" resultType="java.lang.Long">
-    select count(*) from litemall_log
+  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermissionExample" resultType="java.lang.Long">
+    select count(*) from litemall_admin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update litemall_log
+    update litemall_admin_permission
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.admin != null">
-        `admin` = #{record.admin,jdbcType=VARCHAR},
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=INTEGER},
       </if>
-      <if test="record.ip != null">
-        ip = #{record.ip,jdbcType=VARCHAR},
-      </if>
-      <if test="record.type != null">
-        `type` = #{record.type,jdbcType=INTEGER},
-      </if>
-      <if test="record.action != null">
-        `action` = #{record.action,jdbcType=VARCHAR},
-      </if>
-      <if test="record.status != null">
-        `status` = #{record.status,jdbcType=BIT},
-      </if>
-      <if test="record.result != null">
-        `result` = #{record.result,jdbcType=VARCHAR},
-      </if>
-      <if test="record.comment != null">
-        `comment` = #{record.comment,jdbcType=VARCHAR},
+      <if test="record.permission != null">
+        permission = #{record.permission,jdbcType=VARCHAR},
       </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -290,15 +235,10 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update litemall_log
+    update litemall_admin_permission
     set id = #{record.id,jdbcType=INTEGER},
-      `admin` = #{record.admin,jdbcType=VARCHAR},
-      ip = #{record.ip,jdbcType=VARCHAR},
-      `type` = #{record.type,jdbcType=INTEGER},
-      `action` = #{record.action,jdbcType=VARCHAR},
-      `status` = #{record.status,jdbcType=BIT},
-      `result` = #{record.result,jdbcType=VARCHAR},
-      `comment` = #{record.comment,jdbcType=VARCHAR},
+      role_id = #{record.roleId,jdbcType=INTEGER},
+      permission = #{record.permission,jdbcType=VARCHAR},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT}
@@ -306,29 +246,14 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLog">
-    update litemall_log
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission">
+    update litemall_admin_permission
     <set>
-      <if test="admin != null">
-        `admin` = #{admin,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
       </if>
-      <if test="ip != null">
-        ip = #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        `type` = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="action != null">
-        `action` = #{action,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        `status` = #{status,jdbcType=BIT},
-      </if>
-      <if test="result != null">
-        `result` = #{result,jdbcType=VARCHAR},
-      </if>
-      <if test="comment != null">
-        `comment` = #{comment,jdbcType=VARCHAR},
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
       </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -342,24 +267,19 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLog">
-    update litemall_log
-    set `admin` = #{admin,jdbcType=VARCHAR},
-      ip = #{ip,jdbcType=VARCHAR},
-      `type` = #{type,jdbcType=INTEGER},
-      `action` = #{action,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=BIT},
-      `result` = #{result,jdbcType=VARCHAR},
-      `comment` = #{comment,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission">
+    update litemall_admin_permission
+    set role_id = #{roleId,jdbcType=INTEGER},
+      permission = #{permission,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallLogExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminPermissionExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_log
+    from litemall_admin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -380,7 +300,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_log
+    from litemall_admin_permission
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -390,13 +310,13 @@
     limit 1
   </select>
   <update id="logicalDeleteByExample" parameterType="map">
-    update litemall_log set deleted = 1
+    update litemall_admin_permission set deleted = 1
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer">
-    update litemall_log set deleted = 1
+    update litemall_admin_permission set deleted = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

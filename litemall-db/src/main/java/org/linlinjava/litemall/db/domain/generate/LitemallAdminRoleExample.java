@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LitemallPermissionExample {
+public class LitemallAdminRoleExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public LitemallPermissionExample() {
+    public LitemallAdminRoleExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -45,12 +45,12 @@ public class LitemallPermissionExample {
         return criteria;
     }
 
-    public LitemallPermissionExample orderBy(String orderByClause) {
+    public LitemallAdminRoleExample orderBy(String orderByClause) {
         this.setOrderByClause(orderByClause);
         return this;
     }
 
-    public LitemallPermissionExample orderBy(String ... orderByClauses) {
+    public LitemallAdminRoleExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -82,18 +82,18 @@ public class LitemallPermissionExample {
     }
 
     public static Criteria newAndCreateCriteria() {
-        LitemallPermissionExample example = new LitemallPermissionExample();
+        LitemallAdminRoleExample example = new LitemallAdminRoleExample();
         return example.createCriteria();
     }
 
-    public LitemallPermissionExample when(boolean condition, IExampleWhen then) {
+    public LitemallAdminRoleExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
         }
         return this;
     }
 
-    public LitemallPermissionExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
+    public LitemallAdminRoleExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
         if (condition) {
             then.example(this);
         } else {
@@ -158,7 +158,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andIdEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -168,7 +168,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andIdNotEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -178,7 +178,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanColumn(LitemallPermission.Column column) {
+        public Criteria andIdGreaterThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -188,7 +188,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andIdGreaterThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -198,7 +198,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanColumn(LitemallPermission.Column column) {
+        public Criteria andIdLessThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -208,7 +208,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andIdLessThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -233,193 +233,293 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdIsNull() {
-            addCriterion("role_id is null");
+        public Criteria andNameIsNull() {
+            addCriterion("`name` is null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdIsNotNull() {
-            addCriterion("role_id is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("`name` is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdEqualTo(Integer value) {
-            addCriterion("role_id =", value, "roleId");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("`name` =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("role_id = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`name` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotEqualTo(Integer value) {
-            addCriterion("role_id <>", value, "roleId");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("`name` <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("role_id <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameNotEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`name` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThan(Integer value) {
-            addCriterion("role_id >", value, "roleId");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("`name` >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThanColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("role_id > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameGreaterThanColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`name` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("role_id >=", value, "roleId");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("`name` >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThanOrEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("role_id >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameGreaterThanOrEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`name` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThan(Integer value) {
-            addCriterion("role_id <", value, "roleId");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("`name` <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThanColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("role_id < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameLessThanColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`name` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThanOrEqualTo(Integer value) {
-            addCriterion("role_id <=", value, "roleId");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("`name` <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThanOrEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("role_id <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameLessThanOrEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`name` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdIn(List<Integer> values) {
-            addCriterion("role_id in", values, "roleId");
+        public Criteria andNameLike(String value) {
+            addCriterion("`name` like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotIn(List<Integer> values) {
-            addCriterion("role_id not in", values, "roleId");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("`name` not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdBetween(Integer value1, Integer value2) {
-            addCriterion("role_id between", value1, value2, "roleId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("`name` in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("role_id not between", value1, value2, "roleId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("`name` not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionIsNull() {
-            addCriterion("permission is null");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("`name` between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionIsNotNull() {
-            addCriterion("permission is not null");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("`name` not between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionEqualTo(String value) {
-            addCriterion("permission =", value, "permission");
+        public Criteria andDescIsNull() {
+            addCriterion("`desc` is null");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("permission = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andDescIsNotNull() {
+            addCriterion("`desc` is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionNotEqualTo(String value) {
-            addCriterion("permission <>", value, "permission");
+        public Criteria andDescEqualTo(String value) {
+            addCriterion("`desc` =", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionNotEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("permission <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andDescEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`desc` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andPermissionGreaterThan(String value) {
-            addCriterion("permission >", value, "permission");
+        public Criteria andDescNotEqualTo(String value) {
+            addCriterion("`desc` <>", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionGreaterThanColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("permission > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andDescNotEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`desc` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andPermissionGreaterThanOrEqualTo(String value) {
-            addCriterion("permission >=", value, "permission");
+        public Criteria andDescGreaterThan(String value) {
+            addCriterion("`desc` >", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionGreaterThanOrEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("permission >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andDescGreaterThanColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`desc` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andPermissionLessThan(String value) {
-            addCriterion("permission <", value, "permission");
+        public Criteria andDescGreaterThanOrEqualTo(String value) {
+            addCriterion("`desc` >=", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionLessThanColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("permission < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andDescGreaterThanOrEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`desc` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andPermissionLessThanOrEqualTo(String value) {
-            addCriterion("permission <=", value, "permission");
+        public Criteria andDescLessThan(String value) {
+            addCriterion("`desc` <", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionLessThanOrEqualToColumn(LitemallPermission.Column column) {
-            addCriterion(new StringBuilder("permission <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andDescLessThanColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`desc` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andPermissionLike(String value) {
-            addCriterion("permission like", value, "permission");
+        public Criteria andDescLessThanOrEqualTo(String value) {
+            addCriterion("`desc` <=", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionNotLike(String value) {
-            addCriterion("permission not like", value, "permission");
+        public Criteria andDescLessThanOrEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("`desc` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andPermissionIn(List<String> values) {
-            addCriterion("permission in", values, "permission");
+        public Criteria andDescLike(String value) {
+            addCriterion("`desc` like", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionNotIn(List<String> values) {
-            addCriterion("permission not in", values, "permission");
+        public Criteria andDescNotLike(String value) {
+            addCriterion("`desc` not like", value, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionBetween(String value1, String value2) {
-            addCriterion("permission between", value1, value2, "permission");
+        public Criteria andDescIn(List<String> values) {
+            addCriterion("`desc` in", values, "desc");
             return (Criteria) this;
         }
 
-        public Criteria andPermissionNotBetween(String value1, String value2) {
-            addCriterion("permission not between", value1, value2, "permission");
+        public Criteria andDescNotIn(List<String> values) {
+            addCriterion("`desc` not in", values, "desc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescBetween(String value1, String value2) {
+            addCriterion("`desc` between", value1, value2, "desc");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescNotBetween(String value1, String value2) {
+            addCriterion("`desc` not between", value1, value2, "desc");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledIsNull() {
+            addCriterion("enabled is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledIsNotNull() {
+            addCriterion("enabled is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledEqualTo(Boolean value) {
+            addCriterion("enabled =", value, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("enabled = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledNotEqualTo(Boolean value) {
+            addCriterion("enabled <>", value, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledNotEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("enabled <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledGreaterThan(Boolean value) {
+            addCriterion("enabled >", value, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledGreaterThanColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("enabled > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("enabled >=", value, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledGreaterThanOrEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("enabled >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledLessThan(Boolean value) {
+            addCriterion("enabled <", value, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledLessThanColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("enabled < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledLessThanOrEqualTo(Boolean value) {
+            addCriterion("enabled <=", value, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledLessThanOrEqualToColumn(LitemallAdminRole.Column column) {
+            addCriterion(new StringBuilder("enabled <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledIn(List<Boolean> values) {
+            addCriterion("enabled in", values, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledNotIn(List<Boolean> values) {
+            addCriterion("enabled not in", values, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledBetween(Boolean value1, Boolean value2) {
+            addCriterion("enabled between", value1, value2, "enabled");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnabledNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("enabled not between", value1, value2, "enabled");
             return (Criteria) this;
         }
 
@@ -438,7 +538,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andAddTimeEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("add_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -448,7 +548,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeNotEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andAddTimeNotEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("add_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -458,7 +558,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeGreaterThanColumn(LitemallPermission.Column column) {
+        public Criteria andAddTimeGreaterThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("add_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -468,7 +568,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeGreaterThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andAddTimeGreaterThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("add_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -478,7 +578,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeLessThanColumn(LitemallPermission.Column column) {
+        public Criteria andAddTimeLessThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("add_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -488,7 +588,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeLessThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andAddTimeLessThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("add_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -528,7 +628,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andUpdateTimeEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("update_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -538,7 +638,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andUpdateTimeNotEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("update_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -548,7 +648,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanColumn(LitemallPermission.Column column) {
+        public Criteria andUpdateTimeGreaterThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("update_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -558,7 +658,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andUpdateTimeGreaterThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("update_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -568,7 +668,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanColumn(LitemallPermission.Column column) {
+        public Criteria andUpdateTimeLessThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("update_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -578,7 +678,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andUpdateTimeLessThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("update_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -618,7 +718,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andDeletedEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("deleted = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -628,7 +728,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andDeletedNotEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("deleted <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -638,7 +738,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThanColumn(LitemallPermission.Column column) {
+        public Criteria andDeletedGreaterThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("deleted > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -648,7 +748,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andDeletedGreaterThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("deleted >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -658,7 +758,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThanColumn(LitemallPermission.Column column) {
+        public Criteria andDeletedLessThanColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("deleted < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -668,7 +768,7 @@ public class LitemallPermissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThanOrEqualToColumn(LitemallPermission.Column column) {
+        public Criteria andDeletedLessThanOrEqualToColumn(LitemallAdminRole.Column column) {
             addCriterion(new StringBuilder("deleted <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -695,14 +795,14 @@ public class LitemallPermissionExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private LitemallPermissionExample example;
+        private LitemallAdminRoleExample example;
 
-        protected Criteria(LitemallPermissionExample example) {
+        protected Criteria(LitemallAdminRoleExample example) {
             super();
             this.example = example;
         }
 
-        public LitemallPermissionExample example() {
+        public LitemallAdminRoleExample example() {
             return this.example;
         }
 
@@ -731,7 +831,7 @@ public class LitemallPermissionExample {
         }
 
         public Criteria andLogicalDeleted(boolean deleted) {
-            return deleted ? andDeletedEqualTo(LitemallPermission.Deleted.IS_DELETED.value()) : andDeletedNotEqualTo(LitemallPermission.Deleted.IS_DELETED.value());
+            return deleted ? andDeletedEqualTo(LitemallAdminRole.Deleted.IS_DELETED.value()) : andDeletedNotEqualTo(LitemallAdminRole.Deleted.IS_DELETED.value());
         }
 
         @Deprecated
@@ -831,6 +931,6 @@ public class LitemallPermissionExample {
     }
 
     public interface IExampleWhen {
-        void example(org.linlinjava.litemall.db.domain.generate.LitemallPermissionExample example);
+        void example(org.linlinjava.litemall.db.domain.generate.LitemallAdminRoleExample example);
     }
 }

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LitemallRole {
+public class LitemallAdminRole {
     public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
 
     public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
@@ -113,7 +113,7 @@ public class LitemallRole {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallRole other = (LitemallRole) that;
+        LitemallAdminRole other = (LitemallAdminRole) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getDesc() == null ? other.getDesc() == null : this.getDesc().equals(other.getDesc()))

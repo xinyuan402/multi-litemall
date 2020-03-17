@@ -13,8 +13,8 @@ import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
-import org.linlinjava.litemall.db.domain.generate.LitemallPermission;
-import org.linlinjava.litemall.db.domain.generate.LitemallRole;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminRole;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
 import org.linlinjava.litemall.db.service.LitemallPermissionService;
 import org.linlinjava.litemall.db.service.LitemallRoleService;
@@ -55,16 +55,16 @@ public class AdminRoleController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallRole> roleList = roleService.querySelective(name, page, limit, sort, order);
+        List<LitemallAdminRole> roleList = roleService.querySelective(name, page, limit, sort, order);
         return ResponseUtil.okList(roleList);
     }
 
     @GetMapping("/options")
     public Object options() {
-        List<LitemallRole> roleList = roleService.queryAll();
+        List<LitemallAdminRole> roleList = roleService.queryAll();
 
         List<Map<String, Object>> options = new ArrayList<>(roleList.size());
-        for (LitemallRole role : roleList) {
+        for (LitemallAdminRole role : roleList) {
             Map<String, Object> option = new HashMap<>(2);
             option.put("value", role.getId());
             option.put("label", role.getName());
@@ -78,11 +78,11 @@ public class AdminRoleController {
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallRole role = roleService.findById(id);
+        LitemallAdminRole role = roleService.findById(id);
         return ResponseUtil.ok(role);
     }
 
-    private Object validate(LitemallRole role) {
+    private Object validate(LitemallAdminRole role) {
         String name = role.getName();
         if (StringUtils.isEmpty(name)) {
             return ResponseUtil.badArgument();
@@ -94,7 +94,7 @@ public class AdminRoleController {
     @RequiresPermissions("admin:role:create")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallRole role) {
+    public Object create(@RequestBody LitemallAdminRole role) {
         Object error = validate(role);
         if (error != null) {
             return error;
@@ -112,7 +112,7 @@ public class AdminRoleController {
     @RequiresPermissions("admin:role:update")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallRole role) {
+    public Object update(@RequestBody LitemallAdminRole role) {
         Object error = validate(role);
         if (error != null) {
             return error;
@@ -125,7 +125,7 @@ public class AdminRoleController {
     @RequiresPermissions("admin:role:delete")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallRole role) {
+    public Object delete(@RequestBody LitemallAdminRole role) {
         Integer id = role.getId();
         if (id == null) {
             return ResponseUtil.badArgument();
@@ -213,10 +213,10 @@ public class AdminRoleController {
         // 先删除旧的权限，再更新新的权限
         permissionService.deleteByRoleId(roleId);
         for (String permission : permissions) {
-            LitemallPermission litemallPermission = new LitemallPermission();
-            litemallPermission.setRoleId(roleId);
-            litemallPermission.setPermission(permission);
-            permissionService.add(litemallPermission);
+            LitemallAdminPermission litemallAdminPermission = new LitemallAdminPermission();
+            litemallAdminPermission.setRoleId(roleId);
+            litemallAdminPermission.setPermission(permission);
+            permissionService.add(litemallAdminPermission);
         }
         return ResponseUtil.ok();
     }

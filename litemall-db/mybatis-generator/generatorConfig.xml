@@ -172,19 +172,19 @@
         <table tableName="litemall_coupon_user">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="litemall_role">
+        <table tableName="litemall_admin_role">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="litemall_permission">
+        <table tableName="litemall_admin_permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="litemall_log">
+        <table tableName="litemall_admin_log">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="litemall_notice">
+        <table tableName="litemall_admin_notice">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="litemall_notice_admin">
+        <table tableName="litemall_admin_notice_admin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="litemall_aftersale">
@@ -196,6 +196,26 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="status" javaType="org.linlinjava.litemall.db.enums.ShopStatus"
                             typeHandler="org.linlinjava.litemall.db.mybatis.ShopStatusEnumTypeHandler"/>
+        </table>
+        <table tableName="litemall_sysadmin">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="role_ids" javaType="java.lang.Integer[]"
+                            typeHandler="org.linlinjava.litemall.db.mybatis.JsonIntegerArrayTypeHandler"/>
+        </table>
+        <table tableName="litemall_sysadmin_role">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="litemall_sysadmin_permission">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="litemall_sysadmin_log">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="litemall_sysadmin_notice">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="litemall_sysadmin_notice_sysadmin">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallPermissionMapper">
-  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallPermission">
+<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallSysadminPermissionMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermission">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="role_id" jdbcType="INTEGER" property="roleId" />
     <result column="permission" jdbcType="VARCHAR" property="permission" />
@@ -70,13 +70,13 @@
   <sql id="Base_Column_List">
     id, role_id, permission, add_time, update_time, deleted
   </sql>
-  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermissionExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermissionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from litemall_permission
+    from litemall_sysadmin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -99,7 +99,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_permission
+    from litemall_sysadmin_permission
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -110,13 +110,13 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from litemall_permission
+    from litemall_sysadmin_permission
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from litemall_permission
+    from litemall_sysadmin_permission
     where id = #{id,jdbcType=INTEGER}
       and deleted = 
     <choose>
@@ -140,33 +140,33 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_permission
+    from litemall_sysadmin_permission
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from litemall_permission
+    delete from litemall_sysadmin_permission
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermissionExample">
-    delete from litemall_permission
+  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermissionExample">
+    delete from litemall_sysadmin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermission">
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermission">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_permission (role_id, permission, add_time, 
+    insert into litemall_sysadmin_permission (role_id, permission, add_time, 
       update_time, deleted)
     values (#{roleId,jdbcType=INTEGER}, #{permission,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermission">
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermission">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_permission
+    insert into litemall_sysadmin_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
         role_id,
@@ -202,14 +202,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermissionExample" resultType="java.lang.Long">
-    select count(*) from litemall_permission
+  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermissionExample" resultType="java.lang.Long">
+    select count(*) from litemall_sysadmin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update litemall_permission
+    update litemall_sysadmin_permission
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -235,7 +235,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update litemall_permission
+    update litemall_sysadmin_permission
     set id = #{record.id,jdbcType=INTEGER},
       role_id = #{record.roleId,jdbcType=INTEGER},
       permission = #{record.permission,jdbcType=VARCHAR},
@@ -246,8 +246,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermission">
-    update litemall_permission
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermission">
+    update litemall_sysadmin_permission
     <set>
       <if test="roleId != null">
         role_id = #{roleId,jdbcType=INTEGER},
@@ -267,8 +267,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermission">
-    update litemall_permission
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermission">
+    update litemall_sysadmin_permission
     set role_id = #{roleId,jdbcType=INTEGER},
       permission = #{permission,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -276,10 +276,10 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallPermissionExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermissionExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_permission
+    from litemall_sysadmin_permission
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -300,7 +300,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_permission
+    from litemall_sysadmin_permission
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -310,13 +310,13 @@
     limit 1
   </select>
   <update id="logicalDeleteByExample" parameterType="map">
-    update litemall_permission set deleted = 1
+    update litemall_sysadmin_permission set deleted = 1
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer">
-    update litemall_permission set deleted = 1
+    update litemall_sysadmin_permission set deleted = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

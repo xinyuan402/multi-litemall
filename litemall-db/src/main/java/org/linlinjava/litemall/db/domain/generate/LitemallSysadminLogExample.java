@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LitemallLogExample {
+public class LitemallSysadminLogExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public LitemallLogExample() {
+    public LitemallSysadminLogExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -45,12 +45,12 @@ public class LitemallLogExample {
         return criteria;
     }
 
-    public LitemallLogExample orderBy(String orderByClause) {
+    public LitemallSysadminLogExample orderBy(String orderByClause) {
         this.setOrderByClause(orderByClause);
         return this;
     }
 
-    public LitemallLogExample orderBy(String ... orderByClauses) {
+    public LitemallSysadminLogExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -82,18 +82,18 @@ public class LitemallLogExample {
     }
 
     public static Criteria newAndCreateCriteria() {
-        LitemallLogExample example = new LitemallLogExample();
+        LitemallSysadminLogExample example = new LitemallSysadminLogExample();
         return example.createCriteria();
     }
 
-    public LitemallLogExample when(boolean condition, IExampleWhen then) {
+    public LitemallSysadminLogExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
         }
         return this;
     }
 
-    public LitemallLogExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
+    public LitemallSysadminLogExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
         if (condition) {
             then.example(this);
         } else {
@@ -158,7 +158,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIdEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -168,7 +168,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIdNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -178,7 +178,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andIdGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -188,7 +188,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIdGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -198,7 +198,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanColumn(LitemallLog.Column column) {
+        public Criteria andIdLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -208,7 +208,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIdLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -233,103 +233,103 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAdminIsNull() {
-            addCriterion("`admin` is null");
+        public Criteria andSysadminIsNull() {
+            addCriterion("sysadmin is null");
             return (Criteria) this;
         }
 
-        public Criteria andAdminIsNotNull() {
-            addCriterion("`admin` is not null");
+        public Criteria andSysadminIsNotNull() {
+            addCriterion("sysadmin is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAdminEqualTo(String value) {
-            addCriterion("`admin` =", value, "admin");
+        public Criteria andSysadminEqualTo(String value) {
+            addCriterion("sysadmin =", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminEqualToColumn(LitemallLog.Column column) {
-            addCriterion(new StringBuilder("`admin` = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSysadminEqualToColumn(LitemallSysadminLog.Column column) {
+            addCriterion(new StringBuilder("sysadmin = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andAdminNotEqualTo(String value) {
-            addCriterion("`admin` <>", value, "admin");
+        public Criteria andSysadminNotEqualTo(String value) {
+            addCriterion("sysadmin <>", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminNotEqualToColumn(LitemallLog.Column column) {
-            addCriterion(new StringBuilder("`admin` <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSysadminNotEqualToColumn(LitemallSysadminLog.Column column) {
+            addCriterion(new StringBuilder("sysadmin <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andAdminGreaterThan(String value) {
-            addCriterion("`admin` >", value, "admin");
+        public Criteria andSysadminGreaterThan(String value) {
+            addCriterion("sysadmin >", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminGreaterThanColumn(LitemallLog.Column column) {
-            addCriterion(new StringBuilder("`admin` > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSysadminGreaterThanColumn(LitemallSysadminLog.Column column) {
+            addCriterion(new StringBuilder("sysadmin > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andAdminGreaterThanOrEqualTo(String value) {
-            addCriterion("`admin` >=", value, "admin");
+        public Criteria andSysadminGreaterThanOrEqualTo(String value) {
+            addCriterion("sysadmin >=", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminGreaterThanOrEqualToColumn(LitemallLog.Column column) {
-            addCriterion(new StringBuilder("`admin` >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSysadminGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
+            addCriterion(new StringBuilder("sysadmin >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andAdminLessThan(String value) {
-            addCriterion("`admin` <", value, "admin");
+        public Criteria andSysadminLessThan(String value) {
+            addCriterion("sysadmin <", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminLessThanColumn(LitemallLog.Column column) {
-            addCriterion(new StringBuilder("`admin` < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSysadminLessThanColumn(LitemallSysadminLog.Column column) {
+            addCriterion(new StringBuilder("sysadmin < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andAdminLessThanOrEqualTo(String value) {
-            addCriterion("`admin` <=", value, "admin");
+        public Criteria andSysadminLessThanOrEqualTo(String value) {
+            addCriterion("sysadmin <=", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminLessThanOrEqualToColumn(LitemallLog.Column column) {
-            addCriterion(new StringBuilder("`admin` <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andSysadminLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
+            addCriterion(new StringBuilder("sysadmin <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andAdminLike(String value) {
-            addCriterion("`admin` like", value, "admin");
+        public Criteria andSysadminLike(String value) {
+            addCriterion("sysadmin like", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminNotLike(String value) {
-            addCriterion("`admin` not like", value, "admin");
+        public Criteria andSysadminNotLike(String value) {
+            addCriterion("sysadmin not like", value, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminIn(List<String> values) {
-            addCriterion("`admin` in", values, "admin");
+        public Criteria andSysadminIn(List<String> values) {
+            addCriterion("sysadmin in", values, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminNotIn(List<String> values) {
-            addCriterion("`admin` not in", values, "admin");
+        public Criteria andSysadminNotIn(List<String> values) {
+            addCriterion("sysadmin not in", values, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminBetween(String value1, String value2) {
-            addCriterion("`admin` between", value1, value2, "admin");
+        public Criteria andSysadminBetween(String value1, String value2) {
+            addCriterion("sysadmin between", value1, value2, "sysadmin");
             return (Criteria) this;
         }
 
-        public Criteria andAdminNotBetween(String value1, String value2) {
-            addCriterion("`admin` not between", value1, value2, "admin");
+        public Criteria andSysadminNotBetween(String value1, String value2) {
+            addCriterion("sysadmin not between", value1, value2, "sysadmin");
             return (Criteria) this;
         }
 
@@ -348,7 +348,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIpEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIpEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("ip = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -358,7 +358,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIpNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIpNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("ip <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -368,7 +368,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIpGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andIpGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("ip > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -378,7 +378,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIpGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIpGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("ip >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -388,7 +388,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIpLessThanColumn(LitemallLog.Column column) {
+        public Criteria andIpLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("ip < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -398,7 +398,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andIpLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andIpLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("ip <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -448,7 +448,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualToColumn(LitemallLog.Column column) {
+        public Criteria andTypeEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`type` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -458,7 +458,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andTypeNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`type` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -468,7 +468,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andTypeGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`type` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -478,7 +478,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andTypeGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`type` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -488,7 +488,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanColumn(LitemallLog.Column column) {
+        public Criteria andTypeLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`type` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -498,7 +498,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andTypeLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`type` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -538,7 +538,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andActionEqualToColumn(LitemallLog.Column column) {
+        public Criteria andActionEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`action` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -548,7 +548,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andActionNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andActionNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`action` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -558,7 +558,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andActionGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andActionGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`action` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -568,7 +568,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andActionGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andActionGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`action` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -578,7 +578,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andActionLessThanColumn(LitemallLog.Column column) {
+        public Criteria andActionLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`action` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -588,7 +588,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andActionLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andActionLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`action` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -638,7 +638,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualToColumn(LitemallLog.Column column) {
+        public Criteria andStatusEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`status` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -648,7 +648,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andStatusNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`status` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -658,7 +658,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andStatusGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`status` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -668,7 +668,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andStatusGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`status` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -678,7 +678,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanColumn(LitemallLog.Column column) {
+        public Criteria andStatusLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`status` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -688,7 +688,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andStatusLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`status` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -728,7 +728,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andResultEqualToColumn(LitemallLog.Column column) {
+        public Criteria andResultEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`result` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -738,7 +738,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andResultNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andResultNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`result` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -748,7 +748,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andResultGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andResultGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`result` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -758,7 +758,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andResultGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andResultGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`result` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -768,7 +768,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andResultLessThanColumn(LitemallLog.Column column) {
+        public Criteria andResultLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`result` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -778,7 +778,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andResultLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andResultLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`result` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -828,7 +828,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentEqualToColumn(LitemallLog.Column column) {
+        public Criteria andCommentEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`comment` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -838,7 +838,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andCommentNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`comment` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -848,7 +848,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andCommentGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`comment` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -858,7 +858,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andCommentGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`comment` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -868,7 +868,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentLessThanColumn(LitemallLog.Column column) {
+        public Criteria andCommentLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`comment` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -878,7 +878,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andCommentLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("`comment` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -928,7 +928,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeEqualToColumn(LitemallLog.Column column) {
+        public Criteria andAddTimeEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("add_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -938,7 +938,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andAddTimeNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("add_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -948,7 +948,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andAddTimeGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("add_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -958,7 +958,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andAddTimeGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("add_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -968,7 +968,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeLessThanColumn(LitemallLog.Column column) {
+        public Criteria andAddTimeLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("add_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -978,7 +978,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddTimeLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andAddTimeLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("add_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1018,7 +1018,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeEqualToColumn(LitemallLog.Column column) {
+        public Criteria andUpdateTimeEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("update_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1028,7 +1028,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andUpdateTimeNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("update_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1038,7 +1038,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andUpdateTimeGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("update_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1048,7 +1048,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andUpdateTimeGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("update_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1058,7 +1058,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanColumn(LitemallLog.Column column) {
+        public Criteria andUpdateTimeLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("update_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1068,7 +1068,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andUpdateTimeLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("update_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1108,7 +1108,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedEqualToColumn(LitemallLog.Column column) {
+        public Criteria andDeletedEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("deleted = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1118,7 +1118,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotEqualToColumn(LitemallLog.Column column) {
+        public Criteria andDeletedNotEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("deleted <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1128,7 +1128,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThanColumn(LitemallLog.Column column) {
+        public Criteria andDeletedGreaterThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("deleted > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1138,7 +1138,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andDeletedGreaterThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("deleted >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1148,7 +1148,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThanColumn(LitemallLog.Column column) {
+        public Criteria andDeletedLessThanColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("deleted < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1158,7 +1158,7 @@ public class LitemallLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThanOrEqualToColumn(LitemallLog.Column column) {
+        public Criteria andDeletedLessThanOrEqualToColumn(LitemallSysadminLog.Column column) {
             addCriterion(new StringBuilder("deleted <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1185,14 +1185,14 @@ public class LitemallLogExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private LitemallLogExample example;
+        private LitemallSysadminLogExample example;
 
-        protected Criteria(LitemallLogExample example) {
+        protected Criteria(LitemallSysadminLogExample example) {
             super();
             this.example = example;
         }
 
-        public LitemallLogExample example() {
+        public LitemallSysadminLogExample example() {
             return this.example;
         }
 
@@ -1221,7 +1221,7 @@ public class LitemallLogExample {
         }
 
         public Criteria andLogicalDeleted(boolean deleted) {
-            return deleted ? andDeletedEqualTo(LitemallLog.Deleted.IS_DELETED.value()) : andDeletedNotEqualTo(LitemallLog.Deleted.IS_DELETED.value());
+            return deleted ? andDeletedEqualTo(LitemallSysadminLog.Deleted.IS_DELETED.value()) : andDeletedNotEqualTo(LitemallSysadminLog.Deleted.IS_DELETED.value());
         }
 
         @Deprecated
@@ -1321,6 +1321,6 @@ public class LitemallLogExample {
     }
 
     public interface IExampleWhen {
-        void example(org.linlinjava.litemall.db.domain.generate.LitemallLogExample example);
+        void example(org.linlinjava.litemall.db.domain.generate.LitemallSysadminLogExample example);
     }
 }

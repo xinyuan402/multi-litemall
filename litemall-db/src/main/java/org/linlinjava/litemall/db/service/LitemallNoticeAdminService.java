@@ -1,9 +1,9 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.generate.LitemallNoticeAdminMapper;
-import org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin;
-import org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdminExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallAdminNoticeAdminMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminNoticeAdmin;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminNoticeAdminExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class LitemallNoticeAdminService {
     @Resource
-    private LitemallNoticeAdminMapper noticeAdminMapper;
+    private LitemallAdminNoticeAdminMapper noticeAdminMapper;
 
-    public List<LitemallNoticeAdmin> querySelective(String title, String type, Integer adminId, Integer page, Integer limit, String sort, String order) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
-        LitemallNoticeAdminExample.Criteria criteria = example.createCriteria();
+    public List<LitemallAdminNoticeAdmin> querySelective(String title, String type, Integer adminId, Integer page, Integer limit, String sort, String order) {
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
+        LitemallAdminNoticeAdminExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(title)) {
             criteria.andNoticeTitleLike("%" + title + "%");
@@ -40,27 +40,27 @@ public class LitemallNoticeAdminService {
         return noticeAdminMapper.selectByExample(example);
     }
 
-    public LitemallNoticeAdmin find(Integer noticeId, Integer adminId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+    public LitemallAdminNoticeAdmin find(Integer noticeId, Integer adminId) {
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andNoticeIdEqualTo(noticeId).andAdminIdEqualTo(adminId).andDeletedEqualTo(false);
         return noticeAdminMapper.selectOneByExample(example);
     }
 
-    public void add(LitemallNoticeAdmin noticeAdmin) {
+    public void add(LitemallAdminNoticeAdmin noticeAdmin) {
         noticeAdmin.setAddTime(LocalDateTime.now());
         noticeAdmin.setUpdateTime(LocalDateTime.now());
         noticeAdminMapper.insertSelective(noticeAdmin);
     }
 
-    public void update(LitemallNoticeAdmin noticeAdmin) {
+    public void update(LitemallAdminNoticeAdmin noticeAdmin) {
         noticeAdmin.setUpdateTime(LocalDateTime.now());
         noticeAdminMapper.updateByPrimaryKeySelective(noticeAdmin);
     }
 
     public void markReadByIds(List<Integer> ids, Integer adminId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andIdIn(ids).andAdminIdEqualTo(adminId).andDeletedEqualTo(false);
-        LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+        LitemallAdminNoticeAdmin noticeAdmin = new LitemallAdminNoticeAdmin();
         LocalDateTime now = LocalDateTime.now();
         noticeAdmin.setReadTime(now);
         noticeAdmin.setUpdateTime(now);
@@ -68,61 +68,61 @@ public class LitemallNoticeAdminService {
     }
 
     public void deleteById(Integer id, Integer adminId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andIdEqualTo(id).andAdminIdEqualTo(adminId).andDeletedEqualTo(false);
-        LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+        LitemallAdminNoticeAdmin noticeAdmin = new LitemallAdminNoticeAdmin();
         noticeAdmin.setUpdateTime(LocalDateTime.now());
         noticeAdmin.setDeleted(true);
         noticeAdminMapper.updateByExampleSelective(noticeAdmin, example);
     }
 
     public void deleteByIds(List<Integer> ids, Integer adminId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andIdIn(ids).andAdminIdEqualTo(adminId).andDeletedEqualTo(false);
-        LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+        LitemallAdminNoticeAdmin noticeAdmin = new LitemallAdminNoticeAdmin();
         noticeAdmin.setUpdateTime(LocalDateTime.now());
         noticeAdmin.setDeleted(true);
         noticeAdminMapper.updateByExampleSelective(noticeAdmin, example);
     }
 
     public int countUnread(Integer adminId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andAdminIdEqualTo(adminId).andReadTimeIsNull().andDeletedEqualTo(false);
         return (int) noticeAdminMapper.countByExample(example);
     }
 
-    public List<LitemallNoticeAdmin> queryByNoticeId(Integer noticeId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+    public List<LitemallAdminNoticeAdmin> queryByNoticeId(Integer noticeId) {
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andNoticeIdEqualTo(noticeId).andDeletedEqualTo(false);
         return noticeAdminMapper.selectByExample(example);
     }
 
     public void deleteByNoticeId(Integer id) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andNoticeIdEqualTo(id).andDeletedEqualTo(false);
-        LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+        LitemallAdminNoticeAdmin noticeAdmin = new LitemallAdminNoticeAdmin();
         noticeAdmin.setUpdateTime(LocalDateTime.now());
         noticeAdmin.setDeleted(true);
         noticeAdminMapper.updateByExampleSelective(noticeAdmin, example);
     }
 
     public void deleteByNoticeIds(List<Integer> ids) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andNoticeIdIn(ids).andDeletedEqualTo(false);
-        LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+        LitemallAdminNoticeAdmin noticeAdmin = new LitemallAdminNoticeAdmin();
         noticeAdmin.setUpdateTime(LocalDateTime.now());
         noticeAdmin.setDeleted(true);
         noticeAdminMapper.updateByExampleSelective(noticeAdmin, example);
     }
 
     public int countReadByNoticeId(Integer noticeId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andNoticeIdEqualTo(noticeId).andReadTimeIsNotNull().andDeletedEqualTo(false);
         return (int) noticeAdminMapper.countByExample(example);
     }
 
-    public void updateByNoticeId(LitemallNoticeAdmin noticeAdmin, Integer noticeId) {
-        LitemallNoticeAdminExample example = new LitemallNoticeAdminExample();
+    public void updateByNoticeId(LitemallAdminNoticeAdmin noticeAdmin, Integer noticeId) {
+        LitemallAdminNoticeAdminExample example = new LitemallAdminNoticeAdminExample();
         example.or().andNoticeIdEqualTo(noticeId).andDeletedEqualTo(false);
         noticeAdmin.setUpdateTime(LocalDateTime.now());
         noticeAdminMapper.updateByExampleSelective(noticeAdmin, example);

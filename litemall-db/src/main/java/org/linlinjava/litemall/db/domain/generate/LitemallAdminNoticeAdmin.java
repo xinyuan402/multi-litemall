@@ -4,26 +4,20 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LitemallLog {
+public class LitemallAdminNoticeAdmin {
     public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
 
     public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
 
     private Integer id;
 
-    private String admin;
+    private Integer noticeId;
 
-    private String ip;
+    private String noticeTitle;
 
-    private Integer type;
+    private Integer adminId;
 
-    private String action;
-
-    private Boolean status;
-
-    private String result;
-
-    private String comment;
+    private LocalDateTime readTime;
 
     private LocalDateTime addTime;
 
@@ -39,60 +33,36 @@ public class LitemallLog {
         this.id = id;
     }
 
-    public String getAdmin() {
-        return admin;
+    public Integer getNoticeId() {
+        return noticeId;
     }
 
-    public void setAdmin(String admin) {
-        this.admin = admin;
+    public void setNoticeId(Integer noticeId) {
+        this.noticeId = noticeId;
     }
 
-    public String getIp() {
-        return ip;
+    public String getNoticeTitle() {
+        return noticeTitle;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setNoticeTitle(String noticeTitle) {
+        this.noticeTitle = noticeTitle;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getAdminId() {
+        return adminId;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setAdminId(Integer adminId) {
+        this.adminId = adminId;
     }
 
-    public String getAction() {
-        return action;
+    public LocalDateTime getReadTime() {
+        return readTime;
     }
 
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setReadTime(LocalDateTime readTime) {
+        this.readTime = readTime;
     }
 
     public LocalDateTime getAddTime() {
@@ -132,13 +102,10 @@ public class LitemallLog {
         sb.append(", IS_DELETED=").append(IS_DELETED);
         sb.append(", NOT_DELETED=").append(NOT_DELETED);
         sb.append(", id=").append(id);
-        sb.append(", admin=").append(admin);
-        sb.append(", ip=").append(ip);
-        sb.append(", type=").append(type);
-        sb.append(", action=").append(action);
-        sb.append(", status=").append(status);
-        sb.append(", result=").append(result);
-        sb.append(", comment=").append(comment);
+        sb.append(", noticeId=").append(noticeId);
+        sb.append(", noticeTitle=").append(noticeTitle);
+        sb.append(", adminId=").append(adminId);
+        sb.append(", readTime=").append(readTime);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleted=").append(deleted);
@@ -157,15 +124,12 @@ public class LitemallLog {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallLog other = (LitemallLog) that;
+        LitemallAdminNoticeAdmin other = (LitemallAdminNoticeAdmin) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getAdmin() == null ? other.getAdmin() == null : this.getAdmin().equals(other.getAdmin()))
-            && (this.getIp() == null ? other.getIp() == null : this.getIp().equals(other.getIp()))
-            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
-            && (this.getAction() == null ? other.getAction() == null : this.getAction().equals(other.getAction()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getResult() == null ? other.getResult() == null : this.getResult().equals(other.getResult()))
-            && (this.getComment() == null ? other.getComment() == null : this.getComment().equals(other.getComment()))
+            && (this.getNoticeId() == null ? other.getNoticeId() == null : this.getNoticeId().equals(other.getNoticeId()))
+            && (this.getNoticeTitle() == null ? other.getNoticeTitle() == null : this.getNoticeTitle().equals(other.getNoticeTitle()))
+            && (this.getAdminId() == null ? other.getAdminId() == null : this.getAdminId().equals(other.getAdminId()))
+            && (this.getReadTime() == null ? other.getReadTime() == null : this.getReadTime().equals(other.getReadTime()))
             && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
@@ -176,13 +140,10 @@ public class LitemallLog {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getAdmin() == null) ? 0 : getAdmin().hashCode());
-        result = prime * result + ((getIp() == null) ? 0 : getIp().hashCode());
-        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
-        result = prime * result + ((getAction() == null) ? 0 : getAction().hashCode());
-        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        result = prime * result + ((getResult() == null) ? 0 : getResult().hashCode());
-        result = prime * result + ((getComment() == null) ? 0 : getComment().hashCode());
+        result = prime * result + ((getNoticeId() == null) ? 0 : getNoticeId().hashCode());
+        result = prime * result + ((getNoticeTitle() == null) ? 0 : getNoticeTitle().hashCode());
+        result = prime * result + ((getAdminId() == null) ? 0 : getAdminId().hashCode());
+        result = prime * result + ((getReadTime() == null) ? 0 : getReadTime().hashCode());
         result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
@@ -217,13 +178,10 @@ public class LitemallLog {
 
     public enum Column {
         id("id", "id", "INTEGER", false),
-        admin("admin", "admin", "VARCHAR", true),
-        ip("ip", "ip", "VARCHAR", false),
-        type("type", "type", "INTEGER", true),
-        action("action", "action", "VARCHAR", true),
-        status("status", "status", "BIT", true),
-        result("result", "result", "VARCHAR", true),
-        comment("comment", "comment", "VARCHAR", true),
+        noticeId("notice_id", "noticeId", "INTEGER", false),
+        noticeTitle("notice_title", "noticeTitle", "VARCHAR", false),
+        adminId("admin_id", "adminId", "INTEGER", false),
+        readTime("read_time", "readTime", "TIMESTAMP", false),
         addTime("add_time", "addTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),
         deleted("deleted", "deleted", "BIT", false);

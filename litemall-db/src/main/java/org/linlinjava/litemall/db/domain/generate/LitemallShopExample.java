@@ -1,10 +1,9 @@
 package org.linlinjava.litemall.db.domain.generate;
 
-import org.linlinjava.litemall.db.enums.ShopStatus;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.linlinjava.litemall.db.enums.ShopStatus;
 
 public class LitemallShopExample {
     protected String orderByClause;

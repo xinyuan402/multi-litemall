@@ -3,40 +3,31 @@ package org.linlinjava.litemall.db.domain.generate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.linlinjava.litemall.db.enums.ShopStatus;
 
-public class LitemallShop {
+public class LitemallSysadmin {
     public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
 
     public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
 
     private Integer id;
 
-    private String name;
+    private String username;
 
-    private String country;
+    private String password;
 
-    private String province;
+    private String lastLoginIp;
 
-    private String city;
+    private LocalDateTime lastLoginTime;
 
-    private String district;
-
-    private String address;
-
-    private String images;
-
-    private String logo;
-
-    private String intro;
+    private String avatar;
 
     private LocalDateTime addTime;
 
     private LocalDateTime updateTime;
 
-    private ShopStatus status;
-
     private Boolean deleted;
+
+    private Integer[] roleIds;
 
     public Integer getId() {
         return id;
@@ -46,76 +37,44 @@ public class LitemallShop {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getCountry() {
-        return country;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getProvince() {
-        return province;
+    public String getLastLoginIp() {
+        return lastLoginIp;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
     }
 
-    public String getCity() {
-        return city;
+    public LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLastLoginTime(LocalDateTime lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public String getIntro() {
-        return intro;
-    }
-
-    public void setIntro(String intro) {
-        this.intro = intro;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public LocalDateTime getAddTime() {
@@ -134,14 +93,6 @@ public class LitemallShop {
         this.updateTime = updateTime;
     }
 
-    public ShopStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ShopStatus status) {
-        this.status = status;
-    }
-
     public void andLogicalDeleted(boolean deleted) {
         setDeleted(deleted ? Deleted.IS_DELETED.value() : Deleted.NOT_DELETED.value());
     }
@@ -154,6 +105,14 @@ public class LitemallShop {
         this.deleted = deleted;
     }
 
+    public Integer[] getRoleIds() {
+        return roleIds;
+    }
+
+    public void setRoleIds(Integer[] roleIds) {
+        this.roleIds = roleIds;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -163,19 +122,15 @@ public class LitemallShop {
         sb.append(", IS_DELETED=").append(IS_DELETED);
         sb.append(", NOT_DELETED=").append(NOT_DELETED);
         sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", country=").append(country);
-        sb.append(", province=").append(province);
-        sb.append(", city=").append(city);
-        sb.append(", district=").append(district);
-        sb.append(", address=").append(address);
-        sb.append(", images=").append(images);
-        sb.append(", logo=").append(logo);
-        sb.append(", intro=").append(intro);
+        sb.append(", username=").append(username);
+        sb.append(", password=").append(password);
+        sb.append(", lastLoginIp=").append(lastLoginIp);
+        sb.append(", lastLoginTime=").append(lastLoginTime);
+        sb.append(", avatar=").append(avatar);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", status=").append(status);
         sb.append(", deleted=").append(deleted);
+        sb.append(", roleIds=").append(roleIds);
         sb.append("]");
         return sb.toString();
     }
@@ -191,21 +146,17 @@ public class LitemallShop {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallShop other = (LitemallShop) that;
+        LitemallSysadmin other = (LitemallSysadmin) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getCountry() == null ? other.getCountry() == null : this.getCountry().equals(other.getCountry()))
-            && (this.getProvince() == null ? other.getProvince() == null : this.getProvince().equals(other.getProvince()))
-            && (this.getCity() == null ? other.getCity() == null : this.getCity().equals(other.getCity()))
-            && (this.getDistrict() == null ? other.getDistrict() == null : this.getDistrict().equals(other.getDistrict()))
-            && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
-            && (this.getImages() == null ? other.getImages() == null : this.getImages().equals(other.getImages()))
-            && (this.getLogo() == null ? other.getLogo() == null : this.getLogo().equals(other.getLogo()))
-            && (this.getIntro() == null ? other.getIntro() == null : this.getIntro().equals(other.getIntro()))
+            && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
+            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getLastLoginIp() == null ? other.getLastLoginIp() == null : this.getLastLoginIp().equals(other.getLastLoginIp()))
+            && (this.getLastLoginTime() == null ? other.getLastLoginTime() == null : this.getLastLoginTime().equals(other.getLastLoginTime()))
+            && (this.getAvatar() == null ? other.getAvatar() == null : this.getAvatar().equals(other.getAvatar()))
             && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
+            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
+            && (Arrays.equals(this.getRoleIds(), other.getRoleIds()));
     }
 
     @Override
@@ -213,19 +164,15 @@ public class LitemallShop {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getCountry() == null) ? 0 : getCountry().hashCode());
-        result = prime * result + ((getProvince() == null) ? 0 : getProvince().hashCode());
-        result = prime * result + ((getCity() == null) ? 0 : getCity().hashCode());
-        result = prime * result + ((getDistrict() == null) ? 0 : getDistrict().hashCode());
-        result = prime * result + ((getAddress() == null) ? 0 : getAddress().hashCode());
-        result = prime * result + ((getImages() == null) ? 0 : getImages().hashCode());
-        result = prime * result + ((getLogo() == null) ? 0 : getLogo().hashCode());
-        result = prime * result + ((getIntro() == null) ? 0 : getIntro().hashCode());
+        result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
+        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getLastLoginIp() == null) ? 0 : getLastLoginIp().hashCode());
+        result = prime * result + ((getLastLoginTime() == null) ? 0 : getLastLoginTime().hashCode());
+        result = prime * result + ((getAvatar() == null) ? 0 : getAvatar().hashCode());
         result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
-        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
+        result = prime * result + (Arrays.hashCode(getRoleIds()));
         return result;
     }
 
@@ -257,19 +204,15 @@ public class LitemallShop {
 
     public enum Column {
         id("id", "id", "INTEGER", false),
-        name("name", "name", "VARCHAR", true),
-        country("country", "country", "VARCHAR", false),
-        province("province", "province", "VARCHAR", false),
-        city("city", "city", "VARCHAR", false),
-        district("district", "district", "VARCHAR", false),
-        address("address", "address", "VARCHAR", false),
-        images("images", "images", "VARCHAR", false),
-        logo("logo", "logo", "VARCHAR", false),
-        intro("intro", "intro", "VARCHAR", false),
+        username("username", "username", "VARCHAR", false),
+        password("password", "password", "VARCHAR", true),
+        lastLoginIp("last_login_ip", "lastLoginIp", "VARCHAR", false),
+        lastLoginTime("last_login_time", "lastLoginTime", "TIMESTAMP", false),
+        avatar("avatar", "avatar", "VARCHAR", false),
         addTime("add_time", "addTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),
-        status("status", "status", "VARCHAR", true),
-        deleted("deleted", "deleted", "BIT", false);
+        deleted("deleted", "deleted", "BIT", false),
+        roleIds("role_ids", "roleIds", "VARCHAR", false);
 
         private static final String BEGINNING_DELIMITER = "`";
 

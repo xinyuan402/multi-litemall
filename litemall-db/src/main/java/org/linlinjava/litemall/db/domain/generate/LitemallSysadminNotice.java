@@ -4,20 +4,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LitemallNoticeAdmin {
+public class LitemallSysadminNotice {
     public static final Boolean IS_DELETED = Deleted.IS_DELETED.value();
 
     public static final Boolean NOT_DELETED = Deleted.NOT_DELETED.value();
 
     private Integer id;
 
-    private Integer noticeId;
+    private String title;
 
-    private String noticeTitle;
+    private String content;
 
-    private Integer adminId;
-
-    private LocalDateTime readTime;
+    private Integer sysadminId;
 
     private LocalDateTime addTime;
 
@@ -33,36 +31,28 @@ public class LitemallNoticeAdmin {
         this.id = id;
     }
 
-    public Integer getNoticeId() {
-        return noticeId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNoticeId(Integer noticeId) {
-        this.noticeId = noticeId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getNoticeTitle() {
-        return noticeTitle;
+    public String getContent() {
+        return content;
     }
 
-    public void setNoticeTitle(String noticeTitle) {
-        this.noticeTitle = noticeTitle;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public Integer getAdminId() {
-        return adminId;
+    public Integer getSysadminId() {
+        return sysadminId;
     }
 
-    public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
-    }
-
-    public LocalDateTime getReadTime() {
-        return readTime;
-    }
-
-    public void setReadTime(LocalDateTime readTime) {
-        this.readTime = readTime;
+    public void setSysadminId(Integer sysadminId) {
+        this.sysadminId = sysadminId;
     }
 
     public LocalDateTime getAddTime() {
@@ -102,10 +92,9 @@ public class LitemallNoticeAdmin {
         sb.append(", IS_DELETED=").append(IS_DELETED);
         sb.append(", NOT_DELETED=").append(NOT_DELETED);
         sb.append(", id=").append(id);
-        sb.append(", noticeId=").append(noticeId);
-        sb.append(", noticeTitle=").append(noticeTitle);
-        sb.append(", adminId=").append(adminId);
-        sb.append(", readTime=").append(readTime);
+        sb.append(", title=").append(title);
+        sb.append(", content=").append(content);
+        sb.append(", sysadminId=").append(sysadminId);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleted=").append(deleted);
@@ -124,12 +113,11 @@ public class LitemallNoticeAdmin {
         if (getClass() != that.getClass()) {
             return false;
         }
-        LitemallNoticeAdmin other = (LitemallNoticeAdmin) that;
+        LitemallSysadminNotice other = (LitemallSysadminNotice) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getNoticeId() == null ? other.getNoticeId() == null : this.getNoticeId().equals(other.getNoticeId()))
-            && (this.getNoticeTitle() == null ? other.getNoticeTitle() == null : this.getNoticeTitle().equals(other.getNoticeTitle()))
-            && (this.getAdminId() == null ? other.getAdminId() == null : this.getAdminId().equals(other.getAdminId()))
-            && (this.getReadTime() == null ? other.getReadTime() == null : this.getReadTime().equals(other.getReadTime()))
+            && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
+            && (this.getSysadminId() == null ? other.getSysadminId() == null : this.getSysadminId().equals(other.getSysadminId()))
             && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
@@ -140,10 +128,9 @@ public class LitemallNoticeAdmin {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getNoticeId() == null) ? 0 : getNoticeId().hashCode());
-        result = prime * result + ((getNoticeTitle() == null) ? 0 : getNoticeTitle().hashCode());
-        result = prime * result + ((getAdminId() == null) ? 0 : getAdminId().hashCode());
-        result = prime * result + ((getReadTime() == null) ? 0 : getReadTime().hashCode());
+        result = prime * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
+        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
+        result = prime * result + ((getSysadminId() == null) ? 0 : getSysadminId().hashCode());
         result = prime * result + ((getAddTime() == null) ? 0 : getAddTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
@@ -178,10 +165,9 @@ public class LitemallNoticeAdmin {
 
     public enum Column {
         id("id", "id", "INTEGER", false),
-        noticeId("notice_id", "noticeId", "INTEGER", false),
-        noticeTitle("notice_title", "noticeTitle", "VARCHAR", false),
-        adminId("admin_id", "adminId", "INTEGER", false),
-        readTime("read_time", "readTime", "TIMESTAMP", false),
+        title("title", "title", "VARCHAR", false),
+        content("content", "content", "VARCHAR", false),
+        sysadminId("sysadmin_id", "sysadminId", "INTEGER", false),
         addTime("add_time", "addTime", "TIMESTAMP", false),
         updateTime("update_time", "updateTime", "TIMESTAMP", false),
         deleted("deleted", "deleted", "BIT", false);

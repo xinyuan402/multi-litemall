@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallNoticeAdminMapper">
-  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin">
+<mapper namespace="org.linlinjava.litemall.db.dao.generate.LitemallAdminRoleMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.generate.LitemallAdminRole">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="notice_id" jdbcType="INTEGER" property="noticeId" />
-    <result column="notice_title" jdbcType="VARCHAR" property="noticeTitle" />
-    <result column="admin_id" jdbcType="INTEGER" property="adminId" />
-    <result column="read_time" jdbcType="TIMESTAMP" property="readTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="enabled" jdbcType="BIT" property="enabled" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
@@ -70,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, notice_id, notice_title, admin_id, read_time, add_time, update_time, deleted
+    id, `name`, `desc`, enabled, add_time, update_time, deleted
   </sql>
-  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdminExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from litemall_notice_admin
+    from litemall_admin_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -101,7 +100,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_notice_admin
+    from litemall_admin_role
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -112,13 +111,13 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from litemall_notice_admin
+    from litemall_admin_role
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeyWithLogicalDelete" parameterType="map" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from litemall_notice_admin
+    from litemall_admin_role
     where id = #{id,jdbcType=INTEGER}
       and deleted = 
     <choose>
@@ -142,47 +141,44 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_notice_admin
+    from litemall_admin_role
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from litemall_notice_admin
+    delete from litemall_admin_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdminExample">
-    delete from litemall_notice_admin
+  <delete id="deleteByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRoleExample">
+    delete from litemall_admin_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin">
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRole">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_notice_admin (notice_id, notice_title, admin_id, 
-      read_time, add_time, update_time, 
-      deleted)
-    values (#{noticeId,jdbcType=INTEGER}, #{noticeTitle,jdbcType=VARCHAR}, #{adminId,jdbcType=INTEGER}, 
-      #{readTime,jdbcType=TIMESTAMP}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=BIT})
+    insert into litemall_admin_role (`name`, `desc`, enabled, 
+      add_time, update_time, deleted
+      )
+    values (#{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin">
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRole">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into litemall_notice_admin
+    insert into litemall_admin_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="noticeId != null">
-        notice_id,
+      <if test="name != null">
+        `name`,
       </if>
-      <if test="noticeTitle != null">
-        notice_title,
+      <if test="desc != null">
+        `desc`,
       </if>
-      <if test="adminId != null">
-        admin_id,
-      </if>
-      <if test="readTime != null">
-        read_time,
+      <if test="enabled != null">
+        enabled,
       </if>
       <if test="addTime != null">
         add_time,
@@ -195,17 +191,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="noticeId != null">
-        #{noticeId,jdbcType=INTEGER},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="noticeTitle != null">
-        #{noticeTitle,jdbcType=VARCHAR},
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
       </if>
-      <if test="adminId != null">
-        #{adminId,jdbcType=INTEGER},
-      </if>
-      <if test="readTime != null">
-        #{readTime,jdbcType=TIMESTAMP},
+      <if test="enabled != null">
+        #{enabled,jdbcType=BIT},
       </if>
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
@@ -218,29 +211,26 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdminExample" resultType="java.lang.Long">
-    select count(*) from litemall_notice_admin
+  <select id="countByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRoleExample" resultType="java.lang.Long">
+    select count(*) from litemall_admin_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update litemall_notice_admin
+    update litemall_admin_role
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.noticeId != null">
-        notice_id = #{record.noticeId,jdbcType=INTEGER},
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.noticeTitle != null">
-        notice_title = #{record.noticeTitle,jdbcType=VARCHAR},
+      <if test="record.desc != null">
+        `desc` = #{record.desc,jdbcType=VARCHAR},
       </if>
-      <if test="record.adminId != null">
-        admin_id = #{record.adminId,jdbcType=INTEGER},
-      </if>
-      <if test="record.readTime != null">
-        read_time = #{record.readTime,jdbcType=TIMESTAMP},
+      <if test="record.enabled != null">
+        enabled = #{record.enabled,jdbcType=BIT},
       </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -257,12 +247,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update litemall_notice_admin
+    update litemall_admin_role
     set id = #{record.id,jdbcType=INTEGER},
-      notice_id = #{record.noticeId,jdbcType=INTEGER},
-      notice_title = #{record.noticeTitle,jdbcType=VARCHAR},
-      admin_id = #{record.adminId,jdbcType=INTEGER},
-      read_time = #{record.readTime,jdbcType=TIMESTAMP},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      `desc` = #{record.desc,jdbcType=VARCHAR},
+      enabled = #{record.enabled,jdbcType=BIT},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       deleted = #{record.deleted,jdbcType=BIT}
@@ -270,20 +259,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin">
-    update litemall_notice_admin
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRole">
+    update litemall_admin_role
     <set>
-      <if test="noticeId != null">
-        notice_id = #{noticeId,jdbcType=INTEGER},
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="noticeTitle != null">
-        notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      <if test="desc != null">
+        `desc` = #{desc,jdbcType=VARCHAR},
       </if>
-      <if test="adminId != null">
-        admin_id = #{adminId,jdbcType=INTEGER},
-      </if>
-      <if test="readTime != null">
-        read_time = #{readTime,jdbcType=TIMESTAMP},
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BIT},
       </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -297,21 +283,20 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin">
-    update litemall_notice_admin
-    set notice_id = #{noticeId,jdbcType=INTEGER},
-      notice_title = #{noticeTitle,jdbcType=VARCHAR},
-      admin_id = #{adminId,jdbcType=INTEGER},
-      read_time = #{readTime,jdbcType=TIMESTAMP},
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRole">
+    update litemall_admin_role
+    set `name` = #{name,jdbcType=VARCHAR},
+      `desc` = #{desc,jdbcType=VARCHAR},
+      enabled = #{enabled,jdbcType=BIT},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdminExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="org.linlinjava.litemall.db.domain.generate.LitemallAdminRoleExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from litemall_notice_admin
+    from litemall_admin_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -332,7 +317,7 @@
         <include refid="Base_Column_List" />
       </otherwise>
     </choose>
-    from litemall_notice_admin
+    from litemall_admin_role
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -342,13 +327,13 @@
     limit 1
   </select>
   <update id="logicalDeleteByExample" parameterType="map">
-    update litemall_notice_admin set deleted = 1
+    update litemall_admin_role set deleted = 1
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="logicalDeleteByPrimaryKey" parameterType="java.lang.Integer">
-    update litemall_notice_admin set deleted = 1
+    update litemall_admin_role set deleted = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -11,8 +11,8 @@ import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
-import org.linlinjava.litemall.db.domain.generate.LitemallNotice;
-import org.linlinjava.litemall.db.domain.generate.LitemallNoticeAdmin;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminNotice;
+import org.linlinjava.litemall.db.domain.generate.LitemallAdminNoticeAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
 import org.linlinjava.litemall.db.service.LitemallNoticeAdminService;
 import org.linlinjava.litemall.db.service.LitemallNoticeService;
@@ -49,11 +49,11 @@ public class AdminNoticeController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallNotice> noticeList = noticeService.querySelective(title, content, page, limit, sort, order);
+        List<LitemallAdminNotice> noticeList = noticeService.querySelective(title, content, page, limit, sort, order);
         return ResponseUtil.okList(noticeList);
     }
 
-    private Object validate(LitemallNotice notice) {
+    private Object validate(LitemallAdminNotice notice) {
         String title = notice.getTitle();
         if (StringUtils.isEmpty(title)) {
             return ResponseUtil.badArgument();
@@ -70,7 +70,7 @@ public class AdminNoticeController {
     @RequiresPermissions("admin:notice:create")
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallNotice notice) {
+    public Object create(@RequestBody LitemallAdminNotice notice) {
         Object error = validate(notice);
         if (error != null) {
             return error;
@@ -80,7 +80,7 @@ public class AdminNoticeController {
         noticeService.add(notice);
         // 2. 添加管理员通知记录
         List<LitemallAdmin> adminList = adminService.all();
-        LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+        LitemallAdminNoticeAdmin noticeAdmin = new LitemallAdminNoticeAdmin();
         noticeAdmin.setNoticeId(notice.getId());
         noticeAdmin.setNoticeTitle(notice.getTitle());
         for (LitemallAdmin admin : adminList) {
@@ -94,8 +94,8 @@ public class AdminNoticeController {
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallNotice notice = noticeService.findById(id);
-        List<LitemallNoticeAdmin> noticeAdminList = noticeAdminService.queryByNoticeId(id);
+        LitemallAdminNotice notice = noticeService.findById(id);
+        List<LitemallAdminNoticeAdmin> noticeAdminList = noticeAdminService.queryByNoticeId(id);
         Map<String, Object> data = new HashMap<>(2);
         data.put("notice", notice);
         data.put("noticeAdminList", noticeAdminList);
@@ -105,12 +105,12 @@ public class AdminNoticeController {
     @RequiresPermissions("admin:notice:update")
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallNotice notice) {
+    public Object update(@RequestBody LitemallAdminNotice notice) {
         Object error = validate(notice);
         if (error != null) {
             return error;
         }
-        LitemallNotice originalNotice = noticeService.findById(notice.getId());
+        LitemallAdminNotice originalNotice = noticeService.findById(notice.getId());
         if (originalNotice == null) {
             return ResponseUtil.badArgument();
         }
@@ -123,7 +123,7 @@ public class AdminNoticeController {
         noticeService.updateById(notice);
         // 2. 更新管理员通知记录
         if (!originalNotice.getTitle().equals(notice.getTitle())) {
-            LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+            LitemallAdminNoticeAdmin noticeAdmin = new LitemallAdminNoticeAdmin();
             noticeAdmin.setNoticeTitle(notice.getTitle());
             noticeAdminService.updateByNoticeId(noticeAdmin, notice.getId());
         }
@@ -133,7 +133,7 @@ public class AdminNoticeController {
     @RequiresPermissions("admin:notice:delete")
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallNotice notice) {
+    public Object delete(@RequestBody LitemallAdminNotice notice) {
         // 1. 删除通知管理员记录
         noticeAdminService.deleteByNoticeId(notice.getId());
         // 2. 删除通知记录
