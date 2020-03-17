@@ -38,9 +38,9 @@
 
     <!-- 查询操作 -->
     <div class="filter-container">
-      <el-input v-model="listQuery.userId" clearable class="filter-item" style="width: 200px;" placeholder="请输入用户ID"/>
+      <el-input v-model="listQuery.userId" clearable class="filter-item" style="width: 200px;" placeholder="请输入用户ID" />
       <el-select v-model="listQuery.status" clearable style="width: 200px" class="filter-item" placeholder="请选择使用状态">
-        <el-option v-for="type in useStatusOptions" :key="type.value" :label="type.label" :value="type.value"/>
+        <el-option v-for="type in useStatusOptions" :key="type.value" :label="type.label" :value="type.value" />
       </el-select>
       <el-button v-permission="['GET /admin/coupon/listuser']" class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">查找</el-button>
     </div>
@@ -48,19 +48,19 @@
     <!-- 查询结果 -->
     <el-table v-loading="listLoading" :data="list" element-loading-text="正在查询中。。。" border fit highlight-current-row>
 
-      <el-table-column align="center" label="用户优惠券ID" prop="id" sortable/>
+      <el-table-column align="center" label="用户优惠券ID" prop="id" sortable />
 
-      <el-table-column align="center" label="用户ID" prop="userId"/>
+      <el-table-column align="center" label="用户ID" prop="userId" />
 
-      <el-table-column align="center" label="领取时间" prop="addTime"/>
+      <el-table-column align="center" label="领取时间" prop="addTime" />
 
       <el-table-column align="center" label="使用状态" prop="status">
         <template slot-scope="scope">{{ scope.row.status | formatUseStatus }}</template>
       </el-table-column>
 
-      <el-table-column align="center" label="订单ID" prop="orderId"/>
+      <el-table-column align="center" label="订单ID" prop="orderId" />
 
-      <el-table-column align="center" label="使用时间" prop="usedTime"/>
+      <el-table-column align="center" label="使用时间" prop="usedTime" />
 
     </el-table>
 

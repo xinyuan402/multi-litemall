@@ -2,25 +2,25 @@
   <div class="app-container">
     <el-form ref="dataForm" :rules="rules" :model="dataForm" status-icon label-width="300px">
       <el-form-item label="商场名称" prop="litemall_mall_name">
-        <el-input v-model="dataForm.litemall_mall_name"/>
+        <el-input v-model="dataForm.litemall_mall_name" />
       </el-form-item>
       <el-form-item label="商场地址" prop="litemall_mall_address">
-        <el-input v-model="dataForm.litemall_mall_address"/>
+        <el-input v-model="dataForm.litemall_mall_address" />
       </el-form-item>
       <el-form-item label="地理坐标">
         <el-col :span="11">
-          <el-input v-model="dataForm.litemall_mall_longitude" placeholder="经度"/>
+          <el-input v-model="dataForm.litemall_mall_longitude" placeholder="经度" />
         </el-col>
         <el-col :span="2" style="text-align: center;">-</el-col>
         <el-col :span="11">
-          <el-input v-model="dataForm.litemall_mall_latitude" placeholder="纬度"/>
+          <el-input v-model="dataForm.litemall_mall_latitude" placeholder="纬度" />
         </el-col>
       </el-form-item>
       <el-form-item label="联系电话" prop="litemall_mall_phone">
-        <el-input v-model="dataForm.litemall_mall_phone"/>
+        <el-input v-model="dataForm.litemall_mall_phone" />
       </el-form-item>
       <el-form-item label="联系QQ" prop="litemall_mall_qq">
-        <el-input v-model="dataForm.litemall_mall_qq"/>
+        <el-input v-model="dataForm.litemall_mall_qq" />
       </el-form-item>
       <el-form-item>
         <el-button @click="cancel">取消</el-button>

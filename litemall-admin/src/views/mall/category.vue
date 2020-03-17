@@ -9,9 +9,9 @@
     <!-- 查询结果 -->
     <el-table v-loading="listLoading" :data="list" element-loading-text="正在查询中。。。" border fit highlight-current-row row-key="id">
 
-      <el-table-column align="center" label="类目ID" prop="id"/>
+      <el-table-column align="center" label="类目ID" prop="id" />
 
-      <el-table-column align="center" label="类目名" prop="name"/>
+      <el-table-column align="center" label="类目名" prop="name" />
 
       <el-table-column align="center" property="iconUrl" label="类目图标">
         <template slot-scope="scope">
@@ -25,9 +25,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="关键字" prop="keywords"/>
+      <el-table-column align="center" label="关键字" prop="keywords" />
 
-      <el-table-column align="center" min-width="100" label="简介" prop="desc"/>
+      <el-table-column align="center" min-width="100" label="简介" prop="desc" />
 
       <el-table-column align="center" label="级别" prop="level">
         <template slot-scope="scope">
@@ -47,20 +47,20 @@
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="dataForm" status-icon label-position="left" label-width="100px" style="width: 400px; margin-left:50px;">
         <el-form-item label="类目名称" prop="name">
-          <el-input v-model="dataForm.name"/>
+          <el-input v-model="dataForm.name" />
         </el-form-item>
         <el-form-item label="关键字" prop="keywords">
-          <el-input v-model="dataForm.keywords"/>
+          <el-input v-model="dataForm.keywords" />
         </el-form-item>
         <el-form-item label="级别" prop="level">
           <el-select v-model="dataForm.level" @change="onLevelChange">
-            <el-option label="一级类目" value="L1"/>
-            <el-option label="二级类目" value="L2"/>
+            <el-option label="一级类目" value="L1" />
+            <el-option label="二级类目" value="L2" />
           </el-select>
         </el-form-item>
         <el-form-item v-if="dataForm.level === 'L2'" label="父类目" prop="pid">
           <el-select v-model="dataForm.pid">
-            <el-option v-for="item in catL1" :key="item.value" :label="item.label" :value="item.value"/>
+            <el-option v-for="item in catL1" :key="item.value" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
         <el-form-item label="类目图标" prop="iconUrl">
@@ -70,9 +70,10 @@
             :show-file-list="false"
             :on-success="uploadIconUrl"
             class="avatar-uploader"
-            accept=".jpg,.jpeg,.png,.gif">
+            accept=".jpg,.jpeg,.png,.gif"
+          >
             <img v-if="dataForm.iconUrl" :src="dataForm.iconUrl" class="avatar">
-            <i v-else class="el-icon-plus avatar-uploader-icon"/>
+            <i v-else class="el-icon-plus avatar-uploader-icon" />
           </el-upload>
         </el-form-item>
         <el-form-item label="类目图片" prop="picUrl">
@@ -82,13 +83,14 @@
             :show-file-list="false"
             :on-success="uploadPicUrl"
             class="avatar-uploader"
-            accept=".jpg,.jpeg,.png,.gif">
+            accept=".jpg,.jpeg,.png,.gif"
+          >
             <img v-if="dataForm.picUrl" :src="dataForm.picUrl" class="avatar">
-            <i v-else class="el-icon-plus avatar-uploader-icon"/>
+            <i v-else class="el-icon-plus avatar-uploader-icon" />
           </el-upload>
         </el-form-item>
         <el-form-item label="类目简介" prop="desc">
-          <el-input v-model="dataForm.desc"/>
+          <el-input v-model="dataForm.desc" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

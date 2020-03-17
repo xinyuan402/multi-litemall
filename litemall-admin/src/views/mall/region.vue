@@ -3,7 +3,7 @@
 
     <el-table v-loading="listLoading" :data="list" element-loading-text="正在查询中。。。" row-key="id" style="width: 100%;margin-bottom: 20px;" border="">
 
-      <el-table-column label="区域名称" prop="name"/>
+      <el-table-column label="区域名称" prop="name" />
 
       <el-table-column label="区域类型" prop="type">
         <template slot-scope="scope">
@@ -11,7 +11,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="区域编码" prop="code"/>
+      <el-table-column label="区域编码" prop="code" />
 
     </el-table>
 

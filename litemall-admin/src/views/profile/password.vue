@@ -2,13 +2,13 @@
   <div class="app-container">
     <el-form ref="dataForm" :rules="rules" :model="dataForm" status-icon label-position="left" label-width="100px" style="width: 400px; margin-left:50px;">
       <el-form-item label="原密码" prop="oldPassword">
-        <el-input v-model="dataForm.oldPassword" type="password"/>
+        <el-input v-model="dataForm.oldPassword" type="password" />
       </el-form-item>
       <el-form-item label="新密码" prop="newPassword">
-        <el-input v-model="dataForm.newPassword" type="password" auto-complete="off"/>
+        <el-input v-model="dataForm.newPassword" type="password" auto-complete="off" />
       </el-form-item>
       <el-form-item label="确认密码" prop="newPassword2">
-        <el-input v-model="dataForm.newPassword2" type="password" auto-complete="off"/>
+        <el-input v-model="dataForm.newPassword2" type="password" auto-complete="off" />
       </el-form-item>
     </el-form>
     <div style="margin-left:100px;">

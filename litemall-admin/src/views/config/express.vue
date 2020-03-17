@@ -2,16 +2,16 @@
   <div class="app-container">
     <el-form ref="dataForm" :rules="rules" :model="dataForm" status-icon label-width="300px">
       <el-form-item label="运费满减所需最低消费" prop="litemall_express_freight_min">
-        <el-input v-model="dataForm.litemall_express_freight_min"/>
+        <el-input v-model="dataForm.litemall_express_freight_min" />
       </el-form-item>
       <el-form-item label="运费满减不足所需运费" prop="litemall_express_freight_value">
-        <el-input v-model="dataForm.litemall_express_freight_value"/>
+        <el-input v-model="dataForm.litemall_express_freight_value" />
       </el-form-item>
       <el-form-item>
         <el-button @click="cancel">取消</el-button>
         <el-button type="primary" @click="update">确定</el-button>
       </el-form-item>
-  </el-form></div>
+    </el-form></div>
 </template>
 
 <script>

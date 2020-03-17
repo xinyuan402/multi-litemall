@@ -563,7 +563,7 @@ export const asyncRouterMap = [
         component: () => import('@/views/shop/shop'),
         name: 'shop',
         meta: {
-          perms: ['GET /admin/shop/shop', 'POST /admin/shop/shop'],
+          perms: ['GET /admin/shop/list', 'POST /admin/shop/create'],
           title: '商铺管理',
           noCache: true
         }
