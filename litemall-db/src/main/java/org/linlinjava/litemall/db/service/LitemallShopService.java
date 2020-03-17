@@ -63,4 +63,10 @@ public class LitemallShopService {
         shop.setStatus(status);
         return shopMapper.updateByPrimaryKeySelective(shop);
     }
+
+    public int count() {
+        LitemallShopExample example = new LitemallShopExample();
+        example.or().andDeletedEqualTo(false);
+        return (int) shopMapper.countByExample(example);
+    }
 }

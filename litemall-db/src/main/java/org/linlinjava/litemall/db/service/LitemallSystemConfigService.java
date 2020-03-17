@@ -29,6 +29,12 @@ public class LitemallSystemConfigService {
         return systemConfigs;
     }
 
+    /**
+     * mall 信息属于单商城信息,不再适用于多商城
+     * 后期要删除
+     * @return
+     */
+    @Deprecated
     public Map<String, String> listMail() {
         LitemallSystemExample example = new LitemallSystemExample();
         example.or().andKeyNameLike("litemall_mall_%").andDeletedEqualTo(false);
@@ -62,6 +68,12 @@ public class LitemallSystemConfigService {
         return data;
     }
 
+    /**
+     * mall 信息属于单商城信息,不再适用于多商城
+     * 后期要删除
+     * @return
+     */
+    @Deprecated
     public Map<String, String> listExpress() {
         LitemallSystemExample example = new LitemallSystemExample();
         example.or().andKeyNameLike("litemall_express_%").andDeletedEqualTo(false);
