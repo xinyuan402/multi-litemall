@@ -1,8 +1,8 @@
 package org.linlinjava.litemall.db.service;
 
-import org.linlinjava.litemall.db.dao.generate.LitemallAdminPermissionMapper;
-import org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission;
-import org.linlinjava.litemall.db.domain.generate.LitemallAdminPermissionExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallSysadminPermissionMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermission;
+import org.linlinjava.litemall.db.domain.generate.LitemallSysadminPermissionExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class LitemallPermissionService {
+public class LitemallSysadminPermissionService {
     @Resource
-    private LitemallAdminPermissionMapper permissionMapper;
+    private LitemallSysadminPermissionMapper permissionMapper;
 
     public Set<String> queryByRoleIds(Integer[] roleIds) {
         Set<String> permissions = new HashSet<String>();
@@ -23,11 +23,11 @@ public class LitemallPermissionService {
             return permissions;
         }
 
-        LitemallAdminPermissionExample example = new LitemallAdminPermissionExample();
+        LitemallSysadminPermissionExample example = new LitemallSysadminPermissionExample();
         example.or().andRoleIdIn(Arrays.asList(roleIds)).andDeletedEqualTo(false);
-        List<LitemallAdminPermission> permissionList = permissionMapper.selectByExample(example);
+        List<LitemallSysadminPermission> permissionList = permissionMapper.selectByExample(example);
 
-        for (LitemallAdminPermission permission : permissionList) {
+        for (LitemallSysadminPermission permission : permissionList) {
             permissions.add(permission.getPermission());
         }
 
@@ -41,11 +41,11 @@ public class LitemallPermissionService {
             return permissions;
         }
 
-        LitemallAdminPermissionExample example = new LitemallAdminPermissionExample();
+        LitemallSysadminPermissionExample example = new LitemallSysadminPermissionExample();
         example.or().andRoleIdEqualTo(roleId).andDeletedEqualTo(false);
-        List<LitemallAdminPermission> permissionList = permissionMapper.selectByExample(example);
+        List<LitemallSysadminPermission> permissionList = permissionMapper.selectByExample(example);
 
-        for (LitemallAdminPermission permission : permissionList) {
+        for (LitemallSysadminPermission permission : permissionList) {
             permissions.add(permission.getPermission());
         }
 
@@ -57,20 +57,20 @@ public class LitemallPermissionService {
             return false;
         }
 
-        LitemallAdminPermissionExample example = new LitemallAdminPermissionExample();
+        LitemallSysadminPermissionExample example = new LitemallSysadminPermissionExample();
         example.or().andRoleIdEqualTo(roleId).andPermissionEqualTo("*").andDeletedEqualTo(false);
         return permissionMapper.countByExample(example) != 0;
     }
 
     public void deleteByRoleId(Integer roleId) {
-        LitemallAdminPermissionExample example = new LitemallAdminPermissionExample();
+        LitemallSysadminPermissionExample example = new LitemallSysadminPermissionExample();
         example.or().andRoleIdEqualTo(roleId).andDeletedEqualTo(false);
         permissionMapper.logicalDeleteByExample(example);
     }
 
-    public void add(LitemallAdminPermission litemallAdminPermission) {
-        litemallAdminPermission.setAddTime(LocalDateTime.now());
-        litemallAdminPermission.setUpdateTime(LocalDateTime.now());
-        permissionMapper.insertSelective(litemallAdminPermission);
+    public void add(LitemallSysadminPermission LitemallSysadminPermission) {
+        LitemallSysadminPermission.setAddTime(LocalDateTime.now());
+        LitemallSysadminPermission.setUpdateTime(LocalDateTime.now());
+        permissionMapper.insertSelective(LitemallSysadminPermission);
     }
 }

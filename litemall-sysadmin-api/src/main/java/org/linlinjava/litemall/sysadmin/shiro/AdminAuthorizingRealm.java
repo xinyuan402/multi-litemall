@@ -10,8 +10,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.linlinjava.litemall.core.util.bcrypt.BCryptPasswordEncoder;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
-import org.linlinjava.litemall.db.service.LitemallPermissionService;
-import org.linlinjava.litemall.db.service.LitemallRoleService;
+import org.linlinjava.litemall.db.service.LitemallAdminPermissionService;
+import org.linlinjava.litemall.db.service.LitemallAdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -24,9 +24,9 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
     @Autowired
     private LitemallAdminService adminService;
     @Autowired
-    private LitemallRoleService roleService;
+    private LitemallAdminRoleService roleService;
     @Autowired
-    private LitemallPermissionService permissionService;
+    private LitemallAdminPermissionService permissionService;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {

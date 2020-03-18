@@ -2,8 +2,9 @@ package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
 import org.linlinjava.litemall.db.dao.generate.LitemallAdminLogMapper;
-import org.linlinjava.litemall.db.domain.generate.LitemallAdminLog;
-import org.linlinjava.litemall.db.domain.generate.LitemallAdminLogExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallSysadminLogMapper;
+import org.linlinjava.litemall.db.dao.generate.LitemallSysadminMapper;
+import org.linlinjava.litemall.db.domain.generate.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -12,26 +13,26 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class LitemallLogService {
+public class LitemallSysadminLogService {
     @Resource
-    private LitemallAdminLogMapper logMapper;
+    private LitemallSysadminLogMapper logMapper;
 
     public void deleteById(Integer id) {
         logMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallAdminLog log) {
+    public void add(LitemallSysadminLog log) {
         log.setAddTime(LocalDateTime.now());
         log.setUpdateTime(LocalDateTime.now());
         logMapper.insertSelective(log);
     }
 
-    public List<LitemallAdminLog> querySelective(String name, Integer page, Integer size, String sort, String order) {
-        LitemallAdminLogExample example = new LitemallAdminLogExample();
-        LitemallAdminLogExample.Criteria criteria = example.createCriteria();
+    public List<LitemallSysadminLog> querySelective(String name, Integer page, Integer size, String sort, String order) {
+        LitemallSysadminLogExample example = new LitemallSysadminLogExample();
+        LitemallSysadminLogExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(name)) {
-            criteria.andAdminLike("%" + name + "%");
+            criteria.andSysadminLike("%" + name + "%");
         }
         criteria.andDeletedEqualTo(false);
 

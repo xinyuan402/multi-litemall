@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
-import org.linlinjava.litemall.sysadmin.annotation.RequiresPermissionsDesc;
+import org.linlinjava.litemall.core.annotation.RequiresPermissionsDesc;
 import org.linlinjava.litemall.sysadmin.service.LogHelper;
 import org.linlinjava.litemall.core.util.RegexUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
@@ -14,7 +14,7 @@ import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
-import org.linlinjava.litemall.sysadmin.util.AdminResponseCode;
+import org.linlinjava.litemall.sysadmin.util.SysadminResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -52,11 +52,11 @@ public class AdminAdminController {
             return ResponseUtil.badArgument();
         }
         if (!RegexUtil.isUsername(name)) {
-            return ResponseUtil.fail(AdminResponseCode.ADMIN_INVALID_NAME, "管理员名称不符合规定");
+            return ResponseUtil.fail(SysadminResponseCode.ADMIN_INVALID_NAME, "管理员名称不符合规定");
         }
         String password = admin.getPassword();
         if (StringUtils.isEmpty(password) || password.length() < 6) {
-            return ResponseUtil.fail(AdminResponseCode.ADMIN_INVALID_PASSWORD, "管理员密码长度不能小于6");
+            return ResponseUtil.fail(SysadminResponseCode.ADMIN_INVALID_PASSWORD, "管理员密码长度不能小于6");
         }
         return null;
     }
@@ -73,7 +73,7 @@ public class AdminAdminController {
         String username = admin.getUsername();
         List<LitemallAdmin> adminList = adminService.findAdmin(username);
         if (adminList.size() > 0) {
-            return ResponseUtil.fail(AdminResponseCode.ADMIN_NAME_EXIST, "管理员已经存在");
+            return ResponseUtil.fail(SysadminResponseCode.ADMIN_NAME_EXIST, "管理员已经存在");
         }
 
         String rawPassword = admin.getPassword();
@@ -131,7 +131,7 @@ public class AdminAdminController {
         Subject currentUser = SecurityUtils.getSubject();
         LitemallAdmin currentAdmin = (LitemallAdmin) currentUser.getPrincipal();
         if (currentAdmin.getId().equals(anotherAdminId)) {
-            return ResponseUtil.fail(AdminResponseCode.ADMIN_DELETE_NOT_ALLOWED, "管理员不能删除自己账号");
+            return ResponseUtil.fail(SysadminResponseCode.ADMIN_DELETE_NOT_ALLOWED, "管理员不能删除自己账号");
         }
 
         adminService.deleteById(anotherAdminId);

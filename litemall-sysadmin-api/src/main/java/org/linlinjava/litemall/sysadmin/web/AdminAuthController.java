@@ -17,9 +17,9 @@ import org.linlinjava.litemall.core.util.JacksonUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
-import org.linlinjava.litemall.db.service.LitemallPermissionService;
-import org.linlinjava.litemall.db.service.LitemallRoleService;
-import org.linlinjava.litemall.sysadmin.util.AdminResponseCode;
+import org.linlinjava.litemall.db.service.LitemallAdminPermissionService;
+import org.linlinjava.litemall.db.service.LitemallAdminRoleService;
+import org.linlinjava.litemall.sysadmin.util.SysadminResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
@@ -39,9 +39,9 @@ public class AdminAuthController {
     @Autowired
     private LitemallAdminService adminService;
     @Autowired
-    private LitemallRoleService roleService;
+    private LitemallAdminRoleService roleService;
     @Autowired
-    private LitemallPermissionService permissionService;
+    private LitemallAdminPermissionService permissionService;
     @Autowired
     private LogHelper logHelper;
     @Autowired
@@ -65,14 +65,14 @@ public class AdminAuthController {
             currentUser.login(new UsernamePasswordToken(username, password));
         } catch (UnknownAccountException uae) {
             logHelper.logAuthFail("登录", "用户帐号或密码不正确");
-            return ResponseUtil.fail(AdminResponseCode.ADMIN_INVALID_ACCOUNT, "用户帐号或密码不正确");
+            return ResponseUtil.fail(SysadminResponseCode.ADMIN_INVALID_ACCOUNT, "用户帐号或密码不正确");
         } catch (LockedAccountException lae) {
             logHelper.logAuthFail("登录", "用户帐号已锁定不可用");
-            return ResponseUtil.fail(AdminResponseCode.ADMIN_INVALID_ACCOUNT, "用户帐号已锁定不可用");
+            return ResponseUtil.fail(SysadminResponseCode.ADMIN_INVALID_ACCOUNT, "用户帐号已锁定不可用");
 
         } catch (AuthenticationException ae) {
             logHelper.logAuthFail("登录", "认证失败");
-            return ResponseUtil.fail(AdminResponseCode.ADMIN_INVALID_ACCOUNT, "认证失败");
+            return ResponseUtil.fail(SysadminResponseCode.ADMIN_INVALID_ACCOUNT, "认证失败");
         }
 
         currentUser = SecurityUtils.getSubject();

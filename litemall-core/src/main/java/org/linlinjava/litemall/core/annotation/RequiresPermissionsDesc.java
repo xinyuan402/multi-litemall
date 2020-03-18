@@ -1,4 +1,4 @@
-package org.linlinjava.litemall.admin.annotation;
+package org.linlinjava.litemall.core.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

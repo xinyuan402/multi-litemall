@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static org.linlinjava.litemall.sysadmin.util.AdminResponseCode.SHOP_NAME_EXIT;
+import static org.linlinjava.litemall.sysadmin.util.SysadminResponseCode.SHOP_NAME_EXIT;
 
 @Service
 public class AdminShopService {

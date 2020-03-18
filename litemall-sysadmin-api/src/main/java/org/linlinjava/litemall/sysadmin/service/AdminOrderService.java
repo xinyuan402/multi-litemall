@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.linlinjava.litemall.sysadmin.util.AdminResponseCode.*;
+import static org.linlinjava.litemall.sysadmin.util.SysadminResponseCode.*;
 
 @Service
 

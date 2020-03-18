@@ -17,8 +17,8 @@ import org.linlinjava.litemall.core.util.JacksonUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
-import org.linlinjava.litemall.db.service.LitemallPermissionService;
-import org.linlinjava.litemall.db.service.LitemallRoleService;
+import org.linlinjava.litemall.db.service.LitemallAdminPermissionService;
+import org.linlinjava.litemall.db.service.LitemallAdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
@@ -40,9 +40,9 @@ public class AdminAuthController {
     @Autowired
     private LitemallAdminService adminService;
     @Autowired
-    private LitemallRoleService roleService;
+    private LitemallAdminRoleService roleService;
     @Autowired
-    private LitemallPermissionService permissionService;
+    private LitemallAdminPermissionService permissionService;
     @Autowired
     private LogHelper logHelper;
     @Autowired

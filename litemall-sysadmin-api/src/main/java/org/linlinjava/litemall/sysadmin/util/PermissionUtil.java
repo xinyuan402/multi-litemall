@@ -3,7 +3,7 @@ package org.linlinjava.litemall.sysadmin.util;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.MethodUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.linlinjava.litemall.sysadmin.annotation.RequiresPermissionsDesc;
+import org.linlinjava.litemall.core.annotation.RequiresPermissionsDesc;
 import org.linlinjava.litemall.sysadmin.vo.PermVo;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;

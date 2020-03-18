@@ -3,17 +3,16 @@ package org.linlinjava.litemall.sysadmin.web;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.linlinjava.litemall.sysadmin.annotation.RequiresPermissionsDesc;
-import org.linlinjava.litemall.sysadmin.dto.GoodsAllinone;
-import org.linlinjava.litemall.sysadmin.service.AdminGoodsService;
 import org.linlinjava.litemall.core.validator.Order;
 import org.linlinjava.litemall.core.validator.Sort;
-import org.linlinjava.litemall.db.domain.generate.LitemallGoods;
+import org.linlinjava.litemall.core.annotation.RequiresPermissionsDesc;
+import org.linlinjava.litemall.sysadmin.service.AdminGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.constraints.NotNull;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sysadmin/goods")
@@ -45,19 +44,6 @@ public class AdminGoodsController {
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
         return adminGoodsService.list(goodsId, goodsSn, name, page, limit, sort, order);
-    }
-
-    /**
-     * 商品详情
-     *
-     * @param id
-     * @return
-     */
-    @RequiresPermissions("sysadmin:goods:read")
-    @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "详情")
-    @GetMapping("/detail")
-    public Object detail(@NotNull Integer id) {
-        return adminGoodsService.detail(id);
     }
 
 }

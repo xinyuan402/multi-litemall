@@ -3,8 +3,8 @@ package org.linlinjava.litemall.sysadmin.web;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.linlinjava.litemall.sysadmin.annotation.RequiresPermissionsDesc;
-import org.linlinjava.litemall.sysadmin.util.AdminResponseCode;
+import org.linlinjava.litemall.core.annotation.RequiresPermissionsDesc;
+import org.linlinjava.litemall.sysadmin.util.SysadminResponseCode;
 import org.linlinjava.litemall.sysadmin.util.Permission;
 import org.linlinjava.litemall.sysadmin.util.PermissionUtil;
 import org.linlinjava.litemall.sysadmin.vo.PermVo;
@@ -16,8 +16,8 @@ import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdminPermission;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdminRole;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
-import org.linlinjava.litemall.db.service.LitemallPermissionService;
-import org.linlinjava.litemall.db.service.LitemallRoleService;
+import org.linlinjava.litemall.db.service.LitemallAdminPermissionService;
+import org.linlinjava.litemall.db.service.LitemallAdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
@@ -34,9 +34,9 @@ public class AdminRoleController {
     private final Log logger = LogFactory.getLog(AdminRoleController.class);
 
     @Autowired
-    private LitemallRoleService roleService;
+    private LitemallAdminRoleService roleService;
     @Autowired
-    private LitemallPermissionService permissionService;
+    private LitemallAdminPermissionService permissionService;
     @Autowired
     private LitemallAdminService adminService;
     @Autowired
@@ -98,7 +98,7 @@ public class AdminRoleController {
         }
 
         if (roleService.checkExist(role.getName())) {
-            return ResponseUtil.fail(AdminResponseCode.ROLE_NAME_EXIST, "角色已经存在");
+            return ResponseUtil.fail(SysadminResponseCode.ROLE_NAME_EXIST, "角色已经存在");
         }
 
         roleService.add(role);
@@ -134,7 +134,7 @@ public class AdminRoleController {
             Integer[] roleIds = admin.getRoleIds();
             for (Integer roleId : roleIds) {
                 if (id.equals(roleId)) {
-                    return ResponseUtil.fail(AdminResponseCode.ROLE_USER_EXIST, "当前角色存在管理员，不能删除");
+                    return ResponseUtil.fail(SysadminResponseCode.ROLE_USER_EXIST, "当前角色存在管理员，不能删除");
                 }
             }
         }
@@ -204,7 +204,7 @@ public class AdminRoleController {
 
         // 如果修改的角色是超级权限，则拒绝修改。
         if (permissionService.checkSuperPermission(roleId)) {
-            return ResponseUtil.fail(AdminResponseCode.ROLE_SUPER_SUPERMISSION, "当前角色的超级权限不能变更");
+            return ResponseUtil.fail(SysadminResponseCode.ROLE_SUPER_SUPERMISSION, "当前角色的超级权限不能变更");
         }
 
         // 先删除旧的权限，再更新新的权限

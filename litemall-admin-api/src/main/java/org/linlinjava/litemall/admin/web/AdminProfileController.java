@@ -14,8 +14,8 @@ import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdminNotice;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdminNoticeAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
-import org.linlinjava.litemall.db.service.LitemallNoticeAdminService;
-import org.linlinjava.litemall.db.service.LitemallNoticeService;
+import org.linlinjava.litemall.db.service.LitemallAdminNoticeAdminService;
+import org.linlinjava.litemall.db.service.LitemallAdminNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -37,9 +37,9 @@ public class AdminProfileController {
     @Autowired
     private LitemallAdminService adminService;
     @Autowired
-    private LitemallNoticeService noticeService;
+    private LitemallAdminNoticeService noticeService;
     @Autowired
-    private LitemallNoticeAdminService noticeAdminService;
+    private LitemallAdminNoticeAdminService noticeAdminService;
 
     @RequiresAuthentication
     @PostMapping("/password")

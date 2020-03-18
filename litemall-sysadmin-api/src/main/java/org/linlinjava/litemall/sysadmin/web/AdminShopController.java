@@ -3,7 +3,7 @@ package org.linlinjava.litemall.sysadmin.web;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.linlinjava.litemall.sysadmin.annotation.RequiresPermissionsDesc;
+import org.linlinjava.litemall.core.annotation.RequiresPermissionsDesc;
 import org.linlinjava.litemall.sysadmin.service.AdminShopService;
 import org.linlinjava.litemall.core.util.response.DataList;
 import org.linlinjava.litemall.core.util.response.ResponseData;

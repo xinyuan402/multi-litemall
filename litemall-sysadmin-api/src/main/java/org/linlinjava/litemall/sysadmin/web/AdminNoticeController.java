@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
-import org.linlinjava.litemall.sysadmin.annotation.RequiresPermissionsDesc;
+import org.linlinjava.litemall.core.annotation.RequiresPermissionsDesc;
 import org.linlinjava.litemall.core.util.JacksonUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.validator.Order;
@@ -14,9 +14,9 @@ import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdminNotice;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdminNoticeAdmin;
 import org.linlinjava.litemall.db.service.LitemallAdminService;
-import org.linlinjava.litemall.db.service.LitemallNoticeAdminService;
-import org.linlinjava.litemall.db.service.LitemallNoticeService;
-import org.linlinjava.litemall.sysadmin.util.AdminResponseCode;
+import org.linlinjava.litemall.db.service.LitemallAdminNoticeAdminService;
+import org.linlinjava.litemall.db.service.LitemallAdminNoticeService;
+import org.linlinjava.litemall.sysadmin.util.SysadminResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -34,11 +34,11 @@ public class AdminNoticeController {
     private final Log logger = LogFactory.getLog(AdminNoticeController.class);
 
     @Autowired
-    private LitemallNoticeService noticeService;
+    private LitemallAdminNoticeService noticeService;
     @Autowired
     private LitemallAdminService adminService;
     @Autowired
-    private LitemallNoticeAdminService noticeAdminService;
+    private LitemallAdminNoticeAdminService noticeAdminService;
 
     @RequiresPermissions("sysadmin:notice:list")
     @RequiresPermissionsDesc(menu = {"系统管理", "通知管理"}, button = "查询")
@@ -115,7 +115,7 @@ public class AdminNoticeController {
         }
         // 如果通知已经有人阅读过，则不支持编辑
         if (noticeAdminService.countReadByNoticeId(notice.getId()) > 0) {
-            return ResponseUtil.fail(AdminResponseCode.NOTICE_UPDATE_NOT_ALLOWED, "通知已被阅读，不能重新编辑");
+            return ResponseUtil.fail(SysadminResponseCode.NOTICE_UPDATE_NOT_ALLOWED, "通知已被阅读，不能重新编辑");
         }
         // 1. 更新通知记录
         notice.setAdminId(getAdminId());

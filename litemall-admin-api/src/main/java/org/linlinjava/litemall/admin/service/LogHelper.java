@@ -5,7 +5,7 @@ import org.apache.shiro.subject.Subject;
 import org.linlinjava.litemall.core.util.IpUtil;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdmin;
 import org.linlinjava.litemall.db.domain.generate.LitemallAdminLog;
-import org.linlinjava.litemall.db.service.LitemallLogService;
+import org.linlinjava.litemall.db.service.LitemallAdminLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -30,7 +30,7 @@ public class LogHelper {
     public static final Integer LOG_TYPE_OTHER = 3;
 
     @Autowired
-    private LitemallLogService logService;
+    private LitemallAdminLogService logService;
 
     public void logGeneralSucceed(String action) {
         logAdmin(LOG_TYPE_GENERAL, action, true, "", "");

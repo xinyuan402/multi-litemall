@@ -1,7 +1,7 @@
 package org.linlinjava.litemall.sysadmin.util;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.linlinjava.litemall.sysadmin.annotation.RequiresPermissionsDesc;
+import org.linlinjava.litemall.core.annotation.RequiresPermissionsDesc;
 
 public class Permission {
     private RequiresPermissions requiresPermissions;

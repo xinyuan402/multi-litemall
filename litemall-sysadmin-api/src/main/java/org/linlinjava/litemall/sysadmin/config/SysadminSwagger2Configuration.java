@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class AdminSwagger2Configuration {
+public class SysadminSwagger2Configuration {
     @Bean
     public Docket adminDocket() {
 
@@ -36,7 +36,7 @@ public class AdminSwagger2Configuration {
     private ApiInfo adminApiInfo() {
         return new ApiInfoBuilder()
                 .title("litemall-sysadmin API")
-                .description("litemall系统管理后台API")
+                .description("litemall 系统管理后台API")
                 .termsOfServiceUrl("https://github.com/dannyZhou/multi-litemall")
                 .contact("https://github.com/dannyZhou/multi-litemall")
                 .version("1.0")

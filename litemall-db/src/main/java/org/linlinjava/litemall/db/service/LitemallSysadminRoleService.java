@@ -2,9 +2,9 @@ package org.linlinjava.litemall.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import org.linlinjava.litemall.db.dao.generate.LitemallAdminRoleMapper;
-import org.linlinjava.litemall.db.domain.generate.LitemallAdminRole;
-import org.linlinjava.litemall.db.domain.generate.LitemallAdminRoleExample;
+import org.linlinjava.litemall.db.dao.generate.LitemallSysadminRoleMapper;
+import org.linlinjava.litemall.db.domain.generate.LitemallSysadminRole;
+import org.linlinjava.litemall.db.domain.generate.LitemallSysadminRoleExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class LitemallRoleService {
+public class LitemallSysadminRoleService {
     @Resource
-    private LitemallAdminRoleMapper roleMapper;
+    private LitemallSysadminRoleMapper roleMapper;
 
 
     public Set<String> queryByIds(Integer[] roleIds) {
@@ -26,11 +26,11 @@ public class LitemallRoleService {
             return roles;
         }
 
-        LitemallAdminRoleExample example = new LitemallAdminRoleExample();
+        LitemallSysadminRoleExample example = new LitemallSysadminRoleExample();
         example.or().andIdIn(Arrays.asList(roleIds)).andEnabledEqualTo(true).andDeletedEqualTo(false);
-        List<LitemallAdminRole> roleList = roleMapper.selectByExample(example);
+        List<LitemallSysadminRole> roleList = roleMapper.selectByExample(example);
 
-        for (LitemallAdminRole role : roleList) {
+        for (LitemallSysadminRole role : roleList) {
             roles.add(role.getName());
         }
 
@@ -38,9 +38,9 @@ public class LitemallRoleService {
 
     }
 
-    public List<LitemallAdminRole> querySelective(String name, Integer page, Integer limit, String sort, String order) {
-        LitemallAdminRoleExample example = new LitemallAdminRoleExample();
-        LitemallAdminRoleExample.Criteria criteria = example.createCriteria();
+    public List<LitemallSysadminRole> querySelective(String name, Integer page, Integer limit, String sort, String order) {
+        LitemallSysadminRoleExample example = new LitemallSysadminRoleExample();
+        LitemallSysadminRoleExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(name)) {
             criteria.andNameLike("%" + name + "%");
@@ -55,11 +55,11 @@ public class LitemallRoleService {
         return roleMapper.selectByExample(example);
     }
 
-    public LitemallAdminRole findById(Integer id) {
+    public LitemallSysadminRole findById(Integer id) {
         return roleMapper.selectByPrimaryKey(id);
     }
 
-    public void add(LitemallAdminRole role) {
+    public void add(LitemallSysadminRole role) {
         role.setAddTime(LocalDateTime.now());
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.insertSelective(role);
@@ -69,19 +69,19 @@ public class LitemallRoleService {
         roleMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void updateById(LitemallAdminRole role) {
+    public void updateById(LitemallSysadminRole role) {
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.updateByPrimaryKeySelective(role);
     }
 
     public boolean checkExist(String name) {
-        LitemallAdminRoleExample example = new LitemallAdminRoleExample();
+        LitemallSysadminRoleExample example = new LitemallSysadminRoleExample();
         example.or().andNameEqualTo(name).andDeletedEqualTo(false);
         return roleMapper.countByExample(example) != 0;
     }
 
-    public List<LitemallAdminRole> queryAll() {
-        LitemallAdminRoleExample example = new LitemallAdminRoleExample();
+    public List<LitemallSysadminRole> queryAll() {
+        LitemallSysadminRoleExample example = new LitemallSysadminRoleExample();
         example.or().andDeletedEqualTo(false);
         return roleMapper.selectByExample(example);
     }
