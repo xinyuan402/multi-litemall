@@ -65,7 +65,11 @@ export const constantRouterMap = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: '首页', icon: 'dashboard', affix: true }
+        meta: {
+          title: '系统级管理首页 TD',
+          icon: 'dashboard',
+          affix: true
+        }
       }
     ]
   }
@@ -85,7 +89,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'shop',
     meta: {
-      title: '商户',
+      title: '商户 TD',
       icon: 'chart'
     },
     children: [
@@ -95,7 +99,7 @@ export const asyncRouterMap = [
         name: 'shop',
         meta: {
           perms: ['GET /sysadmin/shop/list', 'POST /sysadmin/shop/create'],
-          title: '商铺管理',
+          title: '商铺管理 TD',
           noCache: true
         }
       }
@@ -108,7 +112,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'userManage',
     meta: {
-      title: '用户管理',
+      title: '用户管理 TD',
       icon: 'chart'
     },
     children: [
@@ -118,7 +122,7 @@ export const asyncRouterMap = [
         name: 'user',
         meta: {
           perms: ['GET /sysadmin/user/list'],
-          title: '会员列表',
+          title: '会员列表 TD',
           noCache: true
         }
       },
@@ -128,7 +132,7 @@ export const asyncRouterMap = [
         name: 'address',
         meta: {
           perms: ['GET /sysadmin/address/list'],
-          title: '收货地址',
+          title: '收货地址 TD',
           noCache: true
         }
       },
@@ -138,7 +142,7 @@ export const asyncRouterMap = [
         name: 'collect',
         meta: {
           perms: ['GET /sysadmin/collect/list'],
-          title: '会员收藏',
+          title: '会员收藏 TD',
           noCache: true
         }
       },
@@ -148,7 +152,7 @@ export const asyncRouterMap = [
         name: 'footprint',
         meta: {
           perms: ['GET /sysadmin/footprint/list'],
-          title: '会员足迹',
+          title: '会员足迹 TD',
           noCache: true
         }
       },
@@ -158,7 +162,7 @@ export const asyncRouterMap = [
         name: 'history',
         meta: {
           perms: ['GET /sysadmin/history/list'],
-          title: '搜索历史',
+          title: '搜索历史 TD',
           noCache: true
         }
       },
@@ -168,7 +172,7 @@ export const asyncRouterMap = [
         name: 'feedback',
         meta: {
           perms: ['GET /sysadmin/feedback/list'],
-          title: '意见反馈',
+          title: '意见反馈 TD',
           noCache: true
         }
       }
@@ -181,7 +185,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'mallManage',
     meta: {
-      title: '商场管理',
+      title: '商场管理 TD',
       icon: 'chart'
     },
     children: [
@@ -190,7 +194,7 @@ export const asyncRouterMap = [
         component: () => import('@/views/mall/region'),
         name: 'region',
         meta: {
-          title: '行政区域',
+          title: '行政区域 TD',
           noCache: true
         }
       },
@@ -200,7 +204,7 @@ export const asyncRouterMap = [
         name: 'brand',
         meta: {
           perms: ['GET /sysadmin/brand/list', 'POST /sysadmin/brand/create', 'GET /sysadmin/brand/read', 'POST /sysadmin/brand/update', 'POST /sysadmin/brand/delete'],
-          title: '品牌制造商',
+          title: '品牌制造商 TD',
           noCache: true
         }
       },
@@ -210,7 +214,7 @@ export const asyncRouterMap = [
         name: 'category',
         meta: {
           perms: ['GET /sysadmin/category/list', 'POST /sysadmin/category/create', 'GET /sysadmin/category/read', 'POST /sysadmin/category/update', 'POST /sysadmin/category/delete'],
-          title: '商品类目',
+          title: '商品类目 TD',
           noCache: true
         }
       },
@@ -220,7 +224,7 @@ export const asyncRouterMap = [
         name: 'order',
         meta: {
           perms: ['GET /sysadmin/order/list', 'GET /sysadmin/order/detail', 'POST /sysadmin/order/ordership', 'POST /sysadmin/order/orderrefund', 'POST /sysadmin/order/orderreply'],
-          title: '订单管理',
+          title: '订单管理 TD',
           noCache: true
         }
       },
@@ -230,7 +234,7 @@ export const asyncRouterMap = [
         name: 'keyword',
         meta: {
           perms: ['GET /sysadmin/keyword/list', 'POST /sysadmin/keyword/create', 'GET /sysadmin/keyword/read', 'POST /sysadmin/keyword/update', 'POST /sysadmin/keyword/delete'],
-          title: '关键词',
+          title: '关键词 TD',
           noCache: true
         }
       }
@@ -244,7 +248,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'goodsManage',
     meta: {
-      title: '商品管理',
+      title: '商品管理 TD',
       icon: 'chart'
     },
     children: [
@@ -254,7 +258,7 @@ export const asyncRouterMap = [
         name: 'goodsList',
         meta: {
           perms: ['GET /sysadmin/goods/list', 'POST /sysadmin/goods/delete'],
-          title: '商品列表',
+          title: '商品列表 TD',
           noCache: true
         }
       }
@@ -267,7 +271,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'promotionManage',
     meta: {
-      title: '推广管理',
+      title: '推广管理 TD',
       icon: 'chart'
     },
     children: [
@@ -277,7 +281,7 @@ export const asyncRouterMap = [
         name: 'ad',
         meta: {
           perms: ['GET /sysadmin/ad/list', 'POST /sysadmin/ad/create', 'GET /sysadmin/ad/read', 'POST /sysadmin/ad/update', 'POST /sysadmin/ad/delete'],
-          title: '广告管理',
+          title: '广告管理 TD',
           noCache: true
         }
       }
@@ -291,7 +295,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'sysManage',
     meta: {
-      title: '系统管理',
+      title: '系统管理 TD',
       icon: 'chart'
     },
     children: [
@@ -301,7 +305,7 @@ export const asyncRouterMap = [
         name: 'admin',
         meta: {
           perms: ['GET /sysadmin/admin/list', 'POST /sysadmin/admin/create', 'POST /sysadmin/admin/update', 'POST /sysadmin/admin/delete'],
-          title: '系统管理员',
+          title: '系统管理员 TD',
           noCache: true
         }
       },
@@ -311,7 +315,7 @@ export const asyncRouterMap = [
         name: 'sysNotice',
         meta: {
           perms: ['GET /sysadmin/notice/list', 'POST /sysadmin/notice/create', 'POST /sysadmin/notice/update', 'POST /sysadmin/notice/delete'],
-          title: '系统通知管理',
+          title: '系统通知管理 TD',
           noCache: true
         }
       },
@@ -321,7 +325,7 @@ export const asyncRouterMap = [
         name: 'log',
         meta: {
           perms: ['GET /sysadmin/log/list'],
-          title: '系统操作日志',
+          title: '系统操作日志 TD',
           noCache: true
         }
       },
@@ -331,7 +335,7 @@ export const asyncRouterMap = [
         name: 'role',
         meta: {
           perms: ['GET /sysadmin/role/list', 'POST /sysadmin/role/create', 'POST /sysadmin/role/update', 'POST /sysadmin/role/delete', 'GET /sysadmin/role/permissions', 'POST /sysadmin/role/permissions'],
-          title: '角色管理',
+          title: '角色管理 TD',
           noCache: true
         }
       },
@@ -341,7 +345,7 @@ export const asyncRouterMap = [
         name: 'os',
         meta: {
           perms: ['GET /sysadmin/storage/list', 'POST /sysadmin/storage/create', 'POST /sysadmin/storage/update', 'POST /sysadmin/storage/delete'],
-          title: '对象存储',
+          title: '对象存储 TD',
           noCache: true
         }
       }
@@ -355,7 +359,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'configManage',
     meta: {
-      title: '配置管理',
+      title: '配置管理 TD',
       icon: 'chart'
     },
     children: [
@@ -365,7 +369,7 @@ export const asyncRouterMap = [
         name: 'configOrder',
         meta: {
           perms: ['GET /sysadmin/config/order', 'POST /sysadmin/config/order'],
-          title: '订单配置',
+          title: '订单配置 TD',
           noCache: true
         }
       },
@@ -375,7 +379,7 @@ export const asyncRouterMap = [
         name: 'configWx',
         meta: {
           perms: ['GET /sysadmin/config/wx', 'POST /sysadmin/config/wx'],
-          title: '小程序配置',
+          title: '小程序配置 TD',
           noCache: true
         }
       }
@@ -389,7 +393,7 @@ export const asyncRouterMap = [
     alwaysShow: true,
     name: 'statManage',
     meta: {
-      title: '统计报表',
+      title: '统计报表 TD',
       icon: 'chart'
     },
     children: [
@@ -399,7 +403,7 @@ export const asyncRouterMap = [
         name: 'statUser',
         meta: {
           perms: ['GET /sysadmin/stat/user'],
-          title: '用户统计',
+          title: '用户统计 TD',
           noCache: true
         }
       },
@@ -409,7 +413,7 @@ export const asyncRouterMap = [
         name: 'statOrder',
         meta: {
           perms: ['GET /sysadmin/stat/order'],
-          title: '订单统计',
+          title: '订单统计 TD',
           noCache: true
         }
       },
@@ -419,7 +423,7 @@ export const asyncRouterMap = [
         name: 'statGoods',
         meta: {
           perms: ['GET /sysadmin/stat/goods'],
-          title: '商品统计',
+          title: '商品统计 TD',
           noCache: true
         }
       }
