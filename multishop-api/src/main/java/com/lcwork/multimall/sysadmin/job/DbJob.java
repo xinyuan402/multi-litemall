@@ -30,9 +30,9 @@ public class DbJob {
     public void backup() throws IOException {
         logger.info("系统开启定时任务数据库备份");
 
-        String user = environment.getProperty("spring.datasource.druid.username");
-        String password = environment.getProperty("spring.datasource.druid.password");
-        String url = environment.getProperty("spring.datasource.druid.url");
+        String user = environment.getProperty("spring.datasource.username");
+        String password = environment.getProperty("spring.datasource.password");
+        String url = environment.getProperty("spring.datasource.url");
         int index1 = url.indexOf("3306/");
         int index2 = url.indexOf("?");
         String db = url.substring(index1 + 5, index2);

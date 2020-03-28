@@ -6,20 +6,7 @@ pagehelper:
 
 spring:
   datasource:
-    druid:
-      url:  jdbc:mysql://192.168.3.15:3306/multimall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false&createDatabaseIfNotExist=true
-      driver-class-name:  com.mysql.cj.jdbc.Driver
-      username:  root
-      password:  root
-      initial-size:  10
-      max-active:  50
-      min-idle:  10
-      max-wait:  60000
-      pool-prepared-statements:  true
-      max-pool-prepared-statement-per-connection-size:  20
-      validation-query:  SELECT 1 FROM DUAL
-      test-on-borrow:  false
-      test-on-return:  false
-      test-while-idle:  true
-      time-between-eviction-runs-millis:  60000
-      filters:  stat,wall
+    url:  jdbc:mysql://localhost:3306/multimall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false&createDatabaseIfNotExist=true
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+    username:  root
+    password:  root

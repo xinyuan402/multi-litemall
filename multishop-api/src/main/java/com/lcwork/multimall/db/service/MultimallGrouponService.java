@@ -1,11 +1,11 @@
 package com.lcwork.multimall.db.service;
 
-import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
 import com.lcwork.multimall.db.dao.generate.MultimallGrouponMapper;
 import com.lcwork.multimall.db.domain.generate.MultimallGroupon;
 import com.lcwork.multimall.db.domain.generate.MultimallGrouponExample;
 import com.lcwork.multimall.db.util.GrouponConstant;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

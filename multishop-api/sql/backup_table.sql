@@ -969,7 +969,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS multimall_admin_role;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `multimall_role` (
+CREATE TABLE `multimall_admin_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(63) NOT NULL COMMENT '角色名称',
   `desc` varchar(1023) DEFAULT NULL COMMENT '角色描述',

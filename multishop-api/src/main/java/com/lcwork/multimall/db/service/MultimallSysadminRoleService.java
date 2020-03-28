@@ -1,10 +1,10 @@
 package com.lcwork.multimall.db.service;
 
-import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
 import com.lcwork.multimall.db.dao.generate.MultimallSysadminRoleMapper;
 import com.lcwork.multimall.db.domain.generate.MultimallSysadminRole;
 import com.lcwork.multimall.db.domain.generate.MultimallSysadminRoleExample;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
