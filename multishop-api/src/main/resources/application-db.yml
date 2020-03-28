@@ -7,8 +7,8 @@ pagehelper:
 spring:
   datasource:
     druid:
-      url:  jdbc:mysql://localhost:3306/multishop?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
-      driver-class-name:  com.mysql.jdbc.Driver
+      url:  jdbc:mysql://192.168.3.15:3306/multimall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false&createDatabaseIfNotExist=true
+      driver-class-name:  com.mysql.cj.jdbc.Driver
       username:  root
       password:  root
       initial-size:  10
@@ -23,4 +23,3 @@ spring:
       test-while-idle:  true
       time-between-eviction-runs-millis:  60000
       filters:  stat,wall
-

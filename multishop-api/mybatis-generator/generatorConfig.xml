@@ -50,7 +50,7 @@
 
         <!--数据库连接信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/multishop?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;verifyServerCertificate=false&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://192.168.3.15:3306/multimall?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;verifyServerCertificate=false&amp;useSSL=false"
                         userId="root"
                         password="root"/>
 
@@ -58,163 +58,164 @@
             <property name="useJSR310Types" value="true"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.lcwork.multishop.db.domain.generate" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="com.lcwork.multishop.db.dao.generate" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lcwork.multishop.db.dao.generate"
+        <javaModelGenerator targetPackage="com.lcwork.multimall.db.domain.generate" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.lcwork.multimall.db.dao.generate" targetProject="src/main/resources"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lcwork.multimall.db.dao.generate"
                              targetProject="src/main/java"/>
 
         <!--表名-->
-        <table tableName="multishop_ad">
+        <table tableName="multimall_ad">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_address">
+        <table tableName="multimall_address">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_admin">
+        <table tableName="multimall_admin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="role_ids" javaType="java.lang.Integer[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonIntegerArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonIntegerArrayTypeHandler"/>
         </table>
-        <table tableName="multishop_brand">
+        <table tableName="multimall_brand">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_cart">
+        <table tableName="multimall_cart">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="specifications" javaType="java.lang.String[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonStringArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonStringArrayTypeHandler"/>
         </table>
-        <table tableName="multishop_category">
+        <table tableName="multimall_category">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_collect">
+        <table tableName="multimall_collect">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_comment">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="pic_urls" javaType="java.lang.String[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonStringArrayTypeHandler"/>
-        </table>
-
-        <table tableName="multishop_feedback">
+        <table tableName="multimall_comment">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="pic_urls" javaType="java.lang.String[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonStringArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonStringArrayTypeHandler"/>
         </table>
 
-        <table tableName="multishop_footprint">
+        <table tableName="multimall_feedback">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="pic_urls" javaType="java.lang.String[]"
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonStringArrayTypeHandler"/>
+        </table>
+
+        <table tableName="multimall_footprint">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_goods">
+        <table tableName="multimall_goods">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="gallery" javaType="java.lang.String[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonStringArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonStringArrayTypeHandler"/>
         </table>
-        <table tableName="multishop_goods_attribute">
+        <table tableName="multimall_goods_attribute">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_goods_specification">
+        <table tableName="multimall_goods_specification">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_goods_product">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="specifications" javaType="java.lang.String[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonStringArrayTypeHandler"/>
-        </table>
-        <table tableName="multishop_issue">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="multishop_keyword">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="multishop_order">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="multishop_order_goods">
+        <table tableName="multimall_goods_product">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="specifications" javaType="java.lang.String[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonStringArrayTypeHandler"/>
-            <columnOverride column="comments" javaType="java.lang.Integer[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonIntegerArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonStringArrayTypeHandler"/>
+        </table>
+        <table tableName="multimall_issue">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="multimall_keyword">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="multimall_order">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="multimall_order_goods">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="specifications" javaType="java.lang.String[]"
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonStringArrayTypeHandler"/>
+<!--           TODO -->
+<!--            <columnOverride column="comments" javaType="java.lang.Integer[]"-->
+<!--                            typeHandler="com.lcwork.multimall.db.mybatis.JsonIntegerArrayTypeHandler"/>-->
 
         </table>
-        <table tableName="multishop_region">
+        <table tableName="multimall_region">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_search_history">
+        <table tableName="multimall_search_history">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_storage">
+        <table tableName="multimall_storage">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_topic">
+        <table tableName="multimall_topic">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="goods" javaType="java.lang.Integer[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonIntegerArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonIntegerArrayTypeHandler"/>
         </table>
-        <table tableName="multishop_user">
+        <table tableName="multimall_user">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_system">
+        <table tableName="multimall_system">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
-        <table tableName="multishop_groupon_rules">
+        <table tableName="multimall_groupon_rules">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_groupon">
+        <table tableName="multimall_groupon">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_coupon">
+        <table tableName="multimall_coupon">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="goods_value" javaType="java.lang.Integer[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonIntegerArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonIntegerArrayTypeHandler"/>
         </table>
-        <table tableName="multishop_coupon_user">
+        <table tableName="multimall_coupon_user">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_admin_role">
+        <table tableName="multimall_admin_role">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_admin_permission">
+        <table tableName="multimall_admin_permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_admin_log">
+        <table tableName="multimall_admin_log">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_admin_notice">
+        <table tableName="multimall_admin_notice">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_admin_notice_admin">
+        <table tableName="multimall_admin_notice_admin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_aftersale">
+        <table tableName="multimall_aftersale">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="pictures" javaType="java.lang.String[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonStringArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonStringArrayTypeHandler"/>
         </table>
-        <table tableName="multishop_shop">
+        <table tableName="multimall_shop">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <columnOverride column="status" javaType="com.lcwork.multishop.db.enums.ShopStatus"
-                            typeHandler="com.lcwork.multishop.db.mybatis.ShopStatusEnumTypeHandler"/>
+            <columnOverride column="status" javaType="com.lcwork.multimall.db.enums.ShopStatus"
+                            typeHandler="com.lcwork.multimall.db.mybatis.ShopStatusEnumTypeHandler"/>
         </table>
-        <table tableName="multishop_sysadmin">
+        <table tableName="multimall_sysadmin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="role_ids" javaType="java.lang.Integer[]"
-                            typeHandler="com.lcwork.multishop.db.mybatis.JsonIntegerArrayTypeHandler"/>
+                            typeHandler="com.lcwork.multimall.db.mybatis.JsonIntegerArrayTypeHandler"/>
         </table>
-        <table tableName="multishop_sysadmin_role">
+        <table tableName="multimall_sysadmin_role">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_sysadmin_permission">
+        <table tableName="multimall_sysadmin_permission">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_sysadmin_log">
+        <table tableName="multimall_sysadmin_log">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_sysadmin_notice">
+        <table tableName="multimall_sysadmin_notice">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="multishop_sysadmin_notice_sysadmin">
+        <table tableName="multimall_sysadmin_notice_sysadmin">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>

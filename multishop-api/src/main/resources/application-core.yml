@@ -1,4 +1,4 @@
-multishop:
+multimall:
   # 开发者应该设置成自己的wx相关信息
   wx:
     app-id: wxa5b486c6b918ecfb
@@ -28,7 +28,7 @@ multishop:
       # 如果是腾讯云短信，则设置active的值tencent
       # 如果是阿里云短信，则设置active的值aliyun
       active: tencent
-      sign: multishop
+      sign: multimall
       template:
         - name: paySucceed
           templateId: 156349
@@ -93,7 +93,7 @@ multishop:
       endpoint: oss-cn-shenzhen.aliyuncs.com
       accessKeyId: 111111
       accessKeySecret: xxxxxx
-      bucketName: multishop
+      bucketName: multimall
     # 腾讯对象存储配置信息
     # 请参考 https://cloud.tencent.com/document/product/436/6249
     tencent:
@@ -106,4 +106,4 @@ multishop:
       endpoint: http://pd5cb6ulu.bkt.clouddn.com
       accessKey: 111111
       secretKey: xxxxxx
-      bucketName: multishop
+      bucketName: multimall

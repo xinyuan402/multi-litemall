@@ -50,10 +50,10 @@
     </root>
     <logger name="org.mybatis" level="ERROR"/>
     <logger name="org.springframework" level="ERROR"/>
-    <logger name="com.lcwork.multishop.core" level="ERROR"/>
+    <logger name="com.lcwork.multimall.core" level="ERROR"/>
      
-    <logger name="com.lcwork.multishop.db" level="ERROR"/>
-    <logger name="com.lcwork.multishop.admin" level="DEBUG"/>
-    <logger name="com.lcwork.multishop.wx" level="DEBUG"/>
-    <logger name="com.lcwork.multishop" level="DEBUG"/>
+    <logger name="com.lcwork.multimall.db" level="ERROR"/>
+    <logger name="com.lcwork.multimall.admin" level="DEBUG"/>
+    <logger name="com.lcwork.multimall.wx" level="DEBUG"/>
+    <logger name="com.lcwork.multimall" level="DEBUG"/>
 </configuration>
